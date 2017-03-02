@@ -3,31 +3,4 @@
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-	<!-- 설정파일에서 사용할 프로퍼티의 파일의 경로 지정: classpath -->
-	<!-- 소스폴더 다음 부분부터 경로로 지정해준다 -->
-	<properties resource="config/mybatis/db.properties"/>
-	
-	<!-- SQL의 결과를 담을 VO 객체들의 별칭을 설정하여 사용의 편의를 도모  -->
-	<!-- 클래스에 별칭 부여. MemberVO를 member.xml에서 사용한다면 이 이름으로 불러서 쓸게 원래 이름은 너무 기니까-->
-	<typeAliases>
-		<!-- <typeAlias alias="*" type="kr.co.around.*" /> -->
-		<!-- naming rule: 도메인명+프로젝트명 or 프로젝트 구성단위(사용자,관리자 등)+기능명 -->
-	</typeAliases>
-	
-	<environments default="development">
-		<environment id="development">
-			<transactionManager type="JDBC"/>
-			<dataSource type="POOLED">
-				<property name="driver" value="${driver}"/>
-				<!--  property name="driver" value="oracle.jdbc.driver.OracleDriver"/ 와 같음-->
-				<property name="url" value="${url}"/>
-				<property name="username" value="${username}"/>
-				<property name="password" value="${password}"/>
-			</dataSource>
-		</environment>
-	</environments>
-
-	<mappers>
-		<!-- <mapper resource="config/sqlmap/oracle/*.xml"/> -->
-	</mappers>
 </configuration>

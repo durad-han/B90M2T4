@@ -11,8 +11,9 @@
 					    http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<context:component-scan base-package="kr.co.around" />
-    <mvc:annotation-driven ><!-- mvc 관련 bean class 들 자동으로 마운트시킴 -->
+    <mvc:annotation-driven ><!-- mvc 관련 bean class 들 자동으로 마운트 -->
     	<mvc:message-converters> 
+    	
     		<bean class= "org.springframework.http.converter.StringHttpMessageConverter"> 
     			<property name="supportedMediaTypes"> 
     				<list> 
@@ -29,6 +30,7 @@
     				</list> 
     			</property> 
     		</bean>
+    		
     	</mvc:message-converters>
     </mvc:annotation-driven>
     

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.around.repository.mapper">
+
+	<resultMap type="??TYPE" id="??MapID">
+		<result column="Column_Name"		property="voName"		/>
+		<result column="Column_Name"		property="voName"		/>
+		<result column="Column_Name"		property="voName"		/>
+	</resultMap>
+		
+	<!--============================================================================
+	
+		V A L U E		S E L E C T
+		
+	============================================================================-->	
+	 
+	 
+	<!--============================================================================
+			VALUE 조회 ??ValueList 
+			필터링할 값: ??
+			파라메터의 데이터타입: ??
+			리턴되는 값의 데이터타입: ??
+	============================================================================-->
+	<select id="select??ValueList" resultMap="??MapID">
+		select	*
+		from	tb_mini2_??tableName
+		where	?? = ??
+	</select>
+
+
+	<!--============================================================================ 
+	
+		V A L U E		INSERT	/	UPDATE	/	DELETE
+	
+	 ============================================================================-->
+
+
+	<!--============================================================================
+			VALUE 정보 입력 insert??Value
+			필터링할 값: ??
+			파라메터의 데이터타입: ??
+			리턴되는 값의 데이터타입: ?? 
+	============================================================================-->
+	<insert id="insert??Value" parameterType="??TYPE" >
+		insert	into tb_mini2_??tableName 
+				(
+				Column_Name,
+				Column_Name,
+				Column_Name
+				)
+		values	(
+				#{voName},
+				#{voName},
+				#{voName}
+				)
+	</insert>
+
+
+	<!--============================================================================
+			VALUE 정보 수정 update??Value
+			필터링할 값: ?
+			파라메터의 데이터타입: ?
+			리턴되는 값의 데이터타입: ?
+	============================================================================-->
+	<update id="update??Value" parameterType="??TYPE" >
+		update	tb_mini2_??tableName
+		set		Column_Name			= #{voName},
+				Column_Name			= #{voName},
+				Column_Name			= #{voName}
+		where	??	= #{??}
+	</update>
+	
+	
+	
+	
+	
+	
+	
+	
+</mapper>
