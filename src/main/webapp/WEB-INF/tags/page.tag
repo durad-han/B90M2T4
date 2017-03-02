@@ -1,6 +1,6 @@
-<%@ tag body-content="empty" pageEncoding="utf-8" %>
+<%-- <%@ tag body-content="empty" pageEncoding="utf-8" %>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"  %>
-<%@ attribute name="data" type="kr.co.durad.repository.vo.PageResultVO" %>
+<%@ attribute name="data" type="kr.co.around.repository.vo.PageResultVO" %>
 		<c:if test="${data.count != 0}">
 			<nav>
 			  <ul class="pagination">
@@ -29,4 +29,4 @@
 			    	    
 			  </ul>
 			</nav>
-		</c:if>	
+		</c:if>	 --%>
