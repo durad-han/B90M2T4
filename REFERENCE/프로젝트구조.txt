@@ -6,12 +6,11 @@ WEB-INF/
 		login/		: 로그인 기능 관련 페이지
 		myFavorite/	: 내 관심카드 기능 관련 페이지
 		
-	lib/
-		cos-05Nov2002.jar
-		gson-2.5.jar
-		jstl-1.2.jar
-		mybatis-3.2.8.jar
-		ojdbc14.jar
+	js/
+		card/		: 
+		include/	: 
+		login/		: 
+		myFavorite/	: 
 		
 	tags/
 		page.tag	: 페이징 기능 구현 태그
