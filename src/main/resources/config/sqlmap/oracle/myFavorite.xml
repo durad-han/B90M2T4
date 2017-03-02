@@ -3,77 +3,93 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.around.repository.mapper">
 
-	<resultMap type="??TYPE" id="??MapID">
-		<result column="Column_Name"		property="voName"		/>
-		<result column="Column_Name"		property="voName"		/>
-		<result column="Column_Name"		property="voName"		/>
+	<resultMap type="myFavoriteVO" id="myMap">
+		<result column="My_Seq"			property="mySeq" 		/>
+		<result column="User_Seq"		property="userSeq" 		/>
+		<result column="My_Content"		property="myContent" 	/>
+		<result column="My_Hashtag"		property="myHashtag" 	/>
+		<result column="My_Feeling"		property="myFeeling" 	/>
+		<result column="My_Reg_Date"	property="myRegDate" 	/>
 	</resultMap>
 		
 	<!--============================================================================
 	
-		V A L U E		S E L E C T
+		M Y F A V O R I T E		S E L E C T
 		
 	============================================================================-->	
 	 
 	 
 	<!--============================================================================
-			VALUE 조회 ??ValueList 
-			필터링할 값: ??
-			파라메터의 데이터타입: ??
-			리턴되는 값의 데이터타입: ??
+			사용자 시퀀스로 관심카드 조회 selectMyUserSeq 
+			필터링할 값: (tb_Around_User) User_Seq
+			파라메터의 데이터타입: int
+			리턴되는 값의 데이터타입: MyFavoriteVO
 	============================================================================-->
-	<select id="select??ValueList" resultMap="??MapID">
+	<select id="selectMyUserSeq" parameterType="int" resultMap="myMap">
 		select	*
-		from	tb_mini2_??tableName
-		where	?? = ??
+		from	tb_Around_My_Favorite
+		where	User_Seq = #{userSeq}
+		order	by My_Seq desc
 	</select>
 
 
 	<!--============================================================================ 
 	
-		V A L U E		INSERT	/	UPDATE	/	DELETE
+		M Y F A V O R I T E		INSERT	/	UPDATE	/	DELETE
 	
 	 ============================================================================-->
 
 
 	<!--============================================================================
-			VALUE 정보 입력 insert??Value
-			필터링할 값: ??
-			파라메터의 데이터타입: ??
-			리턴되는 값의 데이터타입: ?? 
+			관심카드 정보 입력 insertMy
+			필터링할 값: 없음
+			파라메터의 데이터타입: MyFavoriteVO
+			리턴되는 값의 데이터타입: 없음 
 	============================================================================-->
-	<insert id="insert??Value" parameterType="??TYPE" >
-		insert	into tb_mini2_??tableName 
+	<insert id="insertMy" parameterMap="myMap" >
+		insert	into tb_Around_My_Favorite 
 				(
-				Column_Name,
-				Column_Name,
-				Column_Name
+				My_Seq,
+				User_Seq,
+				My_Content,
+				My_Hashtag,
+				My_Feeling,
 				)
 		values	(
-				#{voName},
-				#{voName},
-				#{voName}
+				s_Around_My_Favorite.nextVal,
+				#{userSeq},
+				#{myContent},
+				#{myHashtag},
+				#{myFeeling}
 				)
 	</insert>
 
 
 	<!--============================================================================
-			VALUE 정보 수정 update??Value
-			필터링할 값: ?
-			파라메터의 데이터타입: ?
-			리턴되는 값의 데이터타입: ?
+			관심카드 정보 수정 updateMy
+			필터링할 값: My_Seq
+			파라메터의 데이터타입: MyFavoriteVO
+			리턴되는 값의 데이터타입: 없음
 	============================================================================-->
-	<update id="update??Value" parameterType="??TYPE" >
-		update	tb_mini2_??tableName
-		set		Column_Name			= #{voName},
-				Column_Name			= #{voName},
-				Column_Name			= #{voName}
-		where	??	= #{??}
+	<update id="updateMy" parameterMap="myMap" >
+		update	tb_Around_My_Favorite
+		set		My_Content			= #{myContent},
+				My_Hashtag			= #{myHashtag},
+				My_Feeling			= #{myFeeling}
+		where	My_Seq			= #{mySeq}
 	</update>
+
 	
-	
-	
-	
+	<!--============================================================================
+			관심카드 삭제 처리 deleteMy
+			필터링할 값: My_Seq
+			파라메터의 데이터타입: int
+			리턴되는 값의 데이터타입: 없음
+	============================================================================-->
+	<delete id="deleteMy" parameterType="int" >
+		delete	tb_Around_My_Favorite
+		where	My_Seq		= #{mySeq}
+	</delete>
 	
 	
 	

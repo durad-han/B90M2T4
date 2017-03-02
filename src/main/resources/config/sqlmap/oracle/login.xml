@@ -3,72 +3,85 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.around.repository.mapper">
 
-	<resultMap type="??TYPE" id="??MapID">
-		<result column="Column_Name"		property="voName"		/>
-		<result column="Column_Name"		property="voName"		/>
-		<result column="Column_Name"		property="voName"		/>
+	<resultMap type="userVO" id="userMap">
+		<result column="User_Seq"		property="UserSeq"		/>
+		<result column="User_Id"		property="UserId"		/>
+		<result column="User_Pass"		property="UserPass"		/>
+		<result column="User_Reg_Date"	property="UserRegDate"	/>
 	</resultMap>
 		
 	<!--============================================================================
 	
-		V A L U E		S E L E C T
+		U S E R		S E L E C T
 		
 	============================================================================-->	
 	 
 	 
 	<!--============================================================================
-			VALUE 조회 ??ValueList 
-			필터링할 값: ??
-			파라메터의 데이터타입: ??
-			리턴되는 값의 데이터타입: ??
+			전체 사용자 조회 selecUserList 
+			필터링할 값: 없음
+			파라메터의 데이터타입: 없음
+			리턴되는 값의 데이터타입: List<UserVO>
 	============================================================================-->
-	<select id="select??ValueList" resultMap="??MapID">
+	<select id="selecUserList" resultMap="userMap">
 		select	*
-		from	tb_mini2_??tableName
-		where	?? = ??
+		from	tb_Around_User
+		order	by User_Seq desc
+	</select>
+	 
+	 
+	<!--============================================================================
+			특정 사용자 시퀀스로 조회 selectUserSeq 
+			필터링할 값: User_Seq
+			파라메터의 데이터타입: int
+			리턴되는 값의 데이터타입: UserVO
+	============================================================================-->
+	<select id="selectUserSeq" parameterType="int" resultMap="userMap">
+		select	*
+		from	tb_Around_User
+		where	User_Seq = #{userSeq}
 	</select>
 
 
 	<!--============================================================================ 
 	
-		V A L U E		INSERT	/	UPDATE	/	DELETE
+		U S E R		INSERT	/	UPDATE	/	DELETE
 	
 	 ============================================================================-->
 
 
 	<!--============================================================================
-			VALUE 정보 입력 insert??Value
-			필터링할 값: ??
-			파라메터의 데이터타입: ??
-			리턴되는 값의 데이터타입: ?? 
+			사용자 정보 입력 insertUser
+			필터링할 값: 없음
+			파라메터의 데이터타입: UserVO
+			리턴되는 값의 데이터타입: 없음 
 	============================================================================-->
-	<insert id="insert??Value" parameterType="??TYPE" >
-		insert	into tb_mini2_??tableName 
+	<insert id="insertUser" parameterMap="userMap" >
+		insert	into tb_Around_User
 				(
-				Column_Name,
-				Column_Name,
-				Column_Name
+				User_Seq,
+				User_Id,
+				User_Pass
 				)
 		values	(
-				#{voName},
-				#{voName},
-				#{voName}
+				s_Around_User.nextVal,
+				#{UserId},
+				#{UserPass}
 				)
 	</insert>
 
 
 	<!--============================================================================
-			VALUE 정보 수정 update??Value
-			필터링할 값: ?
-			파라메터의 데이터타입: ?
-			리턴되는 값의 데이터타입: ?
+			사용자 정보 수정 updateUser
+			필터링할 값: User_Seq
+			파라메터의 데이터타입: UserVO
+			리턴되는 값의 데이터타입: 없음
 	============================================================================-->
-	<update id="update??Value" parameterType="??TYPE" >
-		update	tb_mini2_??tableName
-		set		Column_Name			= #{voName},
-				Column_Name			= #{voName},
-				Column_Name			= #{voName}
-		where	??	= #{??}
+	<update id="updateUser" parameterMap="userMap" >
+		update	tb_Around_User
+		set		User_Id			= #{User_Id},
+				User_Pass		= #{User_Pass}
+		where	User_Seq		= #{UserSeq}
 	</update>
 	
 	

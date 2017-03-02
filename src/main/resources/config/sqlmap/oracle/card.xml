@@ -3,76 +3,159 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.around.repository.mapper">
 
-	<resultMap type="??TYPE" id="??MapID">
-		<result column="Column_Name"		property="voName"		/>
-		<result column="Column_Name"		property="voName"		/>
-		<result column="Column_Name"		property="voName"		/>
+	<resultMap type="cardVO" id="cardMap">
+		<result column="Card_Seq"		property="Card_Seq" 		/>
+		<result column="User_Seq"		property="User_Seq" 		/>
+		<result column="Card_Content"	property="Card_Content" 	/>
+		<result column="Card_Feeling"	property="Card_Feeling" 	/>
+		<result column="Card_Hashtag"	property="Card_Hashtag" 	/>
+		<result column="Card_Longitude"	property="Card_Longitude" 	/>
+		<result column="Card_Latitude"	property="Card_Latitude" 	/>
+		<result column="Card_Img_Path"	property="Card_Img_Path" 	/>
+		<result column="Card_Reg_Date"	property="Card_Reg_Date" 	/>
 	</resultMap>
 		
 	<!--============================================================================
 	
-		V A L U E		S E L E C T
+		C A R D		S E L E C T
 		
 	============================================================================-->	
 	 
 	 
 	<!--============================================================================
-			VALUE 조회 ??ValueList 
-			필터링할 값: ??
-			파라메터의 데이터타입: ??
-			리턴되는 값의 데이터타입: ??
+			전체 카드 조회 selectCardList 
+			필터링할 값: 없음
+			파라메터의 데이터타입: 없음
+			리턴되는 값의 데이터타입: List<CardVO>
 	============================================================================-->
-	<select id="select??ValueList" resultMap="??MapID">
+	<select id="selectCardList" resultMap="cardMap">
 		select	*
-		from	tb_mini2_??tableName
-		where	?? = ??
+		from	tb_Around_Card
+		order	by Card_Seq desc
+	</select>
+	
+	
+	<!--============================================================================
+			시퀀스로 카드 조회 selectCardSeq 
+			필터링할 값: Card_Seq
+			파라메터의 데이터타입: int
+			리턴되는 값의 데이터타입: CardVO
+	============================================================================-->
+	<select id="selectCardSeq" parameterType="int" resultMap="cardMap">
+		select	*
+		from	tb_Around_Card
+		where	Card_Seq = #{cardSeq}
+	</select>
+	
+	
+	<!--============================================================================
+			사용자로 카드 조회 selectCardUserSeq 
+			필터링할 값: (tb_Around_User) User_Seq
+			파라메터의 데이터타입: int
+			리턴되는 값의 데이터타입: CardVO
+	============================================================================-->
+	<select id="selectCardUserSeq" parameterType="int" resultMap="cardMap">
+		select	*
+		from	tb_Around_Card
+		where	User_Seq = #{userSeq}
+		order	by Card_Seq desc
+	</select>
+	
+	
+	<!--============================================================================
+			해시태그로 카드 조회 selectCardHashtag 
+			필터링할 값: Card_Hashtag
+			파라메터의 데이터타입: string
+			리턴되는 값의 데이터타입: CardVO
+	============================================================================-->
+	<select id="selectCardHashtag" parameterType="string" resultMap="cardMap">
+		select	*
+		from	tb_Around_Card
+		where	Card_Hashtag like '%'||#{cardHashtag}||'%'
+		order	by Card_Seq desc
+	</select>
+	
+	
+	<!--============================================================================
+			기분으로 카드 조회 selectCardFeeling
+			필터링할 값: Card_Feeling
+			파라메터의 데이터타입: string
+			리턴되는 값의 데이터타입: CardVO
+	============================================================================-->
+	<select id="selectCardFeeling" parameterType="string" resultMap="cardMap">
+		select	*
+		from	tb_Around_Card
+		where	Card_Feeling = #{cardFeeling}
+		order	by Card_Seq desc
 	</select>
 
 
 	<!--============================================================================ 
 	
-		V A L U E		INSERT	/	UPDATE	/	DELETE
+		C A R D		INSERT	/	UPDATE	/	DELETE
 	
 	 ============================================================================-->
 
 
 	<!--============================================================================
-			VALUE 정보 입력 insert??Value
-			필터링할 값: ??
-			파라메터의 데이터타입: ??
-			리턴되는 값의 데이터타입: ?? 
+			카드 정보 입력 insertCard
+			필터링할 값: 없음
+			파라메터의 데이터타입: CardVO
+			리턴되는 값의 데이터타입: 없음 
 	============================================================================-->
-	<insert id="insert??Value" parameterType="??TYPE" >
-		insert	into tb_mini2_??tableName 
+		<insert id="insertCard" parameterMap="cardVO" >
+		insert	into tb_Around_Card 
 				(
-				Column_Name,
-				Column_Name,
-				Column_Name
+				Card_Seq,
+				User_Seq,
+				Card_Content,
+				Card_Feeling,
+				Card_Hashtag,
+				Card_Longitude,
+				Card_Latitude,
+				Card_Img_Path
 				)
 		values	(
-				#{voName},
-				#{voName},
-				#{voName}
+				s_Around_Card.nextVal,
+				#{userSeq},
+				#{cardContent},
+				#{cardFeeling},
+				#{cardHashtag},
+				#{cardLongitude},
+				#{cardLatitude},
+				#{cardImg_Path}
 				)
 	</insert>
 
 
 	<!--============================================================================
-			VALUE 정보 수정 update??Value
-			필터링할 값: ?
-			파라메터의 데이터타입: ?
-			리턴되는 값의 데이터타입: ?
+			프로젝트 정보 수정 updateCard
+			필터링할 값: Card_Seq
+			파라메터의 데이터타입: CardVO
+			리턴되는 값의 데이터타입: 없음
 	============================================================================-->
-	<update id="update??Value" parameterType="??TYPE" >
-		update	tb_mini2_??tableName
-		set		Column_Name			= #{voName},
-				Column_Name			= #{voName},
-				Column_Name			= #{voName}
-		where	??	= #{??}
+	<update id="updateCard" parameterMap="cardMap" >
+		update	tb_Around_Card
+		set		Card_Content			= #{cardContent},
+				Card_Feeling			= #{cardFeeling},
+				Card_Hashtag			= #{cardHashtag},
+				Card_Longitude			= #{cardLongitude},
+				Card_Latitude			= #{cardLatitude},
+				Card_Img_Path			= #{cardImg_Path}
+		where	Card_Seq		= #{cardSeq}
 	</update>
 	
 	
-	
+	<!--============================================================================
+			프로젝트 삭제 처리 deleteCard
+			필터링할 값: Card_Seq
+			파라메터의 데이터타입: int
+			리턴되는 값의 데이터타입: 없음
+	============================================================================-->
+	<delete id="deleteCard" parameterType="int">
+		delete	tb_Around_Card
+		where	Card_Seq = #{cardSeq}
+	</delete>
 	
 	
 	
