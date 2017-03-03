@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>해시 태그 등록창</title>
+<script src="../../js/comm/jquery.min.js"></script>
+</head>
+<body onload="hashTagInput.focus()">
+
+	<h3>해시태그를 입력하세요.</h3>
+	<input id="hashTagInput" value="#" size="50"/>
+	<div id="tagList"></div>
+	Enter!
+	<script>
+		$("#hashTagInput").keyup(function (e) {
+			
+			
+			if (e.keyCode == 13) {
+				opener.document.getElementById("hashTagText").value += $("#hashTagInput").val();
+				self.close();
+			 }
+			
+			/* $.ajax({
+				
+				url: "/card/insertCardForm.do",
+				type: "POST",
+				data: $("hashTagInput").value(),
+				dataType: "json"
+				
+			}).done(function (result) {
+				showHashTags (result);
+			}); */
+			
+			
+			
+			
+		});
+		
+		
+		function showHashTags (result) {
+			var html = "";
+			if (result.length != 0) {
+				for (var i = 0 ; i < result.length ; i++) {
+					html += "<li>" + result[i].hashtagContent + "</li>";
+				}
+				$("#tagList").html(html);				
+			}
+		}
+	</script>
+</body>
+</html>
