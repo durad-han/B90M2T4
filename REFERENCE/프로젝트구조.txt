@@ -1,23 +1,41 @@
 
-WEB-INF/
+webapp/
+	index.html		: 시작페이지
+
 	view/
 		card/		: 카드 기능 관련 페이지
 		include/	: 전 페이지 공통 요소
 		login/		: 로그인 기능 관련 페이지
+		main/		: 메인페이지
 		myFavorite/	: 내 관심카드 기능 관련 페이지
 		
 	js/
 		card/		: 
 		include/	: 
 		login/		: 
+		main		:
 		myFavorite/	: 
 		
 	tags/
-		page.tag	: 페이징 기능 구현 태그
+		page.tag	: 페이징 기능 구현 태그 // 막아둠
+
+	WEB-INF/
+		spring-mvc.xml
+		web.xml
 
 
-
-
+src/main/
+	resources/config/
+				mybatis/
+					db.properties
+					sqlMapConfig.xml
+				spring/
+					context-repository.xml
+				sqlmap/oracle/
+					card.xml
+					login.xml
+					myFavorite.xml
+	
 
 
 

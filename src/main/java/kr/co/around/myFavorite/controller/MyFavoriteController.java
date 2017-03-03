@@ -9,7 +9,7 @@ import kr.co.around.myFavorite.service.MyFavoriteService;
 public class MyFavoriteController {
 	
 	@Autowired
-	private MyFavoriteService myFavoriteService;
+	private MyFavoriteService mys;
 	
 	
 

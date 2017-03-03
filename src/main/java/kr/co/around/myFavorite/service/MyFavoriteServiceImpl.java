@@ -9,5 +9,5 @@ import kr.co.around.repository.mapper.MyFavoriteMapper;
 public class MyFavoriteServiceImpl implements MyFavoriteService {
 
 	@Autowired
-	private MyFavoriteMapper myFavoriteMapper;
+	private MyFavoriteMapper myMapper;
 }

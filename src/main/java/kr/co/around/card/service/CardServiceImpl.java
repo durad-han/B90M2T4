@@ -8,8 +8,8 @@ import kr.co.around.repository.mapper.CardMapper;
 @Service
 public class CardServiceImpl implements CardService {
 
-//	@Autowired
-//	private CardMapper cm;
+	@Autowired
+	private CardMapper cMapper;
 
 	@Override
 	public void insertCard() {

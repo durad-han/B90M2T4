@@ -10,7 +10,7 @@ import kr.co.around.main.service.MainService;
 public class MainController {
 	
 	@Autowired
-	private MainService mainService;
+	private MainService ms;
 	
 	@RequestMapping("/main/main.do")
 	public void main() throws Exception {}

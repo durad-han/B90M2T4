@@ -9,7 +9,7 @@ import kr.co.around.login.service.LoginService;
 public class LoginController {
 	
 	@Autowired
-	private LoginService loginService;
+	private LoginService ls;
 	
 	
 
