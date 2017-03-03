@@ -17,6 +17,7 @@ public class CardController {
 	public void retrieveCard(){
 		System.out.println("retrieveCard");
 		cs.retrieveCard();
+//		return "/card/retrieveCard";
 	}
 	
 	@RequestMapping("/retrieveList.do")
