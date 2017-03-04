@@ -9,11 +9,8 @@
 	width: 500px;
 	border: 2px solid red;
 }
-#textarea.disabled {
-	color: #F00;
-}
 </style>
-<script src="js/jquery-3.1.1.js"></script>
+<script src="../../../js/comm/jquery.min.js"></script>
 
 </head>
 <body>
@@ -34,8 +31,8 @@
 			<div id="MyCurrentPosition"></div>
 			<div id="hashTagDiv">
 				<form id="hashTagForm">
-					<button type="button" id="hashTagPopup" onclick="javascript:popupOpen();">#</button><br>
-					<textarea id="hashTags" rows="2" cols="50"></textarea>
+					<button type="button" id="hashTagPopup" onclick="javascript:popupOpen();">#추가</button>
+					<input type="text" id="hashTagText" /><br>
 					<button>등록</button>
 					<button type="button">취소</button>
 				</form>
@@ -59,8 +56,8 @@
 		});
 		
 		function popupOpen() {
-			var popUrl = "2bun.html";
-			var popOption = "width=500, height=600, resizable=yes, scrollbars=yes, status=no";
+			var popUrl = "insertFormPopup.html";
+			var popOption = "width=400, height=200, resizable=yes, scrollbars=yes, status=no";
 				window.open(popUrl, "", popOption);
 		}
 		
