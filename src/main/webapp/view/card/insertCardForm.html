@@ -29,10 +29,10 @@
 			<button onclick="getLocation()">내 위치 조회</button>
 			<div id="mapDiv"></div>
 			<div id="MyCurrentPosition"></div>
-			<div id="hashTagDiv">
-				<form id="hashTagForm">
-					<button type="button" id="hashTagPopup" onclick="javascript:popupOpen();">#추가</button>
-					<input type="text" id="hashTagText" /><br>
+			<div id="hashtagDiv">
+				<form id="hashtagForm">
+					<button type="button" id="hashtagPopup" onclick="javascript:popupOpen();">#추가</button>
+					<input type="text" id="hashtagText" /><br>
 					<button>등록</button>
 					<button type="button">취소</button>
 				</form>
@@ -56,7 +56,7 @@
 		});
 		
 		function popupOpen() {
-			var popUrl = "insertFormPopup.html";
+			var popUrl = "insertCardFormPopup.html";
 			var popOption = "width=400, height=200, resizable=yes, scrollbars=yes, status=no";
 				window.open(popUrl, "", popOption);
 		}

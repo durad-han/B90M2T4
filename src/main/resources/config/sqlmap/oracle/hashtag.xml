@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.around.repository.mapper">
+
+	<resultMap type="hashTagVO" id="hashtagMap">
+		<result column="hashtag_seq"			property="hashtagSeq" 		/>
+		<result column="hashtag_content"		property="hashtagContent" 		/>
+		<result column="hashtag_frequency"		property="hashtagFrequency" 	/>
+	</resultMap>
+
+
+	<select id="selectHashtag" parameterType="string" resultMap="hashtagMap">
+		select *
+		  from (
+				select rownum rnum, a.*
+				  from (select *
+						  from tb_Around_Hashtag
+						 where hashtag_content like #{hashTagInput} || '%'
+						 order by Hashtag_Frequency
+				  ) a
+		  )
+		 where rnum between 0 and 5
+	</select>
+</mapper>

@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <title>해시 태그 등록창</title>
-<script src="../../../js/comm/jquery.min.js"></script>
+<script src="../../js/comm/jquery.min.js"></script>
 </head>
-<body onload="hashTagInput.focus()">
+<body onload="hashtagInput.focus()">
 
 	<h3>해시태그를 입력하세요.</h3>
-	<input id="hashTagInput" value="#" size="50"/>
+	<input id="hashtagInput" value="#" size="50"/>
 	<div id="tagList"></div>
 	Enter!
 	<script>
-		$("#hashTagInput").keyup(function (e) {
+		$("#hashtagInput").keyup(function (e) {
 			
 			
 			if (e.keyCode == 13) {
-				opener.document.getElementById("hashTagText").value += $("#hashTagInput").val();
+				opener.document.getElementById("hashtagText").value += $("#hashtagInput").val();
 				self.close();
 			 }
 			
@@ -24,11 +24,11 @@
 				
 				url: "/card/insertCardForm.do",
 				type: "POST",
-				data: $("hashTagInput").value(),
+				data: $("hashtagInput").value(),
 				dataType: "json"
 				
 			}).done(function (result) {
-				showHashTags (result);
+				showHashtags (result);
 			}); */
 			
 			
@@ -37,7 +37,7 @@
 		});
 		
 		
-		function showHashTags (result) {
+		function showHashtags (result) {
 			var html = "";
 			if (result.length != 0) {
 				for (var i = 0 ; i < result.length ; i++) {
