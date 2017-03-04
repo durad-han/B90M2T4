@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="import" href="../include/baseInclude.html">
-	<link rel="stylesheet" href="../../css/main/main.css">
-	<script src="../../js/main/main.js"></script>
-	<script src="../../js/comm/w3data.js"></script>
+<meta charset="UTF-8">
+<title>로그인 페이지입니다</title>
+
 </head>
-
 <body>
-	<div w3-include-html="../include/header.html"></div>
-
+	<div class="wrap">
+	<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" charset="utf-8"></script>
+		
 	<div id="content" class="product">
 		<div class="proList">
 	    	<div class="option">
@@ -33,14 +32,26 @@
 					<!-- //네이버아이디로로그인 버튼 노출 영역 -->
 			    </form>
 		    </div>
+
+<!-- 네이버아디디로로그인 초기화 Script -->
+<script type="text/javascript">
+	var naver_id_login = new naver_id_login("uhAftfrXFj4WLSj4v1Zi", "http://bit-hojohe.com:9090/mini1-team5/jsp/view/user/userCallback.jsp");
+	var state = naver_id_login.getUniqState();
+	naver_id_login.setButton("white", 1, 40);
+	naver_id_login.setDomain(".bit-hojohe.com");
+	naver_id_login.setState(state);
+	naver_id_login.setPopup();
+	naver_id_login.init_naver_id_login();
+</script>
+<!-- // 네이버아이디로로그인 초기화 Script -->
+				
+			
 			</div>
 		</div>
+		
 	</div>
-
-	<div w3-include-html="../include/footer.html"></div>
-
-	<script>
-		w3IncludeHTML();
-	</script>
+		
+	</div>
+	<iframe style="display:none;" id="ifrm" name="ifrm"></iframe>
 </body>
 </html>
