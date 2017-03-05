@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	<link rel="import" href="../include/baseInclude.html">
 	<link rel="stylesheet" href="../../css/main/main.css">
 	<script src="../../js/main/main.js"></script>
 	<script src="../../js/comm/w3data.js"></script>
+	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>
 
 <body>
@@ -17,20 +19,22 @@
 		    	<input type="hidden" name="msg" id="msg" value="${msg}" />
 			    <form class="form-signin" id="frm" action="${pageContext.request.contextPath}/user/login" method="post" target="ifrm">  
 			    	<input type="hidden" name="loginType" value="me" />     
-				    <h2 class="form-signin-heading">로그인</h2>
-				    <input type="text" class="form-control" id="id" name="id" placeholder="아이디 입력" required="아이디를 입력하세요." autofocus="" />
-				    <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호 입력" required=""/>      
-				    <label class="checkbox">
-				    <input type="checkbox" id="autoType" name="autoType" value="N"> 로그인 상태 유지
-				    </label>
-				    <button class="btn btn-lg btn-primary btn-block" id="btnLogin">로그인</button>
+				    <h2 class="form-signin-heading">AROUND</h2>
+				    <hr>
+				    <p class="text-center">회원가입</p>
+				    <hr>
+				    <!-- <input type="text" class="form-control" id="id" name="id" placeholder="아이디 입력" required="아이디를 입력하세요." autofocus="" />
+				    <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호 입력" required=""/> -->
+				    <p class="text-center">SNS 계정으로 간편하게 회원가입하세요.</p>  
+					<a id="kakao-login-btn"></a>
+					<p class="text-center">가입하면 AROUND의 약관 및 개인</p>
+					<p class="text-center">정보처리방침에 동의하게 됩니다.</p>
+					<br>
+					<br>
+					<hr>
+					<p class="text-center">계정이 있으신가요? <a href="#">로그인</a></p>
+				    <!-- <button class="btn btn-lg btn-primary btn-block" id="btnLogin">로그인</button> -->
 				    <br>
-					<!-- 네이버아이디로로그인 버튼 노출 영역 -->
-					SNS 계정으로 간편 로그인
-					<br>
-					<br>
-					<div id="naver_id_login"></div>
-					<!-- //네이버아이디로로그인 버튼 노출 영역 -->
 			    </form>
 		    </div>
 			</div>
@@ -41,6 +45,52 @@
 
 	<script>
 		w3IncludeHTML();
+		
+	    Kakao.init('a2df2dc9167541f9eb937ed24a7e8133');
+	    Kakao.Auth.createLoginButton({
+	        container: '#kakao-login-btn',
+	        success: function(authObj) {
+	        	alert(JSON.stringify(authObj));
+		        Kakao.Auth.setAccessToken(authObj.access_token);
+		          
+	        	Kakao.API.request({
+	            	url: '/v1/user/me',
+	                success: function(res) {
+	                	alert(JSON.stringify(res))
+	                	login(res)
+	                },
+	                fail: function(error) {
+	                	alert(JSON.stringify(error));
+	                }
+	            });
+	        },
+	        fail: function(err) {
+	           alert(JSON.stringify(err));
+	        }
+	    });
+    	 
+    	function login(res) {
+    		alert(res.id)
+    		$.ajax({
+    			url: "../../login/signUp.do",
+    			data: {
+    				userId: res.id
+    			}, 
+    			dataType: "json"
+    		}).done(function(msg) {
+    			
+    			if(msg == "LOGIN") {
+    				alert("이미 가입 된 회원입니다.");
+        			location.href = "../login/loginForm.html";
+        			return false;
+    			}
+    			
+    			alert("회원가입이 완료되었습니다.");
+    			location.href = "../card/retrieve.html";
+    			
+    		});
+    	}
+		
 	</script>
 </body>
 </html>

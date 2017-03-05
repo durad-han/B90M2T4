@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.co.around.repository.mapper">
+<mapper namespace="kr.co.mlec.repository.mapper.LoginMapper">
 
 	<resultMap type="userVO" id="userMap">
-		<result column="User_Seq"		property="userSeq"		/>
-		<result column="User_Id"		property="userId"		/>
-		<result column="User_Pass"		property="userPass"		/>
-		<result column="User_Reg_Date"	property="userRegDate"	/>
+		<result column="user_seq" property="userSeq" />
+		<result column="user_id" property="userId" />
+		<result column="user_pass" property="userPass" />
+		<result column="user_reg_date" property="userRegDate" />
 	</resultMap>
 		
 	<!--============================================================================
@@ -31,15 +31,27 @@
 	 
 	 
 	<!--============================================================================
-			특정 사용자 시퀀스로 조회 selectUserSeq 
-			필터링할 값: User_Seq
+			회원가입여부조회 selectUser
+			필터링할 값: user_id
+			파라메터의 데이터타입: string
+			리턴되는 값의 데이터타입: UserVO
+	============================================================================-->
+	<select id="selectUser" parameterType="string" resultMap="userMap">
+		select *
+		  from tb_around_user
+		 where user_id = #{userId}
+	</select>
+	
+	<!--============================================================================
+			사용자정보조회 selectUserSeq
+			필터링할 값: user_seq
 			파라메터의 데이터타입: int
 			리턴되는 값의 데이터타입: UserVO
 	============================================================================-->
 	<select id="selectUserSeq" parameterType="int" resultMap="userMap">
-		select	*
-		from	tb_Around_User
-		where	User_Seq = #{userSeq}
+		select *
+		  from tb_around_user
+		 where user_seq = #{userSeq}
 	</select>
 
 
@@ -53,21 +65,21 @@
 	<!--============================================================================
 			사용자 정보 입력 insertUser
 			필터링할 값: 없음
-			파라메터의 데이터타입: UserVO
+			파라메터의 데이터타입: string
 			리턴되는 값의 데이터타입: 없음 
 	============================================================================-->
 	<insert id="insertUser" parameterType="userVO" >
-		insert	into tb_Around_User
-				(
-				User_Seq,
-				User_Id,
-				User_Pass
-				)
-		values	(
-				s_Around_User.nextVal,
-				#{UserId},
-				#{UserPass}
-				)
+		<selectKey keyProperty="userSeq" order="BEFORE" resultType="int">
+			select s_around_user.nextVal from dual
+		</selectKey>
+		insert into tb_around_user (
+			user_seq, 
+			user_id
+		)
+		values (
+			#{userSeq},
+			#{userId}
+		)
 	</insert>
 
 
@@ -83,11 +95,6 @@
 				User_Pass		= #{User_Pass}
 		where	User_Seq		= #{UserSeq}
 	</update>
-	
-	
-	
-	
-	
 	
 	
 	
