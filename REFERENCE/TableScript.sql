@@ -27,8 +27,8 @@ create table tb_Around_Card (
 	Card_Content		varchar2(420)	not null,				-- 카드 내용 (140글자)
 	Card_Feeling		char(1) 		not null,				-- 카드 기분 (1:, 2:, 3:, 4:, 5: )
 	Card_Hashtag		varchar2(420) 	not null,				-- 카드에 작성된 해시태그 ( #.. ; #.. ) ; 을 사용하여 구분
-	Card_Longitude		number(14,9)	not null,				-- 카드 마커 경도값
-	Card_Latitude		number(14,9)	not null,				-- 카드 마커 위도값
+	Card_Longitude		number(14)		not null,				-- 카드 마커 경도값
+	Card_Latitude		number(14)		not null,				-- 카드 마커 위도값
 	Card_Img_Path		varchar2(200),							-- 카드 배경 이미지 주소값
 	Card_Reg_Date		varchar2(20) 	default to_char(sysdate)
 );
@@ -125,39 +125,39 @@ insert	into tb_Around_User (user_seq, user_id, user_pass)
 		
 -- card1~7 : card card card	
 insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
-		values (s_Around_Card.nextval, 1, '첫번째 카드는 어드민이 작성했답니다', 1, '#첫글 #첫카드 #샘플임', 1111.1111, 2222.2222);
+		values (s_Around_Card.nextval, 1, '첫번째 카드는 어드민이 작성했답니다', 1, '#첫글 #첫카드 #샘플임', 11111111, 22222222);
 insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
-		values (s_Around_Card.nextval, 2, '두번째 카드는 테스터가 작성했답니다', 1, '#야호 #샘플임', 1111.1111, 1111.1111);
+		values (s_Around_Card.nextval, 2, '두번째 카드는 테스터가 작성했답니다', 1, '#야호 #샘플임', 11111111, 11111111);
 insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
-		values (s_Around_Card.nextval, 2, '세번째 카드도 테스터가 작성했답니다', 1, '#야호 #샘플임', 1111.1111, 1111.1111);
+		values (s_Around_Card.nextval, 2, '세번째 카드도 테스터가 작성했답니다', 1, '#야호 #샘플임', 11111111, 11111111);
 insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
-		values (s_Around_Card.nextval, 3, '네번째라고 별다를 거 없다', 3, '#샘플', 1111.1111, 1111.1111);
+		values (s_Around_Card.nextval, 3, '네번째라고 별다를 거 없다', 3, '#샘플', 11111111, 11111111);
 insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
-		values (s_Around_Card.nextval, 4, '야 인마!', 5, '#샘플 #버럭', 1111.1111, 1111.1111);
+		values (s_Around_Card.nextval, 4, '야 인마!', 5, '#샘플 #버럭', 11111111, 11111111);
 insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
-		values (s_Around_Card.nextval, 4, '여기서부터는', 5, '#샘플 #설명충', 1111.1111, 1111.1111);		
+		values (s_Around_Card.nextval, 4, '여기서부터는', 5, '#샘플 #설명충', 11111111, 11111111);		
 insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
-		values (s_Around_Card.nextval, 4, '더미 데이터다', 5, '#샘플 #더미', 1111.1111, 1111.1111);		
+		values (s_Around_Card.nextval, 4, '더미 데이터다', 5, '#샘플 #더미', 11111111, 11111111);		
 
 -- card	8~16 : dummy	
 insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
-		values (s_Around_Card.nextval, 4, '더미더미더미더미더미더미더미더미', 1, '#샘플 #더미', 1111.1111, 1111.1111);		
+		values (s_Around_Card.nextval, 4, '더미더미더미더미더미더미더미더미', 1, '#샘플 #더미', 11111111, 11111111);		
 insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
-		values (s_Around_Card.nextval, 4, '더미더미더미더미더미더미더미더미', 2, '#샘플 #더미', 1111.1111, 1111.1111);		
+		values (s_Around_Card.nextval, 4, '더미더미더미더미더미더미더미더미', 2, '#샘플 #더미', 11111111, 11111111);		
 insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
-		values (s_Around_Card.nextval, 4, '더미더미더미더미더미더미더미더미', 3, '#샘플 #더미데이터', 1111.1111, 1111.1111);		
+		values (s_Around_Card.nextval, 4, '더미더미더미더미더미더미더미더미', 3, '#샘플 #더미데이터', 11111111, 11111111);		
 insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
-		values (s_Around_Card.nextval, 4, '더미더미더미더미더미더미더미더미', 4, '#샘플 #더미데이터', 1111.1111, 1111.1111);		
+		values (s_Around_Card.nextval, 4, '더미더미더미더미더미더미더미더미', 4, '#샘플 #더미데이터', 11111111, 11111111);		
 insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
-		values (s_Around_Card.nextval, 4, '더미더미더미더미더미더미더미더미', 5, '#샘플 #더미데이터', 1111.1111, 1111.1111);		
+		values (s_Around_Card.nextval, 4, '더미더미더미더미더미더미더미더미', 5, '#샘플 #더미데이터', 11111111, 11111111);		
 insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
-		values (s_Around_Card.nextval, 4, '더미더미더미더미더미더미더미더미', 5, '#샘플 #더미데이터', 1111.1111, 1111.1111);		
+		values (s_Around_Card.nextval, 4, '더미더미더미더미더미더미더미더미', 5, '#샘플 #더미데이터', 11111111, 11111111);		
 insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
-		values (s_Around_Card.nextval, 4, '더미더미더미더미더미더미더미더미', 5, '#샘플 #더미데이터', 1111.1111, 1111.1111);		
+		values (s_Around_Card.nextval, 4, '더미더미더미더미더미더미더미더미', 5, '#샘플 #더미데이터', 11111111, 11111111);		
 insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
-		values (s_Around_Card.nextval, 4, '더미더미더미더미더미더미더미더미', 5, '#샘플 #더미데이터', 1111.1111, 1111.1111);		
+		values (s_Around_Card.nextval, 4, '더미더미더미더미더미더미더미더미', 5, '#샘플 #더미데이터', 11111111, 11111111);		
 insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
-		values (s_Around_Card.nextval, 4, '더미더미더미더미더미더미더미더미', 5, '#샘플 #더미데이터', 1111.1111, 1111.1111);		
+		values (s_Around_Card.nextval, 4, '더미더미더미더미더미더미더미더미', 5, '#샘플 #더미데이터', 11111111, 11111111);		
 		
 -- hashtag : #첫글 #첫카드 #샘플임(3) #샘플(13) #야호(2) #버럭 #설명충 #더미(3) #더미데이터(7)
 insert	into TB_AROUND_HASHTAG (hashtag_seq, Hashtag_Content, Hashtag_Frequency)
@@ -228,3 +228,23 @@ insert	into tb_Around_My_Favorite (My_Seq, User_Seq, My_Content, My_Hashtag, My_
 		values (s_Around_My_Favorite.nextval, 2, '11번글', '#태그실험', 5);
 
 
+-----------------------------------------------------------------------------------------------------------------
+--  테스트용 table & sample
+-----------------------------------------------------------------------------------------------------------------
+drop table tb_Around_Test;
+drop sequence s_Around_Test;
+
+create sequence s_Around_Test;
+
+create table tb_Around_Test (
+	Test_Seq		number(6) 		primary key,			
+	Test_Int		number(6),			
+	Test_String		varchar2(24)		
+);		
+
+insert	into tb_Around_Test (Test_Seq, Test_Int, Test_String)
+		values (s_Around_Test.nextval, 1, '샘플01');
+insert	into tb_Around_Test (Test_Seq, Test_Int, Test_String)
+		values (s_Around_Test.nextval, 2, '샘플02');
+insert	into tb_Around_Test (Test_Seq, Test_Int, Test_String)
+		values (s_Around_Test.nextval, 3333, '샘플03');

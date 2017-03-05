@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.around.repository.mapper.TestMapper">
+
+	<resultMap type="testVO" id="testMap">
+		<result column="Test_Seq"		property="testSeq" 		/>
+		<result column="Test_Int"		property="testInt" 		/>
+		<result column="Test_String"	property="testString" 	/>
+	</resultMap>
+
+	<select id="selectTestList" resultMap="testMap">
+		select	*
+		from	tb_Around_Test
+		order	by Test_Seq desc
+	</select>
+	
+	<select id="selectTestSeq" parameterType="int" resultType="testVO">
+		select	*
+		from	tb_Around_Test
+		where	Test_Seq = #{testSeq}
+	</select>
+	
+</mapper>

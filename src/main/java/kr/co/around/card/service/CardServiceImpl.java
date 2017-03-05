@@ -38,22 +38,30 @@ public class CardServiceImpl implements CardService {
 
 	@Override
 	public List<CardVO> retrieveCardList() throws Exception {
-		System.out.println("Service : retrieveCardList");
+		System.out.println("list Service : retrieveCardList");
+		List<CardVO> list = cMapper.selectCardList();
+		if(list == null){
+			System.out.println("list service : 널값 날아옴");
+		}else{
+			System.out.println("list service : 값이 있다");
+			CardVO sample = list.get(0);
+			System.out.println("list card content :" + sample.getCardContent());
+		}
 		return null;
 		
 	}
 
 	@Override
 	public CardVO retrieveCard(int cardSeq) throws Exception {
-		System.out.println("Service : retrieveCard");
-		System.out.println("cardSeq : " + cardSeq);
+		System.out.println("one Service : retrieveCard");
+		System.out.println("one Service : cardSeq : " + cardSeq);
 		CardVO temp = tMapper.selectCardSeq(cardSeq);
 		
 		CardVO card =  cMapper.selectCardSeq(cardSeq);
 		if(temp != null){
-			System.out.println(card.getCardContent());
+			System.out.println("one card content : " + card.getCardContent());
 		}else{
-			System.out.println("널값 날아옴");
+			System.out.println("one service : 널값 날아옴");
 		}
 		return null;
 	}

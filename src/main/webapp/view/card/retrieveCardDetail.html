@@ -20,12 +20,26 @@
 <script>
 	function summonCard(){
 		$.ajax({
+			url: "/b90m2t4/card/retrieveList.do",
+			type: "POST",
+			dataType: "json"
+		})
+		
+		$.ajax({
 			url: "/b90m2t4/card/retrieve.do",
 			type: "POST",
 			data: {no: 1},
 			dataType: "json"
 		})
 		.done(makeCard);
+		
+		$.ajax({
+			url: "/b90m2t4/card/retrieveCommentList.do",
+			type: "POST",
+			data: {no: 1},
+			dataType: "json"
+		})
+		.done(makeComment);
 	}
 	
 	function makeCard(card){
@@ -38,7 +52,17 @@
 			html += '카드가 존재하지 않습니다 <br><br>';
 		}
 		$("#cardArea").html(html);
+	}
+	
+	function makeComment(comment){
+		var html = "";
+		html += '<div class="comment">';
+		html += comment.cardContent + '<br><br>';
 		
+		if (comment == null){
+			html += '아무도 이 카드에 반응하지 않았습니다 <br><br>';
+		}
+		$("#commentArea").html(html);
 	}
 	
 	summonCard();

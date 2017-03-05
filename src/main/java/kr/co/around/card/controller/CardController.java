@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.around.card.service.CardService;
+import kr.co.around.repository.vo.CardVO;
 import kr.co.around.repository.vo.HashtagVO;
 
 @Controller
@@ -26,9 +27,10 @@ public class CardController {
 	}
 	
 	@RequestMapping("/retrieveList.do")
-	public void retrieveCardList() throws Exception {
-		System.out.println("retrieveCard");
-		cs.retrieveCardList();
+	public void retrieveCardList(Model model) throws Exception {
+		System.out.println("retrieveCardList");
+		List<CardVO> list = cs.retrieveCardList();
+		model.addAttribute("card", list.get(0));
 	}
 	
 	@RequestMapping("/insert.do")

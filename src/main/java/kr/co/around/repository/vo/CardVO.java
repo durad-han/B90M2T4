@@ -7,10 +7,10 @@ public class CardVO {
 	private String cardContent;			// 카드 내용 (140글자)
 	private String cardFeeling;			// 카드 기분 (1:, 2:, 3:, 4:, 5: )
 	private String cardHashtag;			// 카드에 작성된 해시태그 ( #.. ; #.. ) ; 을 사용하여 구분
-	private double cardLongitude;		// 카드 마커 경도값
-	private double cardLatitude;		// 카드 마커 위도값
-	private String cardImg_Path;		// 카드 배경 이미지 주소값
-	private String cardReg_Date;		// 카드 등록 시각
+	private int cardLongitude;			// 카드 마커 경도값
+	private int cardLatitude;			// 카드 마커 위도값
+	private String cardImgPath;			// 카드 배경 이미지 주소값
+	private String cardRegDate;			// 카드 등록 시각
 	
 	public int getCardSeq() {
 		return cardSeq;
@@ -42,29 +42,30 @@ public class CardVO {
 	public void setCardHashtag(String cardHashtag) {
 		this.cardHashtag = cardHashtag;
 	}
-	public double getCardLongitude() {
+	public String getCardImgPath() {
+		return cardImgPath;
+	}
+	public void setCardImgPath(String cardImgPath) {
+		this.cardImgPath = cardImgPath;
+	}
+	public String getCardRegDate() {
+		return cardRegDate;
+	}
+	public void setCardRegDate(String cardRegDate) {
+		this.cardRegDate = cardRegDate;
+	}
+	public int getCardLongitude() {
 		return cardLongitude;
 	}
-	public void setCardLongitude(double cardLongitude) {
+	public void setCardLongitude(int cardLongitude) {
 		this.cardLongitude = cardLongitude;
 	}
-	public double getCardLatitude() {
+	public int getCardLatitude() {
 		return cardLatitude;
 	}
-	public void setCardLatitude(double cardLatitude) {
+	public void setCardLatitude(int cardLatitude) {
 		this.cardLatitude = cardLatitude;
 	}
-	public String getCardImg_Path() {
-		return cardImg_Path;
-	}
-	public void setCardImg_Path(String cardImg_Path) {
-		this.cardImg_Path = cardImg_Path;
-	}
-	public String getCardReg_Date() {
-		return cardReg_Date;
-	}
-	public void setCardReg_Date(String cardReg_Date) {
-		this.cardReg_Date = cardReg_Date;
-	}
+
 	
 }

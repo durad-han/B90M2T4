@@ -4,7 +4,7 @@
 <mapper namespace="kr.co.around.repository.mapper">
 
 	<resultMap type="hashTagVO" id="hashtagMap">
-		<result column="hashtag_seq"			property="hashtagSeq" 		/>
+		<result column="hashtag_seq"			property="hashtagSeq" 			/>
 		<result column="hashtag_content"		property="hashtagContent" 		/>
 		<result column="hashtag_frequency"		property="hashtagFrequency" 	/>
 	</resultMap>

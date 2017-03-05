@@ -4,10 +4,10 @@
 <mapper namespace="kr.co.around.repository.mapper">
 
 	<resultMap type="userVO" id="userMap">
-		<result column="User_Seq"		property="UserSeq"		/>
-		<result column="User_Id"		property="UserId"		/>
-		<result column="User_Pass"		property="UserPass"		/>
-		<result column="User_Reg_Date"	property="UserRegDate"	/>
+		<result column="User_Seq"		property="userSeq"		/>
+		<result column="User_Id"		property="userId"		/>
+		<result column="User_Pass"		property="userPass"		/>
+		<result column="User_Reg_Date"	property="userRegDate"	/>
 	</resultMap>
 		
 	<!--============================================================================

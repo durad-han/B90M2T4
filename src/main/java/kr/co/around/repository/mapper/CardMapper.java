@@ -10,12 +10,13 @@ import kr.co.around.repository.vo.HashtagVO;
 @Repository
 public interface CardMapper {
 	
+//----- 카드 조회 --------------------------------------------------------------------------
 	public CardVO selectCardSeq(int cardSeq) throws Exception;
 	
-	/* =================================================== */
-	/* 해시 태그 관련                                     				   */
-	/* =================================================== */
+	public List<CardVO> selectCardList() throws Exception;
 	
+	
+//----- 해시태그 --------------------------------------------------------------------------
 	public List<HashtagVO> selectHashtag(String hashtagInput) throws Exception;
 	
 	

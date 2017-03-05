@@ -13,9 +13,8 @@ public class TempMapper {
 	private SqlSessionTemplate session;
 	
 	public CardVO selectCardSeq(int cardSeq){
-		System.out.println("tempMapper");
 		System.out.println("cardSeq : " + cardSeq);
-		CardVO temp = session.selectOne("kr.co.around.repository.mapper.CardMapper.selectCardSeq", cardSeq);
+		CardVO temp = session.selectOne("kr.co.around.repository.mapper.CardMapper.selectCardSeq");
 		if(temp != null){
 			System.out.println(temp.getCardContent());
 		}else{

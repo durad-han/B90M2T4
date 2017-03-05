@@ -4,15 +4,15 @@
 <mapper namespace="kr.co.around.repository.mapper.CardMapper">
 
 	<resultMap type="cardVO" id="cardMap">
-		<result column="Card_Seq"		property="Card_Seq" 		/>
-		<result column="User_Seq"		property="User_Seq" 		/>
-		<result column="Card_Content"	property="Card_Content" 	/>
-		<result column="Card_Feeling"	property="Card_Feeling" 	/>
-		<result column="Card_Hashtag"	property="Card_Hashtag" 	/>
-		<result column="Card_Longitude"	property="Card_Longitude" 	/>
-		<result column="Card_Latitude"	property="Card_Latitude" 	/>
-		<result column="Card_Img_Path"	property="Card_Img_Path" 	/>
-		<result column="Card_Reg_Date"	property="Card_Reg_Date" 	/>
+		<result column="Card_Seq"		property="cardSeq" 			/>
+		<result column="User_Seq"		property="userSeq" 			/>
+		<result column="Card_Content"	property="cardContent" 		/>
+		<result column="Card_Feeling"	property="cardFeeling" 		/>
+		<result column="Card_Hashtag"	property="cardHashtag" 		/>
+		<result column="Card_Longitude"	property="cardLongitude" 	/>
+		<result column="Card_Latitude"	property="cardLatitude" 	/>
+		<result column="Card_Img_Path"	property="cardImgPath"	 	/>
+		<result column="Card_Reg_Date"	property="cardRegDate" 		/>
 	</resultMap>
 		
 	<!--============================================================================
@@ -44,7 +44,7 @@
 	<select id="selectCardSeq" parameterType="int" resultType="cardVO">
 		select	*
 		from	tb_Around_Card
-		where	Card_Seq = #{cardSeq}
+		where	Card_Seq = #{Card_Seq}
 	</select>
 	
 	
@@ -123,7 +123,7 @@
 				#{cardHashtag},
 				#{cardLongitude},
 				#{cardLatitude},
-				#{cardImg_Path}
+				#{cardImg_Path, jdbcType=VARCHAR}
 				)
 	</insert>
 
