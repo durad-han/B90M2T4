@@ -47,8 +47,14 @@ public class CardServiceImpl implements CardService {
 	public CardVO retrieveCard(int cardSeq) throws Exception {
 		System.out.println("Service : retrieveCard");
 		System.out.println("cardSeq : " + cardSeq);
+		CardVO temp = tMapper.selectCardSeq(cardSeq);
+		
 		CardVO card =  cMapper.selectCardSeq(cardSeq);
-		System.out.println(card.getCardContent());
+		if(temp != null){
+			System.out.println(card.getCardContent());
+		}else{
+			System.out.println("널값 날아옴");
+		}
 		return null;
 	}
 

@@ -22,7 +22,7 @@ public class CardController {
 	public void retrieveCard(@RequestParam("no")int cardSeq, Model model) throws Exception {
 		System.out.println("retrieveCard");
 		System.out.println("cardSeq : " + cardSeq);
-		model.addAttribute("card", cs.retrieveCard(cardSeq));
+		cs.retrieveCard(cardSeq);
 	}
 	
 	@RequestMapping("/retrieveList.do")
