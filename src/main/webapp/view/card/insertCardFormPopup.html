@@ -9,11 +9,10 @@
 
 	<h3>해시태그를 입력하세요.</h3>
 	<input id="hashtagInput" value="#" size="50"/>
-	<div id="tagList"></div>
+	<div id="tagList">1</div>
 	Enter!
 	<script>
 		$("#hashtagInput").keyup(function (e) {
-			
 			
 			if (e.keyCode == 13) {
 				opener.document.getElementById("hashtagText").value += " ";
@@ -28,27 +27,18 @@
 				data: {"hashtagInput" : $("#hashtagInput").val()},
 				dataType: "json"
 				
-			}).done(function (result) {
+			}).done(function (list) {
 				
 				var html = "";
-				if (result.length != 0) {
-					for (var i = 0 ; i < result.length ; i++) {
-						console.log(result[i].hashtagContent);
-						html += result[i].hashtagContent + "<br>";
+				if (list.length != 0) {
+					for (var i = 0 ; i < list.length ; i++) {
+						html += list[i].hashtagContent + "<br>";
 					}
-					$("#tagList").html(html);				
+					$("#tagList").text(html);
 				};
 			});
 			
-			
-			
-			
 		});
-		
-		
-		function showHashtags (list) {
-			
-		}
 	</script>
 </body>
 </html>

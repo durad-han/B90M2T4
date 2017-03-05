@@ -70,7 +70,9 @@ public class CardController {
 		System.out.println("retrieveHashtag");
 		String hashtagInput = request.getParameter("hashtagInput");
 		System.out.println(hashtagInput);
-		hashtagInput = hashtagInput.substring(1);
+		if(hashtagInput.startsWith("#")) {
+			hashtagInput = hashtagInput.substring(1);
+		}
 		System.out.println(hashtagInput);
 		List<HashtagVO> list = cs.retrieveHashtag(hashtagInput);
 		System.out.println(list.size());
