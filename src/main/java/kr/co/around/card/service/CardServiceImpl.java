@@ -91,7 +91,9 @@ public class CardServiceImpl implements CardService {
 	@Override
 	public List<HashtagVO> retrieveHashtag(String hashtagInput) throws Exception {
 		System.out.println("Service : retrieveHashtag");
-		return cMapper.selectHashtag(hashtagInput);
+		List<HashtagVO> HashtagVO = cMapper.selectHashtag(hashtagInput);
+		System.out.println(HashtagVO);
+		return HashtagVO;
 	}
 	
 }

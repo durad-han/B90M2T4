@@ -2,9 +2,10 @@ package kr.co.around.card.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -65,9 +66,16 @@ public class CardController {
 	}
 	
 	@RequestMapping("/retrieveHashtag.do")
-	public List<HashtagVO> retrieveHashtag(String hashtagInput) throws Exception {
+	public List<HashtagVO> retrieveHashtag(HttpServletRequest request) throws Exception {
 		System.out.println("retrieveHashtag");
-		return cs.retrieveHashtag(hashtagInput);
+		String hashtagInput = request.getParameter("hashtagInput");
+		System.out.println(hashtagInput);
+		hashtagInput = hashtagInput.substring(1);
+		System.out.println(hashtagInput);	
+		List<HashtagVO> list = cs.retrieveHashtag(hashtagInput);
+		System.out.println(list.size());
+		
+		return list;
 	}
 
 }

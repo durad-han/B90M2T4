@@ -16,20 +16,29 @@
 			
 			
 			if (e.keyCode == 13) {
+				opener.document.getElementById("hashtagText").value += " ";
 				opener.document.getElementById("hashtagText").value += $("#hashtagInput").val();
 				self.close();
 			 }
-			
-			/* $.ajax({
+			console.log($("#hashtagInput").val());
+			$.ajax({
 				
-				url: "/card/insertCardForm.do",
+				url: "/b90m2t4/card/retrieveHashtag.do",
 				type: "POST",
-				data: $("hashtagInput").value(),
+				data: {"hashtagInput" : $("#hashtagInput").val()},
 				dataType: "json"
 				
 			}).done(function (result) {
-				showHashtags (result);
-			}); */
+				
+				var html = "";
+				if (result.length != 0) {
+					for (var i = 0 ; i < result.length ; i++) {
+						console.log(result[i].hashtagContent);
+						html += result[i].hashtagContent + "<br>";
+					}
+					$("#tagList").html(html);				
+				};
+			});
 			
 			
 			
@@ -37,14 +46,8 @@
 		});
 		
 		
-		function showHashtags (result) {
-			var html = "";
-			if (result.length != 0) {
-				for (var i = 0 ; i < result.length ; i++) {
-					html += "<li>" + result[i].hashtagContent + "</li>";
-				}
-				$("#tagList").html(html);				
-			}
+		function showHashtags (list) {
+			
 		}
 	</script>
 </body>
