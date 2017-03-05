@@ -19,34 +19,40 @@
 </div>
 <script>
 	function summonCard(){
-		$.ajax({
-			url: "/b90m2t4/card/retrieveList.do",
-			type: "POST",
-			dataType: "json"
-		})
-		
+// 		$.ajax({
+// 			url: "/b90m2t4/card/retrieveList.do",
+// 			type: "POST",
+// 			dataType: "json"
+// 		})
+		console.log("카드 소환")
 		$.ajax({
 			url: "/b90m2t4/card/retrieve.do",
 			type: "POST",
 			data: {no: 1},
 			dataType: "json"
 		})
-		.done(makeCard);
+		.done(function(result){
+			console.log("결과물")
+			console.log(result)
+			makeCard(result);
+		});
 		
-		$.ajax({
-			url: "/b90m2t4/card/retrieveCommentList.do",
-			type: "POST",
-			data: {no: 1},
-			dataType: "json"
-		})
-		.done(makeComment);
+// 		$.ajax({
+// 			url: "/b90m2t4/card/retrieveCommentList.do",
+// 			type: "POST",
+// 			data: {no: 1},
+// 			dataType: "json"
+// 		})
+// 		.done(makeComment);
 	}
 	
-	function makeCard(card){
+	function makeCard(result){
+		console.log("카드만들기")
+		
 		var html = "";
 		html += '<div class="card">';
-		html += card.cardContent + '<br><br>';
-		html += card.cardHashtag + '<br><br>';
+		html += cardVO.cardContent + '<br><br>';
+		html += cardVO.cardHashtag + '<br><br>';
 		
 		if (card == null){
 			html += '카드가 존재하지 않습니다 <br><br>';

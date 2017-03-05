@@ -40,30 +40,40 @@ public class CardServiceImpl implements CardService {
 	public List<CardVO> retrieveCardList() throws Exception {
 		System.out.println("list Service : retrieveCardList");
 		List<CardVO> list = cMapper.selectCardList();
-		if(list == null){
-			System.out.println("list service : 널값 날아옴");
-		}else{
-			System.out.println("list service : 값이 있다");
-			CardVO sample = list.get(0);
-			System.out.println("list card content :" + sample.getCardContent());
-		}
-		return null;
+//		if(list == null){
+//			System.out.println("list service : 널값 날아옴");
+//		}else{
+//			System.out.println("list service : 값이 있다");
+//			CardVO sample = list.get(0);
+//			System.out.println("list card seq :" + sample.getCardSeq());
+//			System.out.println("list card user :" + sample.getUserSeq());
+//			System.out.println("list card content :" + sample.getCardContent());
+//			System.out.println("list card feeling :" + sample.getCardFeeling());
+//			System.out.println("list card longitude :" + sample.getCardLongitude());
+//			System.out.println("list card latitude :" + sample.getCardLatitude());
+//			System.out.println("list card hashtag :" + sample.getCardHashtag());
+//			System.out.println("list card regDate :" + sample.getCardRegDate());
+//		}
+		return list;
 		
 	}
 
 	@Override
 	public CardVO retrieveCard(int cardSeq) throws Exception {
 		System.out.println("one Service : retrieveCard");
-		System.out.println("one Service : cardSeq : " + cardSeq);
-		CardVO temp = tMapper.selectCardSeq(cardSeq);
+//		System.out.println("one Service : cardSeq : " + cardSeq);
+//		CardVO temp = tMapper.selectCardSeq(cardSeq);
+//		
+//		CardVO card =  cMapper.selectCardSeq(cardSeq);
+//		if(temp != null){
+//			System.out.println("one service : 값이 있다");
+//			System.out.println("one card content : " + card.getCardContent());
+//		}else{
+//			System.out.println("one service : 널값 날아옴");
+//		}
 		
-		CardVO card =  cMapper.selectCardSeq(cardSeq);
-		if(temp != null){
-			System.out.println("one card content : " + card.getCardContent());
-		}else{
-			System.out.println("one service : 널값 날아옴");
-		}
-		return null;
+		List<CardVO> list = cMapper.selectCardList();
+		return list.get(cardSeq-1);
 	}
 
 	@Override

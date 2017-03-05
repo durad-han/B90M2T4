@@ -20,17 +20,18 @@ public class CardController {
 	private CardService cs;
 	
 	@RequestMapping("/retrieve.do")
-	public void retrieveCard(@RequestParam("no")int cardSeq, Model model) throws Exception {
+	public CardVO retrieveCard(@RequestParam("no")int cardSeq) throws Exception {
 		System.out.println("retrieveCard");
 		System.out.println("cardSeq : " + cardSeq);
-		cs.retrieveCard(cardSeq);
+		CardVO card = cs.retrieveCard(cardSeq);
+		System.out.println("retrieveCard return Content : " + card.getCardContent());
+		return card;
 	}
 	
 	@RequestMapping("/retrieveList.do")
-	public void retrieveCardList(Model model) throws Exception {
+	public List<CardVO> retrieveCardList() throws Exception {
 		System.out.println("retrieveCardList");
-		List<CardVO> list = cs.retrieveCardList();
-		model.addAttribute("card", list.get(0));
+		return cs.retrieveCardList();
 	}
 	
 	@RequestMapping("/insert.do")

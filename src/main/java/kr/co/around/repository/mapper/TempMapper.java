@@ -16,9 +16,10 @@ public class TempMapper {
 		System.out.println("cardSeq : " + cardSeq);
 		CardVO temp = session.selectOne("kr.co.around.repository.mapper.CardMapper.selectCardSeq");
 		if(temp != null){
+			System.out.println("temp 값이 있다");
 			System.out.println(temp.getCardContent());
 		}else{
-			System.out.println("널값 날아옴");
+			System.out.println("temp 널값 날아옴");
 		}
 		return null;
 	}
