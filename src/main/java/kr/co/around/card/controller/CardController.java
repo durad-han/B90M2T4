@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.around.card.service.CardService;
 import kr.co.around.repository.vo.HashtagVO;
@@ -17,10 +19,10 @@ public class CardController {
 	private CardService cs;
 	
 	@RequestMapping("/retrieve.do")
-	public void retrieveCard() throws Exception {
+	public void retrieveCard(@RequestParam("no")int cardSeq, Model model) throws Exception {
 		System.out.println("retrieveCard");
-		cs.retrieveCard();
-//		return "/card/retrieveCard";
+		System.out.println("cardSeq : " + cardSeq);
+		model.addAttribute("card", cs.retrieveCard(cardSeq));
 	}
 	
 	@RequestMapping("/retrieveList.do")
@@ -44,7 +46,7 @@ public class CardController {
 	@RequestMapping("/update.do")
 	public void updateCard() throws Exception {
 		System.out.println("updateCard");
-		cs.updateCard();
+		cs.updateCard(0);
 	}
 	
 	@RequestMapping("/updateForm.do")
@@ -56,7 +58,7 @@ public class CardController {
 	@RequestMapping("/delete.do")
 	public void deleteCard() throws Exception {
 		System.out.println("deleteCard");
-		cs.deleteCard();
+		cs.deleteCard(0);
 	}
 	
 	@RequestMapping("/retrieveHashtag.do")

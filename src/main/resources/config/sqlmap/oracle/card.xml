@@ -41,7 +41,7 @@
 			파라메터의 데이터타입: int
 			리턴되는 값의 데이터타입: CardVO
 	============================================================================-->
-	<select id="selectCardSeq" parameterType="int" resultMap="cardMap">
+	<select id="selectCardSeq" parameterType="int" resultType="cardVO">
 		select	*
 		from	tb_Around_Card
 		where	Card_Seq = #{cardSeq}
@@ -103,7 +103,7 @@
 			파라메터의 데이터타입: CardVO
 			리턴되는 값의 데이터타입: 없음 
 	============================================================================-->
-		<insert id="insertCard" parameterMap="cardVO" >
+		<insert id="insertCard" parameterType="cardVO" >
 		insert	into tb_Around_Card 
 				(
 				Card_Seq,
@@ -134,7 +134,7 @@
 			파라메터의 데이터타입: CardVO
 			리턴되는 값의 데이터타입: 없음
 	============================================================================-->
-	<update id="updateCard" parameterMap="cardMap" >
+	<update id="updateCard" parameterType="cardVO" >
 		update	tb_Around_Card
 		set		Card_Content			= #{cardContent},
 				Card_Feeling			= #{cardFeeling},

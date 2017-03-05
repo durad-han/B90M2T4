@@ -46,7 +46,7 @@
 			파라메터의 데이터타입: MyFavoriteVO
 			리턴되는 값의 데이터타입: 없음 
 	============================================================================-->
-	<insert id="insertMy" parameterMap="myMap" >
+	<insert id="insertMy" parameterType="myFavoriteVO" >
 		insert	into tb_Around_My_Favorite 
 				(
 				My_Seq,
@@ -71,7 +71,7 @@
 			파라메터의 데이터타입: MyFavoriteVO
 			리턴되는 값의 데이터타입: 없음
 	============================================================================-->
-	<update id="updateMy" parameterMap="myMap" >
+	<update id="updateMy" parameterType="myFavoriteVO" >
 		update	tb_Around_My_Favorite
 		set		My_Content			= #{myContent},
 				My_Hashtag			= #{myHashtag},

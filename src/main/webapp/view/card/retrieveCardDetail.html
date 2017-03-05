@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>detail</title>
+<script src="../../js/comm/jquery.min.js"></script>
+</head>
+<body>
+	<h1> A R O U N D </h1>
+	<h4> (임시)카드 상세조회 페이지 </h4>
+<div class="container">
+	<div class="body">
+		
+		<div id="cardArea"></div>
+		
+		<div id="commentArea"></div>
+
+	</div>
+</div>
+<script>
+	function summonCard(){
+		$.ajax({
+			url: "/b90m2t4/card/retrieve.do",
+			type: "POST",
+			data: {no: 1},
+			dataType: "json"
+		})
+		.done(makeCard);
+	}
+	
+	function makeCard(card){
+		var html = "";
+		html += '<div class="card">';
+		html += card.cardContent + '<br><br>';
+		html += card.cardHashtag + '<br><br>';
+		
+		if (card == null){
+			html += '카드가 존재하지 않습니다 <br><br>';
+		}
+		$("#cardArea").html(html);
+		
+	}
+	
+	summonCard();
+</script>
+</body>
+</html>
