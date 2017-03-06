@@ -1,0 +1,5 @@
+@CHARSET "UTF-8";
+
+#customBtn {display: inline-block; color: #444; white-space: nowrap;}
+#customBtn:hover {cursor: pointer;}
+.custom-login-btn {width: 82px;}

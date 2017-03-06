@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+
+<link rel="stylesheet" href="../../css/main/main.css">
+<script src="../../js/comm/w3data.js"></script>
+<body>
+
+<div w3-include-html="../include/header.html"></div>
+
+<!-- Header with image -->
+<header class="bgimg w3-display-container w3-grayscale-min" id="home">
+
+<!-- Contact/Area Container -->
+<div class="w3-container" style="padding-bottom:32px;">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide w3-padding-left w3-padding-right">WHERE TO FIND US</span></h5>
+    <p>Find us at some address at some place.</p>
+    <div id="googleMap2" class="w3-sepia" style="width:100%;height:400px;"></div>
+    <p><span class="w3-tag">FYI!</span> We offer full-service catering for any event, large or small. We understand your needs and we will cater the food to satisfy the biggerst criteria of them all, both look and taste.</p>
+    <p><strong>Reserve</strong> a table, ask for today's special or just send us a message:</p>
+    	<div class="w3-row w3-grayscale-min">
+		   <div class="w3-quarter">
+		      <img src="../../img/sample/1.jpg" style="width:100%" onclick="onClick(this)" alt="Canoeing again">
+		      <img src="../../img/sample/2.jpg" style="width:100%" onclick="onClick(this)" alt="Quiet day at the beach. Cold, but beautiful">
+		      <img src="../../img/sample/3.jpg" style="width:100%" onclick="onClick(this)" alt="The Beach. Me. Alone. Beautiful">
+		   </div>
+		    
+		   <div class="w3-quarter">
+		      <img src="../../img/sample/4.jpg" style="width:100%" onclick="onClick(this)" alt="A girl, and a train passing">
+		      <img src="../../img/sample/5.jpg" style="width:100%" onclick="onClick(this)" alt="Waiting for the bus in the desert">
+		      <img src="../../img/sample/6.jpg" style="width:100%" onclick="onClick(this)" alt="Nature again.. At its finest!">
+		    </div>
+		    
+		    <div class="w3-quarter">
+		      <img src="../../img/sample/7.jpg" style="width:100%" onclick="onClick(this)" alt="Waiting for the bus in the desert">
+		      <img src="../../img/sample/1.jpg" style="width:100%" onclick="onClick(this)" alt="What a beautiful scenery this sunset">
+		      <img src="../../img/sample/2.jpg" style="width:100%" onclick="onClick(this)" alt="The Beach. Me. Alone. Beautiful">
+		    </div>
+		
+		    <div class="w3-quarter">
+		      <img src="../../img/sample/3.jpg" style="width:100%" onclick="onClick(this)" alt="A boy surrounded by beautiful nature">
+		      <img src="../../img/sample/4.jpg" style="width:100%" onclick="onClick(this)" alt="A girl, and a train passing">
+		      <img src="../../img/sample/5.jpg" style="width:100%" onclick="onClick(this)" alt="Quiet day at the beach. Cold, but beautiful">
+		    </div>
+		  </div>
+		  <!-- Pagination -->
+		  <div class="w3-center w3-padding-32">
+		    <div class="w3-bar">
+		      <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
+		      <a href="#" class="w3-bar-item w3-black w3-button">1</a>
+		      <a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>
+		      <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>
+		      <a href="#" class="w3-bar-item w3-button w3-hover-black">4</a>
+		      <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
+		    </div>
+		  </div>
+		  <!-- Modal for full size images on click-->
+		  <div id="modal01" class="w3-modal w3-black w3-padding-0" onclick="this.style.display='none'" style="overflow: hidden;">
+		    <span class="w3-closebtn w3-text-white w3-opacity w3-hover-opacity-off w3-xxlarge w3-container w3-display-topright">×</span>
+		    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+		      <img id="img01" class="w3-image">
+		      <p id="caption"></p>
+		    </div>
+		  </div>
+		  
+  </div>
+</div>
+
+  <!-- <div class="w3-display-bottomleft w3-center w3-padding-xlarge w3-hide-small">
+    <span class="w3-tag">Open from 6am to 5pm</span>
+  </div>
+  <div class="w3-display-middle w3-center">
+    <span class="w3-text-white" style="font-size:90px">the<br>Cafe</span>
+  </div>
+  <div class="w3-display-bottomright w3-center w3-padding-xlarge">
+    <span class="w3-text-white">15 Adr street, 5015</span>
+  </div> -->
+</header>
+
+<!-- Add a background color and large text to the whole page -->
+<div class="w3-sand w3-grayscale w3-large">
+
+<!-- About Container -->
+<div class="w3-container" id="mypage">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide w3-padding-left w3-padding-right">MYPAGE</span></h5>
+    <p>The Cafe was founded in blabla by Mr. Smith in lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <p>In addition to our full espresso and brew bar menu, we serve fresh made-to-order breakfast and lunch sandwiches, as well as a selection of sides and salads and other good stuff.</p>
+    <div class="w3-panel w3-leftbar w3-light-grey">
+      <p><i>"Use products from nature for what it's worth - but never too early, nor too late." Fresh is the new sweet.</i></p>
+      <p>Chef, Coffeeist and Owner: Liam Brown</p>
+    </div>
+    <img style="width:100%;max-width:1000px" class="w3-margin-top">
+    <p><strong>Opening hours:</strong> everyday from 6am to 5pm.</p>
+    <p><strong>Address:</strong> 15 Adr street, 5015, NY</p>
+  </div>
+</div>
+
+<div class="w3-container" id="write">
+	<h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide w3-padding-left w3-padding-right">WRITE</span></h5>
+	<div class="w3-content" style="max-width:700px">
+		<div id="googleMap" class="w3-sepia" style="width:100%;height:400px;"></div>
+		<form action="/action_page.php" target="_blank">
+	      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Name" required name="Name"></p>
+	      <p><input class="w3-input w3-padding-16 w3-border" type="number" placeholder="How many people" required name="People"></p>
+	      <p><input class="w3-input w3-padding-16 w3-border" type="datetime-local" placeholder="Date and time" required name="date" value="2017-11-16T20:00"></p>
+	      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Message \ Special requirements" required name="Message"></p>
+	      <p><button class="w3-button w3-black" type="submit">SEND MESSAGE</button></p>
+	    </form>
+	</div>
+</div>
+
+<!-- Menu Container -->
+<div class="w3-container" id="about">
+  <div class="w3-content" style="max-width:700px">
+ 
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide w3-padding-left w3-padding-right">ABOUT</span></h5>
+  
+    <div class="w3-row w3-center w3-card-2 w3-padding">
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Eat');" id="myLink">
+        <div class="w3-col s6 tablink">오늘의 기분</div>
+      </a>
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Drinks');">
+        <div class="w3-col s6 tablink">달력</div>
+      </a>
+    </div>
+
+    <div id="Eat" class="w3-container menu w3-padding-48 w3-card-2">
+      <h5>Bread Basket</h5>
+      <p class="w3-text-grey">Assortment of fresh baked fruit breads and muffins 5.50</p><br>
+    
+      <h5>Honey Almond Granola with Fruits</h5>
+      <p class="w3-text-grey">Natural cereal of honey toasted oats, raisins, almonds and dates 7.00</p><br>
+    
+      <h5>Belgian Waffle</h5>
+      <p class="w3-text-grey">Vanilla flavored batter with malted flour 7.50</p><br>
+    
+      <h5>Scrambled eggs</h5>
+      <p class="w3-text-grey">Scrambled eggs, roasted red pepper and garlic, with green onions 7.50</p><br>
+    
+      <h5>Blueberry Pancakes</h5>
+      <p class="w3-text-grey">With syrup, butter and lots of berries 8.50</p>
+    </div>
+
+    <div id="Drinks" class="w3-container menu w3-padding-48 w3-card-2">
+      <h5>Coffee</h5>
+      <p class="w3-text-grey">Regular coffee 2.50</p><br>
+    
+      <h5>Chocolato</h5>
+      <p class="w3-text-grey">Chocolate espresso with milk 4.50</p><br>
+    
+      <h5>Corretto</h5>
+      <p class="w3-text-grey">Whiskey and coffee 5.00</p><br>
+    
+      <h5>Iced tea</h5>
+      <p class="w3-text-grey">Hot tea, except not hot 3.00</p><br>
+    
+      <h5>Soda</h5>
+      <p class="w3-text-grey">Coke, Sprite, Fanta, etc. 2.50</p>
+    </div>  
+  </div>
+</div>
+
+
+<!-- End page content -->
+</div>
+
+<div w3-include-html="../include/footer.html"></div>
+
+<!-- Add Google Maps -->
+<script>
+w3IncludeHTML();
+
+function myMap()
+{
+  myCenter=new google.maps.LatLng(41.878114, -87.629798);
+  var mapOptions= {
+    center:myCenter,
+    zoom:12, scrollwheel: false, draggable: false,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  var map=new google.maps.Map(document.getElementById("googleMap"),mapOptions);
+
+  var marker = new google.maps.Marker({
+    position: myCenter,
+  });
+  marker.setMap(map);
+
+  map=new google.maps.Map(document.getElementById("googleMap2"),mapOptions);
+  var marker = new google.maps.Marker({
+	    position: myCenter,
+  });
+  marker.setMap(map);
+
+}
+
+
+function openMenu(evt, menuName) {
+	  var i, x, tablinks;
+	  x = document.getElementsByClassName("menu");
+	  for (i = 0; i < x.length; i++) {
+	     x[i].style.display = "none";
+	  }
+	  tablinks = document.getElementsByClassName("tablink");
+	  for (i = 0; i < x.length; i++) {
+	     tablinks[i].className = tablinks[i].className.replace(" w3-dark-grey", "");
+	  }
+	  document.getElementById(menuName).style.display = "block";
+	  evt.currentTarget.firstElementChild.className += " w3-dark-grey";
+	}
+	document.getElementById("myLink").click();
+	
+	
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIVrQrVdIl_BSL20v4Zgg6TOFrSlV1a70&callback=myMap"></script>
+<!--
+To use this code on your website, get a free API key from Google.
+Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+-->
+
+</body>
+</html>

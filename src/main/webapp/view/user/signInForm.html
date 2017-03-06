@@ -1,162 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="import" href="../include/baseInclude.html">
+
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="google-signin-scope" content="profile email">
 <meta name="google-signin-client_id" content="151296050428-7up6bf2212jt0j9n3qeqm01b6r01q6ed.apps.googleusercontent.com">
-<link rel="import" href="../include/baseInclude.html">
-<link rel="stylesheet" href="../../css/main/main.css">
 
-<script src="../../js/comm/w3data.js"></script>
-<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="../../css/user/signInForm.css">
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script src="https://apis.google.com/js/api:client.js"></script>
-
-
-<script>
-  var googleUser = {};
-  var startApp = function() {
-    gapi.load('auth2', function(){
-      // Retrieve the singleton for the GoogleAuth library and set up the client.
-      auth2 = gapi.auth2.init({
-        client_id: '151296050428-7up6bf2212jt0j9n3qeqm01b6r01q6ed.apps.googleusercontent.com',
-        cookiepolicy: 'single_host_origin',
-        // Request scopes in addition to 'profile' and 'email'
-        //scope: 'additional_scope'
-      });
-      attachSignin(document.getElementById('customBtn'));
-    });
-  };
-
-  function attachSignin(element) {
-    console.log(element.id);
-    auth2.attachClickHandler(element, {},
-        function(googleUser) {
-    		signIn("google", googleUser.getBasicProfile().getEmail());
-        }, function(error) {
-          alert(JSON.stringify(error, undefined, 2));
-        });
-  }
-</script>
-
 
 </head>
 <body>
-	<div w3-include-html="../include/header.html"></div>
-	<div class="wrap">
-	<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" charset="utf-8"></script>
-		
-	<div id="content" class="product">
-		<div class="proList">
-	    	<div class="option">
-		    <div class="wrapper">
-			    <input type="hidden" name="msg" id="msg" value="${msg}" />
-					<form class="form-signin">
-						<input type="hidden" name="loginType" value="me" />
-						<h2 class="form-signin-heading">AROUND</h2>
-						<hr>
-						<p class="text-center">로그인</p>
-						<hr>
-						<p class="text-center">SNS 계정으로 간편하게 로그인하세요!</p>
-						<a id="custom-login-btn" href="javascript:loginWithKakao()" style="margin-left: 25%;"> 
-							<img src="../../img/main/kakao.png" />
-						</a>
-						
-   						<div id="customBtn" class="customGPlusSignIn">
-     							<img style="width:82px; height:83px"src="../../img/main/google.png">
-   						</div>
-   						
-   						<br>
-						<p class="text-center">또는</p>
-						
-				    	<input type="text" class="form-control" id="id" name="id" placeholder="사용자 계정" required="아이디를 입력하세요." autofocus="" />
-				    	<input type="password" class="form-control" id="password" name="password" placeholder="비밀번호" required=""/>      
-				    	<button class="btn btn-lg btn-primary btn-block" id="btnLogin">로그인</button>
-						<br>
-						<br>
-						<hr>
-						<p class="text-center">
-							회원이 아니신가요? <a href="../user/signUpForm.html">회원가입</a>
-						</p>
-						<!-- <button class="btn btn-lg btn-primary btn-block" id="btnLogin">로그인</button> -->
-						<br>
-			    </form>
-		    </div>
-			
+
+	<!-- Contact section -->
+	<div class="w3-container w3-light-grey w3-padding-32 w3-padding-large" id="contact" style="over-flow:hidden;">
+	  <div class="w3-content" style="max-width:620px">
+	    <h4 class="w3-center"><b>A R O U N D</b></h4>
+	    <br>
+	    <h6 class="w3-center"><p> A R O U N D 로그인을 하시면 우리 주변에서 일어나는 진짜 이야기와</p></h6>
+	    <h6 class="w3-center"><p> 다양한 정보를 얻으실 수 있습니다 :-) </p></h6>
+		<br>
+		<div class="w3-content">	    
+		    <a id="custom-login-btn" href="javascript:loginWithKakao()" style="margin-left: 35%;"> 
+				<img src="../../img/main/kakaolink_btn_medium.png" />
+			</a>
+			<div id="customBtn">
+				<img style="width:82px; height:83px"src="../../img/main/btn_google_light_normal_ios@3x.png">
 			</div>
 		</div>
-		
+		<br>
+	    <h6 class="w3-center"><p> SNS 간편 로그인을 통해 기존에 사용하시는 계정 로그인으로  </p></h6>
+	    <h6 class="w3-center"><p> 회원가입까지 한번에 가능합니다.</p></h6>
+	      <div class="w3-group">
+	        <label>Email</label>
+	        <input class="w3-input w3-border" type="text" name="Email" placeholder="이메일 입력" required>
+	      </div>
+	      <div class="w3-group">
+	        <label>Password</label>
+	        <input class="w3-input w3-border" type="Password" name="Password" placeholder="비밀번호 입력" required>
+	      </div>
+	      <button type="submit" class="w3-button w3-block w3-black w3-margin-bottom">Sign In</button>
+	  </div>
 	</div>
-		
-	</div>
-	
+
+
 	<div w3-include-html="../include/footer.html"></div>
 	
-	<script>
-		w3IncludeHTML();
-
-		Kakao.init('a2df2dc9167541f9eb937ed24a7e8133');
-
-		function loginWithKakao() {
-			// 로그인 창을 띄웁니다.
-			Kakao.Auth.login({
-				success : function(authObj) {
-					
-					Kakao.Auth.setAccessToken(authObj.access_token);
-					
-					Kakao.API.request({
-						url : '/v1/user/me',
-						success : function(res) {
-							alert(JSON.stringify(res))
-							signIn("kakao", res.id);
-						},
-						fail : function(error) {
-							alert(JSON.stringify(error));
-						}
-					});
-				},
-				fail : function(err) {
-					alert(JSON.stringify(err));
-				}
-			});
-		};
-
-
-		function signIn(type, key) {
-			
-			var dataObj;
-			if(type=="kakao") {
-				dataObj = {"userKey":key}
-			}
-			if(type=="google") {
-				dataObj = {"userId":key}
-			}
-			
-			alert(type + " ,  " + key)
-			$.ajax({
-				url : "../../user/signIn.do",
-				data : dataObj,
-				dataType : "json",
-				type: "post"
-			}).done(function(msg) {
-
-				if (msg == "SIGNUP") {
-					swal({
-						  title: "로그인 실패",
-						  text: "아직 회원이 아닙니다.",
-						  timer: 2000,
-						  showConfirmButton: false
-						});
-					return false;
-				}
-		  
-				swal("Success!", "로그인에 성공하였습니다.", "success")
-				
-			});
-		}
-		
-		startApp();
-		
-	</script>
+	<script src="../../js/user/signInForm2.js"></script>
 </body>
 </html>
