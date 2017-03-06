@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.around.repository.mapper.CardMapper">
+
+	<resultMap type="commentVO" id="commentMap">
+		<result column="Comment_Seq"		property="commentSeq" 			/>
+		<result column="User_Seq"			property="userSeq" 				/>
+		<result column="Card_Seq"			property="cardSeq" 				/>
+		<result column="Comment_Content"	property="commentContent" 		/>
+		<result column="Comment_Img_Path"	property="commentImgPath"	 	/>
+		<result column="Comment_Reg_Date"	property="commentRegDate" 		/>
+	</resultMap>
+		
+	<!--============================================================================
+	
+		C O M M E N T		S E L E C T
+		
+	============================================================================-->	
+	 
+	 
+	<!--============================================================================
+			전체 댓글 조회 selectCommentList 
+			필터링할 값:(tb_Around_Card) Card_Seq
+			파라메터의 데이터타입: int
+			리턴되는 값의 데이터타입: List<CommentVO>
+	============================================================================-->
+	<select id="selectCommentList" parameterType="int" resultMap="commentMap">
+		select	*
+		from	tb_Around_Comment
+		where	Card_Seq = #{cardSeq}
+		order	by Comment_Seq desc
+	</select>
+	
+	
+	<!--============================================================================
+			시퀀스로 댓글 조회 selectCommentSeq 
+			필터링할 값: Comment_Seq
+			파라메터의 데이터타입: int
+			리턴되는 값의 데이터타입: CommentVO
+	============================================================================-->
+	<select id="selectCommentSeq" parameterType="int" resultType="commentVO">
+		select	*
+		from	tb_Around_Comment
+		where	Comment_Seq = #{commentSeq}
+	</select>
+	
+	
+	<!--============================================================================
+			사용자로 댓글 조회 selectCommentUserSeq 
+			필터링할 값: (tb_Around_User) User_Seq
+			파라메터의 데이터타입: int
+			리턴되는 값의 데이터타입: CommentVO
+	============================================================================-->
+	<select id="selectCommentUserSeq" parameterType="int" resultMap="commentMap">
+		select	*
+		from	tb_Around_Comment
+		where	User_Seq = #{userSeq}
+		order	by Comment_Seq desc
+	</select>
+	
+
+	<!--============================================================================ 
+	
+		C O M M E N T		INSERT	/	UPDATE	/	DELETE
+	
+	 ============================================================================-->
+
+
+	<!--============================================================================
+			댓글 정보 입력 insertComment
+			필터링할 값: 없음
+			파라메터의 데이터타입: CommentVO
+			리턴되는 값의 데이터타입: 없음 
+	============================================================================-->
+		<insert id="insertComment" parameterType="commentVO" >
+		insert	into tb_Around_Comment 
+				(
+				Comment_Seq,
+				User_Seq,
+				Card_Seq,
+				Comment_Content
+				)
+		values	(
+				s_Around_Comment.nextVal,
+				#{userSeq},
+				#{cardSeq},
+				#{commentContent}
+				)
+	</insert>
+
+
+	<!--============================================================================
+			프로젝트 정보 수정 updateComment
+			필터링할 값: Comment_Seq
+			파라메터의 데이터타입: CommentVO
+			리턴되는 값의 데이터타입: 없음
+	============================================================================-->
+	<update id="updateComment" parameterType="commentVO" >
+		update	tb_Around_Comment
+		set		Comment_Content				= #{commentContent},
+				Comment_Img_Path			= #{commentImg_Path}
+		where	Comment_Seq		= #{commentSeq}
+	</update>
+	
+	
+	<!--============================================================================
+			프로젝트 삭제 처리 deleteComment
+			필터링할 값: Comment_Seq
+			파라메터의 데이터타입: int
+			리턴되는 값의 데이터타입: 없음
+	============================================================================-->
+	<delete id="deleteComment" parameterType="int">
+		delete	tb_Around_Comment
+		where	Comment_Seq = #{commentSeq}
+	</delete>
+	
+	
+	
+	
+	
+</mapper>

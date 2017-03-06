@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <title>detail</title>
 <script src="../../js/comm/jquery.min.js"></script>
+<style>
+#cardArea{ border: 1px solid silver }
+#commentArea{ border: 1px solid silver }
+</style>
 </head>
 <body>
 	<h1> A R O U N D </h1>
@@ -26,33 +30,31 @@
 // 		})
 		console.log("카드 소환")
 		$.ajax({
-			url: "/b90m2t4/card/retrieve.do",
+			url: "/b90m2t4/card/retrieve.json",
 			type: "POST",
 			data: {no: 1},
 			dataType: "json"
 		})
-		.done(function(result){
-			console.log("결과물")
-			console.log(result)
-			makeCard(result);
-		});
+		.done(makeCard);
 		
-// 		$.ajax({
-// 			url: "/b90m2t4/card/retrieveCommentList.do",
-// 			type: "POST",
-// 			data: {no: 1},
-// 			dataType: "json"
-// 		})
-// 		.done(makeComment);
+		$.ajax({
+			url: "/b90m2t4/card/retrieveCommentList.json",
+			type: "POST",
+			data: {no: 1},
+			dataType: "json"
+		})
+		.done(makeComment);
 	}
 	
-	function makeCard(result){
+	function makeCard(card){
 		console.log("카드만들기")
 		
 		var html = "";
-		html += '<div class="card">';
-		html += cardVO.cardContent + '<br><br>';
-		html += cardVO.cardHashtag + '<br><br>';
+			html += '<div class="card">';
+			html += card.cardContent + '<br><br>';
+			html += card.cardHashtag + '<br><br>';
+			html += card.cardFeeling + '<br><br>';
+			html += card.cardRegDate + '<br><br>';
 		
 		if (card == null){
 			html += '카드가 존재하지 않습니다 <br><br>';
@@ -60,12 +62,15 @@
 		$("#cardArea").html(html);
 	}
 	
-	function makeComment(comment){
+	function makeComment(comments){
 		var html = "";
-		html += '<div class="comment">';
-		html += comment.cardContent + '<br><br>';
+			html += '<div class="comment">';
+		for (var i = 0 ; i < comments.length ; i++ ){
+			var comment = comments[i];
+			html += comment.commentContent + '<br><br>';
+		}
 		
-		if (comment == null){
+		if (comments == null){
 			html += '아무도 이 카드에 반응하지 않았습니다 <br><br>';
 		}
 		$("#commentArea").html(html);

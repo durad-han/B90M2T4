@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.around.card.service.CardService;
 import kr.co.around.repository.vo.CardVO;
+import kr.co.around.repository.vo.CommentVO;
 import kr.co.around.repository.vo.HashtagVO;
 
 @Controller
@@ -20,33 +22,34 @@ public class CardController {
 	@Autowired
 	private CardService cs;
 	
-	@RequestMapping("/retrieve.do")
+//----- 카드 조회 관련 -----------------------------------------------------------------------	
+	@RequestMapping("/retrieve.json")
+	@ResponseBody
 	public CardVO retrieveCard(@RequestParam("no")int cardSeq) throws Exception {
-		System.out.println("retrieveCard");
-		System.out.println("cardSeq : " + cardSeq);
-		CardVO card = cs.retrieveCard(cardSeq);
-		System.out.println("retrieveCard return Content : " + card.getCardContent());
-		return card;
+		return cs.retrieveCard(cardSeq);
 	}
 	
-	@RequestMapping("/retrieveList.do")
+	@RequestMapping("/retrieveList.json")
+	@ResponseBody
 	public List<CardVO> retrieveCardList() throws Exception {
-		System.out.println("retrieveCardList");
 		return cs.retrieveCardList();
 	}
 	
-	@RequestMapping("/insert.do")
-	public void insertCard() throws Exception {
-		System.out.println("insertCard");
-		cs.insertCard();
+	@RequestMapping("/retrieveCommentList.json")
+	@ResponseBody
+	public List<CommentVO> retrieveCommentList(@RequestParam("no")int cardSeq) throws Exception {
+		List<CommentVO> cList = cs.retrieveCommentList(cardSeq);
+//		디버그용 코멘트 리스트 확인
+//		for(CommentVO com : cList){
+//			System.out.println(com.getCommentContent());
+//		}
+		return cList;
 	}
 	
-	@RequestMapping("/insertForm.do")
-	public void insertCardForm() throws Exception {
-		System.out.println("insertCardForm");
-		cs.insertCardForm();
-	}
 	
+	
+	
+//----- 카드 수정, 삭제 관련 ------------------------------------------------------------------
 	@RequestMapping("/update.do")
 	public void updateCard() throws Exception {
 		System.out.println("updateCard");
@@ -63,6 +66,20 @@ public class CardController {
 	public void deleteCard() throws Exception {
 		System.out.println("deleteCard");
 		cs.deleteCard(0);
+	}
+	
+	
+//----- 카드 입력 관련 -----------------------------------------------------------------------
+	@RequestMapping("/insert.do")
+	public void insertCard() throws Exception {
+		System.out.println("insertCard");
+		cs.insertCard();
+	}
+	
+	@RequestMapping("/insertForm.do")
+	public void insertCardForm() throws Exception {
+		System.out.println("insertCardForm");
+		cs.insertCardForm();
 	}
 	
 	@RequestMapping("/retrieveHashtag.do")

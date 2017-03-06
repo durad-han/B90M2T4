@@ -2,8 +2,7 @@ package kr.co.around.card.service;
 
 import java.util.List;
 
-import kr.co.around.repository.vo.CardVO;
-import kr.co.around.repository.vo.HashtagVO;
+import kr.co.around.repository.vo.*;
 
 public interface CardService {
 
@@ -22,5 +21,7 @@ public interface CardService {
 	public void insertCardForm() throws Exception;
 	
 	public List<HashtagVO> retrieveHashtag(String hashtagInput) throws Exception;
+
+	public List<CommentVO> retrieveCommentList(int cardSeq) throws Exception;
 
 }

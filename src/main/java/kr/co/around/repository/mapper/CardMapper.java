@@ -4,19 +4,24 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import kr.co.around.repository.vo.CardVO;
-import kr.co.around.repository.vo.HashtagVO;
+import kr.co.around.repository.vo.*;
 
 @Repository
 public interface CardMapper {
 	
-//----- 카드 조회 --------------------------------------------------------------------------
+//----- 카드 조회 관련 -----------------------------------------------------------------------	
 	public CardVO selectCardSeq(int cardSeq) throws Exception;
 	
 	public List<CardVO> selectCardList() throws Exception;
 	
+	public List<CommentVO> selectCommentList(int cardSeq) throws Exception;
 	
-//----- 해시태그 --------------------------------------------------------------------------
+	
+//----- 카드 수정, 삭제 관련 ------------------------------------------------------------------
+	
+	
+	
+//----- 카드 입력 관련 -----------------------------------------------------------------------
 	public List<HashtagVO> selectHashtag(String hashtagInput) throws Exception;
 	
 	
