@@ -64,3 +64,12 @@ body {
 	margin-left: -20 !important;
 	margin-left: 15px !important;
 }
+#customBtn {
+  display: inline-block;
+  background: white;
+  color: #444;
+  white-space: nowrap;
+}
+#customBtn:hover {
+  cursor: pointer;
+}

@@ -1,3 +1,6 @@
+/**
+ * 
+ */
  var googleUser = {};
   var startApp = function() {
     gapi.load('auth2', function(){
