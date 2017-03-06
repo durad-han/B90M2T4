@@ -11,19 +11,19 @@
 
 
 	<select id="selectHashtag" parameterType="string" resultMap="hashtagMap">
-<!-- 		select * -->
-<!-- 		  from ( -->
-<!-- 				select rownum rnum, a.* -->
-<!-- 				  from (select * -->
-<!-- 						  from tb_Around_Hashtag -->
-<!-- 						 where hashtag_content like #{hashTagInput} || '%' -->
-<!-- 						 order by Hashtag_Frequency -->
-<!-- 				  ) a -->
-<!-- 		  ) -->
-<!-- 		 where rnum between 0 and 5 -->
-			select *
-			  from tb_Around_Hashtag
-			 where hashtag_content like #{hashTagInput} || '%'
-			 order by Hashtag_Frequency
+		select *
+		  from (
+				select rownum rnum, a.*
+				  from (select *
+						  from tb_Around_Hashtag
+						 where hashtag_content like #{hashTagInput} || '%'
+						 order by Hashtag_Frequency
+				  ) a
+		  )
+		 where rnum between 0 and 5
+<!-- 			select * -->
+<!-- 			  from tb_Around_Hashtag -->
+<!-- 			 where hashtag_content like #{hashTagInput} || '%' -->
+<!-- 			 order by Hashtag_Frequency -->
 	</select>
 </mapper>
