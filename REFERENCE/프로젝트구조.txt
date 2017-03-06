@@ -27,12 +27,14 @@ webapp/
 src/main/
 	resources/config/
 				mybatis/
-					db.properties
+					db.properties			: 저장소 접속용 
 					sqlMapConfig.xml
 				spring/
-					context-repository.xml
+					context-repository.xml	: 저장소 자동화 설정 xml
 				sqlmap/oracle/
 					card.xml
+					comment.xml
+					hashtag.xml
 					login.xml
 					myFavorite.xml
 	

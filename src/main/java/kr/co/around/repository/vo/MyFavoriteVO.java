@@ -7,7 +7,7 @@ public class MyFavoriteVO {
 	private String myContent;		// 관심글 내용 (140글자)
 	private String myHashtag;		// 관심글에 작성된 해시태그 ( #.. ; #.. ) ; 을 사용하여 구분
 	private String myFeeling;		// 관심글 기분 (1:, 2:, 3:, 4:, 5: )
-	private String myReg_Date;		// 관심글 등록 시각
+	private String myRegDate;		// 관심글 등록 시각
 	
 	public int getMySeq() {
 		return mySeq;
@@ -39,11 +39,11 @@ public class MyFavoriteVO {
 	public void setMyFeeling(String myFeeling) {
 		this.myFeeling = myFeeling;
 	}
-	public String getMyReg_Date() {
-		return myReg_Date;
+	public String getMyRegDate() {
+		return myRegDate;
 	}
-	public void setMyReg_Date(String myReg_Date) {
-		this.myReg_Date = myReg_Date;
+	public void setMyRegDate(String myReg_Date) {
+		this.myRegDate = myReg_Date;
 	}
 
 }

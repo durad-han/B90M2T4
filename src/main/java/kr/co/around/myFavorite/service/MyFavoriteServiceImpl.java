@@ -10,4 +10,5 @@ public class MyFavoriteServiceImpl implements MyFavoriteService {
 
 	@Autowired
 	private MyFavoriteMapper myMapper;
+	
 }

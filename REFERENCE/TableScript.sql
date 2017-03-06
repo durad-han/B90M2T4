@@ -228,23 +228,23 @@ insert	into tb_Around_My_Favorite (My_Seq, User_Seq, My_Content, My_Hashtag, My_
 		values (s_Around_My_Favorite.nextval, 2, '11번글', '#태그실험', 5);
 
 
------------------------------------------------------------------------------------------------------------------
---  테스트용 table & sample
------------------------------------------------------------------------------------------------------------------
-drop table tb_Around_Test;
-drop sequence s_Around_Test;
-
-create sequence s_Around_Test;
-
-create table tb_Around_Test (
-	Test_Seq		number(6) 		primary key,			
-	Test_Int		number(6),			
-	Test_String		varchar2(24)		
-);		
-
-insert	into tb_Around_Test (Test_Seq, Test_Int, Test_String)
-		values (s_Around_Test.nextval, 1, '샘플01');
-insert	into tb_Around_Test (Test_Seq, Test_Int, Test_String)
-		values (s_Around_Test.nextval, 2, '샘플02');
-insert	into tb_Around_Test (Test_Seq, Test_Int, Test_String)
-		values (s_Around_Test.nextval, 3333, '샘플03');
+-------------------------------------------------------------------------------------------------------------------
+----  테스트용 table & sample
+-------------------------------------------------------------------------------------------------------------------
+--drop table tb_Around_Test;
+--drop sequence s_Around_Test;
+--
+--create sequence s_Around_Test;
+--
+--create table tb_Around_Test (
+--	Test_Seq		number(6) 		primary key,			
+--	Test_Int		number(6),			
+--	Test_String		varchar2(24)		
+--);		
+--
+--insert	into tb_Around_Test (Test_Seq, Test_Int, Test_String)
+--		values (s_Around_Test.nextval, 1, '샘플01');
+--insert	into tb_Around_Test (Test_Seq, Test_Int, Test_String)
+--		values (s_Around_Test.nextval, 2, '샘플02');
+--insert	into tb_Around_Test (Test_Seq, Test_Int, Test_String)
+--		values (s_Around_Test.nextval, 3333, '샘플03');
