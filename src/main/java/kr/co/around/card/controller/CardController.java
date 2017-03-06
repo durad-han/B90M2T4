@@ -81,6 +81,7 @@ public class CardController {
 	}
 	
 	@RequestMapping("/retrieveHashtag.do")
+	@ResponseBody
 	public List<HashtagVO> retrieveHashtag(HttpServletRequest request) throws Exception {
 		System.out.println("retrieveHashtag");
 		String hashtagInput = request.getParameter("hashtagInput");
