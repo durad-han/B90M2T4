@@ -41,10 +41,10 @@
 			파라메터의 데이터타입: int
 			리턴되는 값의 데이터타입: CardVO
 	============================================================================-->
-	<select id="selectCardSeq" parameterType="int" resultType="cardVO">
+	<select id="selectCardSeq" parameterType="int" resultMap="cardMap">
 		select	*
 		from	tb_Around_Card
-		where	Card_Seq = #{Card_Seq}
+		where	Card_Seq = #{cardSeq}
 	</select>
 	
 	

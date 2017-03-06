@@ -17,18 +17,15 @@ public class CardServiceImpl implements CardService {
 //----- 카드 조회 관련 -----------------------------------------------------------------------	
 	@Override
 	public CardVO retrieveCard(int cardSeq) throws Exception {
-		System.out.println("one Service : retrieveCard");
-		System.out.println("one Service : cardSeq : " + cardSeq);
 		CardVO card =  cMapper.selectCardSeq(cardSeq);
-		if(card != null){
-			System.out.println("one service : 값이 있다");
-			System.out.println("one card content : " + card.getCardContent());
-		}else{
-			System.out.println("one service : 널값 날아옴");
-		}
-		
-		List<CardVO> list = cMapper.selectCardList();
-		return list.get(cardSeq-1);
+//		카드 리턴값 확인용 코드
+//		if(card != null){
+//			System.out.println("one service : 값이 있다");
+//			System.out.println("one card content : " + card.getCardContent());
+//		}else{
+//			System.out.println("one service : 널값 날아옴");
+//		}
+		return card;
 	}
 
 	@Override

@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.around.card.service.CardService;
-import kr.co.around.repository.vo.CardVO;
-import kr.co.around.repository.vo.CommentVO;
-import kr.co.around.repository.vo.HashtagVO;
+import kr.co.around.repository.vo.*;
 
 @Controller
 @RequestMapping("/card")
