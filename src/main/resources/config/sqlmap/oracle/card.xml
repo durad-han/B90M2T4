@@ -33,6 +33,18 @@
 		from	tb_Around_Card
 		order	by Card_Seq desc
 	</select>
+	 
+	 
+	<!--============================================================================
+			페이징용 카드 카운트 selectCardCount 
+			필터링할 값: 없음
+			파라메터의 데이터타입: SearchVO
+			리턴되는 값의 데이터타입: int
+	============================================================================-->
+	<select id="selectCardCount" parameterType="searchVO" resultType="int">
+    	select count(*)
+    	  from tb_Around_Card
+    </select> 
 	
 	
 	<!--============================================================================

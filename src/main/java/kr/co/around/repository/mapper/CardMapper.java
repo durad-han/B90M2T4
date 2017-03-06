@@ -14,7 +14,12 @@ public interface CardMapper {
 	
 	public List<CardVO> selectCardList() throws Exception;
 	
+	public int selectCardCount(SearchVO search) throws Exception;
+	
+	
 	public List<CommentVO> selectCommentList(int cardSeq) throws Exception;
+	
+	public int selectCommentCount(SearchVO search) throws Exception;
 	
 	
 //----- 카드 수정, 삭제 관련 ------------------------------------------------------------------

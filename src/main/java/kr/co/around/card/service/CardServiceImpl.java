@@ -1,6 +1,8 @@
 package kr.co.around.card.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,33 +20,24 @@ public class CardServiceImpl implements CardService {
 	@Override
 	public CardVO retrieveCard(int cardSeq) throws Exception {
 		CardVO card =  cMapper.selectCardSeq(cardSeq);
-//		카드 리턴값 확인용 코드
-//		if(card != null){
-//			System.out.println("one service : 값이 있다");
-//			System.out.println("one card content : " + card.getCardContent());
-//		}else{
-//			System.out.println("one service : 널값 날아옴");
-//		}
 		return card;
 	}
 
 	@Override
-	public List<CardVO> retrieveCardList() throws Exception {
-		return cMapper.selectCardList();
+	public Map<String, Object> retrieveCardList(SearchVO search) throws Exception {
+		Map<String, Object> cardMap = new HashMap<String, Object>();
+			cardMap.put("cardList", cMapper.selectCardList());
+			cardMap.put("pageResult", cMapper.selectCardCount(search));
+		return cardMap;
 		
 	}
 
 	@Override
-	public List<CommentVO> retrieveCommentList(int cardSeq) throws Exception {
-		List<CommentVO> cList = cMapper.selectCommentList(cardSeq);
-//		디버그용 코멘트 리스트 확인
-//		if(cList != null){
-//			System.out.println("cList service : 값이 있다");
-//			System.out.println("cList content : " + cList.get(0).getCommentContent());
-//		}else{
-//			System.out.println("cList service : 널값 날아옴");
-//		}
-		return cList;
+	public Map<String, Object> retrieveCommentList(int cardSeq, SearchVO search) throws Exception {
+		Map<String, Object> commentMap = new HashMap<String, Object>();
+			commentMap.put("commentList", cMapper.selectCommentList(cardSeq));
+			commentMap.put("pageResult", cMapper.selectCommentCount(search));
+		return commentMap;
 	}
 	
 	

@@ -31,6 +31,18 @@
 		where	Card_Seq = #{cardSeq}
 		order	by Comment_Seq desc
 	</select>
+	 
+	 
+	<!--============================================================================
+			페이징용 코멘트 카운트 selectCommentCount 
+			필터링할 값: 없음
+			파라메터의 데이터타입: SearchVO
+			리턴되는 값의 데이터타입: int
+	============================================================================-->
+	<select id="selectCommentCount" parameterType="searchVO" resultType="int">
+    	select count(*)
+    	  from tb_Around_Comment
+    </select> 
 	
 	
 	<!--============================================================================
