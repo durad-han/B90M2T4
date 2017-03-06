@@ -139,6 +139,10 @@ insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card
 insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
 		values (s_Around_Card.nextval, 4, '더미 데이터다', 5, '#샘플 #더미', 11111111, 11111111);		
 
+		
+		
+		insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
+		values (s_Around_Card.nextval, 4, '더미 데이터다', 5, '#샘플 #더미', 37.4908343, 127.0313272);
 -- card	8~16 : dummy	
 insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
 		values (s_Around_Card.nextval, 4, '더미더미더미더미더미더미더미더미', 1, '#샘플 #더미', 11111111, 11111111);		
