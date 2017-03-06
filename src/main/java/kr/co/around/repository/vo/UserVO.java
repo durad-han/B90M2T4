@@ -6,7 +6,14 @@ public class UserVO {
 	private String userId;			// 유저 아이디
 	private String userPass;		// 유저 비밀번호 (널값 가능)
 	private String userRegDate;		// 유저 가입일
+	private String userKey;			// 유저 키 (카카오 로그인시 필요)
 	
+	public String getUserKey() {
+		return userKey;
+	}
+	public void setUserKey(String userKey) {
+		this.userKey = userKey;
+	}
 	public int getUserSeq() {
 		return userSeq;
 	}

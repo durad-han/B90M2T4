@@ -23,11 +23,15 @@
     #customBtn:hover {
       cursor: pointer;
     }
+    .custom-login-btn {
+    	width: 68px;
+    }
 </style>
 </head>
 
 <body>
-	<div w3-include-html="../include/header.html"></div>
+
+	<!-- <div w3-include-html="../include/header.html"></div> -->
 
 	<div id="content" class="product">
 		<div class="proList">
@@ -43,14 +47,12 @@
 						<!-- <input type="text" class="form-control" id="id" name="id" placeholder="아이디 입력" required="아이디를 입력하세요." autofocus="" />
 				    <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호 입력" required=""/> -->
 						<p class="text-center">SNS 계정으로 간편하게 회원가입하세요.</p>
-						<a id="custom-login-btn" href="javascript:loginWithKakao()"> 
+						<a id="custom-login-btn" href="javascript:loginWithKakao()" style="margin-left: 25%;"> 
 							<img src="../../img/main/kakao.png" />
 						</a>
-						
    						<div id="customBtn" class="customGPlusSignIn">
      							<img style="width:82px; height:83px"src="../../img/main/google.png">
    						</div>
-   						
   						<div id="name"></div>
   
 						<p class="text-center">가입하면 AROUND의 약관 및 개인</p>
@@ -58,7 +60,7 @@
 						<br> <br>
 						<hr>
 						<p class="text-center">
-							계정이 있으신가요? <a href="../login/loginForm.html">로그인</a>
+							계정이 있으신가요? <a href="../user/signInForm.html">로그인</a>
 						</p>
 						<!-- <button class="btn btn-lg btn-primary btn-block" id="btnLogin">로그인</button> -->
 						<br>
@@ -88,8 +90,8 @@
 							alert(JSON.stringify(res))
 							
 							swal({
-						    	title: "이메일 입력!",
-						    	text: "사용자 계정을 입력해주세요:",
+						    	title: "사용자 정보 입력",
+						    	text: "사용자 계정 정보를 입력해주세요:",
 						    	type: "input",
 						    	showCancelButton: true,
 						    	closeOnConfirm: false,
@@ -104,7 +106,7 @@
 						      		return false
 						    	}
 						    	
-						    	signUp(inputValue);
+						    	signUp(inputValue, res.id);
 						    	
 						    	
 							});
@@ -123,22 +125,24 @@
 		};
 
 
-		function signUp(id) {
-			alert(id)
+		function signUp(email, key) {
+			alert(email + ", " + key)
 			$.ajax({
-				url : "../../login/signUp.do",
+				url : "../../user/signUp.do",
 				data : {
-					userId : id
+					"userId": email,
+					"userKey": key
 				},
-				dataType : "json"
+				dataType : "json",
+				type: "post"
 			}).done(function(msg) {
 
 				if (msg == "LOGIN") {
-		    		swal("Info!", id + " 계정으로 이미 가입되었습니다.");
+		    		swal("Info!", email + " 계정으로 이미 가입되었습니다.");
 					return false;
 				}
 		  
-		    	swal("Nice!", id + " 계정으로 회원가입 되었습니다.");
+		    	swal("Success!", email + " 계정으로 회원가입 되었습니다.");
 				
 			});
 		}

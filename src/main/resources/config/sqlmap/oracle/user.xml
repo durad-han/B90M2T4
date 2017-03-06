@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.co.mlec.repository.mapper.LoginMapper">
+<mapper namespace="kr.co.mlec.repository.mapper.UserMapper">
 
 	<resultMap type="userVO" id="userMap">
 		<result column="user_seq" property="userSeq" />
@@ -36,10 +36,17 @@
 			파라메터의 데이터타입: string
 			리턴되는 값의 데이터타입: UserVO
 	============================================================================-->
-	<select id="selectUser" parameterType="string" resultMap="userMap">
+	<select id="selectUser" parameterType="userVO" resultMap="userMap">
 		select *
 		  from tb_around_user
-		 where user_id = #{userId}
+		  <where>
+			  <if test="userId != null" >
+			 	user_id = #{userId}
+			  </if>
+			  <if test="userKey != null" >
+			 	and user_key = #{userKey}
+			  </if>
+		  </where>
 	</select>
 	
 	<!--============================================================================
@@ -74,11 +81,13 @@
 		</selectKey>
 		insert into tb_around_user (
 			user_seq, 
-			user_id
+			user_id,
+			user_key
 		)
 		values (
 			#{userSeq},
-			#{userId}
+			#{userId},
+			#{userKey}
 		)
 	</insert>
 

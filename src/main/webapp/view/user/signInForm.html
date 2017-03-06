@@ -32,8 +32,7 @@
     console.log(element.id);
     auth2.attachClickHandler(element, {},
         function(googleUser) {
-          document.getElementById('name').innerText = "Signed in: " +
-              googleUser.getBasicProfile().getName() + googleUser.getBasicProfile().getEmail();
+    		signIn("google", googleUser.getBasicProfile().getEmail());
         }, function(error) {
           alert(JSON.stringify(error, undefined, 2));
         });
@@ -59,7 +58,7 @@
 						<p class="text-center">로그인</p>
 						<hr>
 						<p class="text-center">SNS 계정으로 간편하게 로그인하세요!</p>
-						<a id="custom-login-btn" href="javascript:loginWithKakao()"> 
+						<a id="custom-login-btn" href="javascript:loginWithKakao()" style="margin-left: 25%;"> 
 							<img src="../../img/main/kakao.png" />
 						</a>
 						
@@ -67,7 +66,9 @@
      							<img style="width:82px; height:83px"src="../../img/main/google.png">
    						</div>
    						
+   						<br>
 						<p class="text-center">또는</p>
+						
 				    	<input type="text" class="form-control" id="id" name="id" placeholder="사용자 계정" required="아이디를 입력하세요." autofocus="" />
 				    	<input type="password" class="form-control" id="password" name="password" placeholder="비밀번호" required=""/>      
 				    	<button class="btn btn-lg btn-primary btn-block" id="btnLogin">로그인</button>
@@ -75,7 +76,7 @@
 						<br>
 						<hr>
 						<p class="text-center">
-							회원이 아니신가요? <a href="../main/main.html">회원가입</a>
+							회원이 아니신가요? <a href="../user/signUpForm.html">회원가입</a>
 						</p>
 						<!-- <button class="btn btn-lg btn-primary btn-block" id="btnLogin">로그인</button> -->
 						<br>
@@ -107,30 +108,7 @@
 						url : '/v1/user/me',
 						success : function(res) {
 							alert(JSON.stringify(res))
-							
-							swal({
-						    	title: "이메일 입력!",
-						    	text: "사용자 계정을 입력해주세요:",
-						    	type: "input",
-						    	showCancelButton: true,
-						    	closeOnConfirm: false,
-						    	animation: "slide-from-top",
-						    	inputPlaceholder: "사용자계정"
-							},
-						  	function(inputValue){
-						    	if (inputValue === false) return false;
-						  
-						    	if (inputValue === "") {
-						      		swal.showInputError("You need to write email!");
-						      		return false
-						    	}
-						    	
-						    	signUp(inputValue);
-						    	
-						    	
-							});
-							
-							
+							signIn("kakao", res.id);
 						},
 						fail : function(error) {
 							alert(JSON.stringify(error));
@@ -144,22 +122,35 @@
 		};
 
 
-		function signIn(id) {
-			alert(id)
+		function signIn(type, key) {
+			
+			var dataObj;
+			if(type=="kakao") {
+				dataObj = {"userKey":key}
+			}
+			if(type=="google") {
+				dataObj = {"userId":key}
+			}
+			
+			alert(type + " ,  " + key)
 			$.ajax({
-				url : "../../login/signIn.do",
-				data : {
-					userId : id
-				},
-				dataType : "json"
+				url : "../../user/signIn.do",
+				data : dataObj,
+				dataType : "json",
+				type: "post"
 			}).done(function(msg) {
 
-				if (msg == "LOGIN") {
-		    		swal("Info!", id + " 계정으로 이미 가입되었습니다.");
+				if (msg == "SIGNUP") {
+					swal({
+						  title: "로그인 실패",
+						  text: "아직 회원이 아닙니다.",
+						  timer: 2000,
+						  showConfirmButton: false
+						});
 					return false;
 				}
 		  
-		    	swal("Nice!", id + " 계정으로 회원가입 되었습니다.");
+				swal("Success!", "로그인에 성공하였습니다.", "success")
 				
 			});
 		}

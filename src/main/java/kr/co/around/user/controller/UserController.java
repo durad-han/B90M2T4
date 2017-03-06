@@ -1,4 +1,4 @@
-package kr.co.around.login.controller;
+package kr.co.around.user.controller;
 
 import javax.servlet.http.HttpSession;
 
@@ -7,21 +7,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import kr.co.around.login.service.LoginService;
 import kr.co.around.repository.vo.UserVO;
+import kr.co.around.user.service.UserService;
 
-@RequestMapping("/login")
+@RequestMapping("/user")
 @Controller
-public class LoginController {
+public class UserController {
 	
 	@Autowired
-	private LoginService ls;
+	private UserService ls;
 	
 	@ResponseBody
 	@RequestMapping("/signUp.do")
 	public String signUp(UserVO userVO, HttpSession session) throws Exception {
 		String msg;
-		UserVO user = ls.selectUser(userVO.getUserId());
+		UserVO user = ls.selectUser(userVO);
 		if(user == null) {
 			int seq = ls.insertUser(userVO);
 			user = ls.selectUserSeq(seq);
@@ -30,6 +30,20 @@ public class LoginController {
 			msg = "LOGIN";
 		}
 		
+		session.setAttribute("user", user);
+		return msg;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/signIn.do")
+	public String signIn(UserVO userVO, HttpSession session) throws Exception {
+		String msg;
+		UserVO user = ls.selectUser(userVO);
+
+		msg = "OK";
+		if(user == null) {
+			msg = "SIGNUP";
+		} 
 		session.setAttribute("user", user);
 		return msg;
 	}
