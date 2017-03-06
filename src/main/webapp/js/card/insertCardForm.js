@@ -20,7 +20,7 @@
 		
 		
 		
-		
+	/*	
 		
 		// 지도 관련 스크립트 
 		
@@ -43,24 +43,7 @@
 
 			initMap();
 
-			/*
-			x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
-			var locations = [['center', position.coords.latitude, position.coords.longitude], ['friends1', 37.4938, 127.023], ['friends2', 37.4921, 127.026]];
-			var mapOptions = {
-				zoom: 13,
-				center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
-			};
-			var map = new google.maps.Map(document.getElementById("mapDiv"), mapOptions);
-			for (i = 0 ; i < locations.length ; i++) {
-				var myLatLng = new google.maps.LatLng(locations[i][1], locations[i][2]);
-				var marker = new google.maps.Marker({
-					position: myLatLng,
-					map : map,
-					title : locations[i][0]
-				});
-				marker.setMap(map);
-			}
-			*/
+			
 			// To add the marker to the map, call setMap();
 		}
 
@@ -114,3 +97,4 @@
 				
 			});
 		}
+		*/
