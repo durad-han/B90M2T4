@@ -94,15 +94,16 @@ public class CardController {
 		File f = new File(savePath);
 		if (!f.exists()) f.mkdirs();
 		
-		CardVO CardVO = new CardVO();
-		CardVO.setCardContent(mRequest.getParameter("cardContent"));
-		CardVO.setCardFeeling(mRequest.getParameter("cardFeeling"));
-		CardVO.setCardHashtag(mRequest.getParameter("cardHashtag"));
-		CardVO.setCardImgPath(mRequest.getParameter("cardImgpath"));
-		CardVO.setCardLatitude(mRequest.getParameter("cardLatitude"));
-		CardVO.setCardLongitude(mRequest.getParameter("cardLongitude"));
+		CardVO cardVO = new CardVO();
+		cardVO.setCardContent(mRequest.getParameter("cardContent"));
+		cardVO.setCardFeeling(mRequest.getParameter("cardFeeling"));
+		cardVO.setCardHashtag(mRequest.getParameter("cardHashtag"));
+		cardVO.setCardLongitude(mRequest.getParameter("cardLongitude"));
+		cardVO.setCardLatitude(mRequest.getParameter("cardLatitude"));
 		
-		MultipartFile file = mRequest.getFile("img");
+		System.out.println(cardVO.getCardContent());
+		
+		MultipartFile file = mRequest.getFile("cardImgPath");
 		String oriName = file.getOriginalFilename();
 		if (oriName != null && !oriName.equals("")) {
 			// 확장자
@@ -115,25 +116,24 @@ public class CardController {
 			// 파일명
 			String systemName = "around-" + UUID.randomUUID().toString() + ext;
 			file.transferTo(new File(savePath + "/" + systemName));
-			CardVO.setCardImgPath(savePath + "/" + systemName);
-			param.put("card", CardVO);
+			cardVO.setCardImgPath(savePath + "/" + systemName);
+			param.put("card", cardVO);
 		}
-		cs.insertCard(CardVO);
+		cs.insertCard(cardVO);
+		attr.addFlashAttribute("msg", "글 등록이 완료되었습니다.");
 	}
 	
 	@RequestMapping("/retrieveHashtag.do")
 	@ResponseBody
 	public List<HashtagVO> retrieveHashtag(HttpServletRequest request) throws Exception {
-		System.out.println("retrieveHashtag");
+		
 		String hashtagInput = request.getParameter("hashtagInput");
-		System.out.println(hashtagInput);
+		
 		if(hashtagInput.startsWith("#")) {
 			hashtagInput = hashtagInput.substring(1);
 		}
-		System.out.println(hashtagInput);
-		List<HashtagVO> list = cs.retrieveHashtag(hashtagInput);
-		System.out.println(list.size());
 		
+		List<HashtagVO> list = cs.retrieveHashtag(hashtagInput);
 		return list;
 	}
 }

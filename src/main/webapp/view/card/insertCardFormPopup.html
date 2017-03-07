@@ -22,8 +22,8 @@
 	<script>
 	$("#hashtagInput").keyup( function(e) {
 		if (e.keyCode == 13) {
-			opener.document.getElementById("hashtagText").value += " ";
-			opener.document.getElementById("hashtagText").value += $("#hashtagInput").val();
+			opener.document.getElementById("cardHashtag").value += " ";
+			opener.document.getElementById("cardHashtag").value += $("#hashtagInput").val();
 			self.close();
 		}
 		console.log($("#hashtagInput").val());
@@ -46,6 +46,9 @@
 	});
 	function clickEvent(value) {
 		$("#hashtagInput").val(value);
+		opener.document.getElementById("cardHashtag").value += " ";
+		opener.document.getElementById("cardHashtag").value += $("#hashtagInput").val();
+		self.close();
 	}
 	
 	</script>

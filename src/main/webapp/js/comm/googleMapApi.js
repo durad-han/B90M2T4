@@ -111,5 +111,8 @@ function initMap() {
         alert("포지션값 : " + marker.getPosition());
         console.dir(marker.getPosition());
     });
+    
+    
+    
 }
 

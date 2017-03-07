@@ -19,30 +19,59 @@ function popupOpen() {
 }
 
 // 파일 업로드
-var fd = new FormData();
-var file = $("#cardImg")[0].files;
 
-fd.append("cardContent", $("#cardContent").val());
-fd.append("cardFeeling", $("#selectFeeling").val());
-fd.append("cardHashtag", $("#hashtagText").val());
-fd.append("cardLongitude", $("#cardLongitude").val());
-fd.append("cardLatitude", $("#cardLatitude").val());
-fd.append("cardImgpath", $("#cardImg").files[0]);
-
-$.ajax({
-	url: "",
-	type: "",
-	data: fd,
-	dataType: "json",
-	processData: false,
-	contentType: false
-})
-.done (function (result) {
+$("#cardInsert").submit(function() {
 	
-})
-.fail (function (jqXhr, textStatus, errorText) {
-	alert("에러발생 : " + errorText);
+	
+	if ($("#cardContent").val() === null) {
+		alert("당신의 이야기를 입력해주세요 ^^");
+		$("#cardContent").focus();
+		return false;
+	}
+	if ($("#cardFeeling").val() === null) {
+		alert("당신의 기분을 선택해주세요 ^^");
+		$("#cardFeeling").focus();
+		return false;
+	}
+	if ($("#cardHashtag").val() === null) {
+		alert("해시태그를 1개 이상 입력해주세요 ^^");
+		$("#cardHashtag").focus();
+		return false;
+	}
+	if ($("#cardLongitude").val() === null) {
+		alert("현재 위치를 조회해주세요 ^^");
+		$("#cardLongitude").focus();
+		return false;
+	}
+
+	var fd = new FormData();
+	var file = $("#cardImg")[0].files;
+	
+	fd.append("cardContent", $("input[name=cardContent]").val());
+	fd.append("cardFeeling", $("input[name=cardFeeling]").val());
+	fd.append("cardHashtag", $("input[name=cardHashtag]").val());
+	fd.append("cardLongitude", $("input[name=cardLongitude]").val());
+	fd.append("cardLatitude", $("input[name=cardLatitude]").val());
+		
+	for (var i = 0 ; i < files.length ; i++) {
+		fd.append("cardImgPath", files[i]);
+	}
+	
+	$.ajax({
+		url: "/b90m2t4/card/insert.do",
+		type: "POST",
+		data: fd,
+		dataType: "json",
+		processData: false,
+		contentType: false
+	})
+	.done (function (result) {
+		
+	})
+	.fail (function (jqXhr, textStatus, errorText) {
+		alert("에러발생 : " + errorText);
+	});	
+	return false;
 });
-return false;
 
 

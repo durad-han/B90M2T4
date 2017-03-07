@@ -66,8 +66,8 @@ public class CardServiceImpl implements CardService {
 
 //----- 카드 입력 관련 -----------------------------------------------------------------------
 	@Override
-	public void insertCard(CardVO CardVO) throws Exception {
-		cMapper.insertCard(CardVO);
+	public void insertCard(CardVO cardVO) throws Exception {
+		cMapper.insertCard(cardVO);
 		System.out.println("Service : insertCard");
 	}
 	
