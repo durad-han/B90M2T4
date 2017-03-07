@@ -100,8 +100,14 @@ public class CardController {
 		cardVO.setCardHashtag(mRequest.getParameter("cardHashtag"));
 		cardVO.setCardLongitude(mRequest.getParameter("cardLongitude"));
 		cardVO.setCardLatitude(mRequest.getParameter("cardLatitude"));
+		cardVO.setUserSeq(23);
 		
 		System.out.println(cardVO.getCardContent());
+		System.out.println(cardVO.getCardFeeling()); 
+		System.out.println(cardVO.getCardHashtag()); 
+		System.out.println(cardVO.getCardLongitude());
+		System.out.println(cardVO.getCardLatitude()); 
+		System.out.println(cardVO.getUserSeq());
 		
 		MultipartFile file = mRequest.getFile("cardImgPath");
 		String oriName = file.getOriginalFilename();

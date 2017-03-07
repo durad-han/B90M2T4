@@ -25,9 +25,6 @@ img {
 body > div {
 	border: 1px solid black;
 }
-#selectFeeling > div > input {
-	margin: 0 auto;
-}
 </style>
 <script src="../../js/comm/jquery.min.js"></script>
 <script src="../../js/comm/googleMapApi.js"></script>
@@ -89,14 +86,72 @@ body > div {
 				</div>
 				<br>
 				
-				<input type="hidden" id="cardLongitude" name="cardLongitude" value="36.34" />
-				<input type="hidden" id="cardLatitude" name="cardLatitude" value="127.34" />
+				<input type="hidden" id="cardLongitude" name="cardLongitude" value="3645734" />
+				<input type="hidden" id="cardLatitude" name="cardLatitude" value="1275475434" />
+<!-- 				<input type="hidden" id="userSeq" name="userSeq" value="13" /> -->
 				
 				<button class="w3-button w3-black" type="button">취소</button>
 				<button class="w3-button w3-black" type="submit">등록</button>
 				
 			</form>
 			</div>
+			<script>
+			$("#cardInsert").submit(function() {
+				
+				
+				if ($("#cardContent").val() === null) {
+					alert("당신의 이야기를 입력해주세요 ^^");
+					$("#cardContent").focus();
+					return false;
+				}
+				if ($("#cardFeeling").val() === null) {
+					alert("당신의 기분을 선택해주세요 ^^");
+					$("#cardFeeling").focus();
+					return false;
+				}
+				if ($("#cardHashtag").val() === null) {
+					alert("해시태그를 1개 이상 입력해주세요 ^^");
+					$("#cardHashtag").focus();
+					return false;
+				}
+				if ($("#cardLongitude").val() === null) {
+					alert("현재 위치를 조회해주세요 ^^");
+					$("#cardLongitude").focus();
+					return false;
+				}
+
+				var fd = new FormData();
+				var files = $("input[name=cardImg]")[0].files;
+				
+				fd.append("cardContent", $("[name=cardContent]").val());
+				fd.append("cardFeeling", $("input[name=cardFeeling]").val());
+				fd.append("cardHashtag", $("input[name=cardHashtag]").val());
+				fd.append("cardLongitude", $("input[name=cardLongitude]").val());
+				fd.append("cardLatitude", $("input[name=cardLatitude]").val());
+				fd.append("cardLatitude", $("input[name=userSeq]").val());
+					
+				for (var i = 0 ; i < files.length ; i++) {
+					fd.append("cardImgPath", files[i]);
+				}
+				
+				$.ajax({
+					url: "/b90m2t4/card/insert.do",
+					type: "post",
+					data: fd,
+// 					dataType: "json",
+					processData: false,
+					contentType: false
+				})
+				.done (function (result) {
+					
+				})
+				.fail (function (jqXhr, textStatus, errorText) {
+					alert("에러발생 : " + errorText);
+				});	
+				return false;
+			});
+			</script>
+			
 		</div>
 	
 	<script async defer
