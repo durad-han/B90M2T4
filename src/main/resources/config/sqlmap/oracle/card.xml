@@ -142,7 +142,7 @@
 				#{cardHashtag},
 				#{cardLongitude},
 				#{cardLatitude},
-				#{cardImg_Path, jdbcType=VARCHAR}
+				#{cardImgPath}
 				)
 	</insert>
 

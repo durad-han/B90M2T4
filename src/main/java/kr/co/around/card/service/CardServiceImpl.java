@@ -6,6 +6,8 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.around.repository.mapper.CardMapper;
 import kr.co.around.repository.vo.*;
@@ -64,7 +66,8 @@ public class CardServiceImpl implements CardService {
 
 //----- 카드 입력 관련 -----------------------------------------------------------------------
 	@Override
-	public void insertCard() throws Exception {
+	public void insertCard(CardVO CardVO) throws Exception {
+		cMapper.insertCard(CardVO);
 		System.out.println("Service : insertCard");
 	}
 	

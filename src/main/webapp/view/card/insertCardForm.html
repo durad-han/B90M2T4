@@ -35,21 +35,22 @@ body > div {
 		<div id="content">
 			<button onclick="getLocation()">내 위치 조회</button>
 			<div id="mapDiv"></div>
-			<div id="MyCurrentPosition"></div>
+			
 			<br>
 			
-			<form>
+			<form action='/b90m2t4/card/insert.do' method='post' enctype="multipart/form-data">
 			
 				<div id="textDiv">
 					당신의 이야기를 들려주세요...
 					<br>
-					<textarea id="textarea" rows="7" cols="70"></textarea>
+					<textarea id="cardContent" rows="7" cols="70"></textarea>
 					<div id="count">/140</div>
 				</div>
 				<br>
 				
 				<div id="fileDiv">
 					파일 등록
+					<input type="file" id="cardImg" name="cardImg" onchange="loadFile(event)"/>
 				</div>
 				<br>
 				
@@ -63,27 +64,30 @@ body > div {
 				
 				<div id="selectFeeling">
 					<div>
-						<img src="../../img/card/verygood.jpg" /><br> <input
-							type="radio" id="verygood" name="feeling" value="1" />
+						<img src="../../img/card/verygood.jpg" /><br>
+						<input type="radio" id="verygood" name="cardFeeling" value="1" />
 					</div>
 					<div>
-						<img src="../../img/card/good.png" /><br> <input
-							type="radio" id="good" name="feeling" value="2" />
+						<img src="../../img/card/good.png" /><br>
+						<input type="radio" id="good" name="cardFeeling" value="2" />
 					</div>
 					<div>
-						<img src="../../img/card/soso.png" /><br> <input
-							type="radio" id="soso" name="feeling" value="3" checked />
+						<img src="../../img/card/soso.png" /><br>
+						<input type="radio" id="soso" name="cardFeeling" value="3" checked />
 					</div>
 					<div>
-						<img src="../../img/card/bad.png" /><br> <input type="radio"
-							id="bad" name="feeling" value="4" />
+						<img src="../../img/card/bad.png" /><br>
+						<input type="radio" id="bad" name="cardFeeling" value="4" />
 					</div>
 					<div>
-						<img src="../../img/card/terrible.png" /><br> <input
-							type="radio" id="terrible" name="feeling" value="5" />
+						<img src="../../img/card/terrible.png" /><br>
+						<input type="radio" id="terrible" name="cardFeeling" value="5" />
 					</div>
 				</div>
 				<br>
+				
+				<input type="hidden" id="cardLongitude" value="36.34" />
+				<input type="hidden" id="cardLatitude" value="127.34" />
 				
 				<button type="button">취소</button>
 				<button>등록</button>
@@ -91,8 +95,7 @@ body > div {
 			</form>
 		</div>
 	</div>
-
-	<script src="../../js/comm/googleMapApi.js"></script>
+	
 	<script async defer
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWJxPZFiG_3QbcXlfIG71_VGDDUuZS5Oc&callback=initMap"></script>
 </body>

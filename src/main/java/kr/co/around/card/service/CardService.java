@@ -3,6 +3,9 @@ package kr.co.around.card.service;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import kr.co.around.repository.vo.*;
 
 public interface CardService {
@@ -24,7 +27,7 @@ public interface CardService {
 
 	
 //----- 카드 입력 관련 -----------------------------------------------------------------------
-	public void insertCard() throws Exception;
+	public void insertCard(CardVO CardVO) throws Exception;
 
 	public void insertCardForm() throws Exception;
 	
