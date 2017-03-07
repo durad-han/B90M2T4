@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.co.mlec.repository.mapper.UserMapper">
+<mapper namespace="kr.co.around.repository.mapper.UserMapper">
 
 	<resultMap type="userVO" id="userMap">
 		<result column="user_seq" property="userSeq" />
 		<result column="user_id" property="userId" />
+		<result column="user_key" property="userKey" />
 		<result column="user_pass" property="userPass" />
 		<result column="user_reg_date" property="userRegDate" />
 	</resultMap>
@@ -18,50 +19,42 @@
 	 
 	 
 	<!--============================================================================
-			전체 사용자 조회 selecUserList 
-			필터링할 값: 없음
-			파라메터의 데이터타입: 없음
-			리턴되는 값의 데이터타입: List<UserVO>
-	============================================================================-->
-	<select id="selecUserList" resultMap="userMap">
-		select	*
-		from	tb_Around_User
-		order	by User_Seq desc
-	</select>
-	 
-	 
-	<!--============================================================================
 			회원가입여부조회 selectUser
-			필터링할 값: user_id
+			필터링할 값: 구글계정이면 userId값만
+					카카오계정이면 userkey값만
 			파라메터의 데이터타입: string
 			리턴되는 값의 데이터타입: UserVO
 	============================================================================-->
 	<select id="selectUser" parameterType="userVO" resultMap="userMap">
-		select *
-		  from tb_around_user
-		  <where>
-			  <if test="userId != null" >
-			 	user_id = #{userId}
-			  </if>
-			  <if test="userKey != null" >
-			 	and user_key = #{userKey}
-			  </if>
-		  </where>
+	
+		<if test="type == 'kakao'">
+			select *
+		  	  from tb_around_user
+		  	 where user_key = #{userKey}
+		</if>
+		
+		<if test="type == 'google'">
+			select *
+		  	  from tb_around_user
+		  	 where user_id = #{userId}
+		</if>
+		
 	</select>
 	
 	<!--============================================================================
-			사용자정보조회 selectUserSeq
-			필터링할 값: user_seq
+			회원가입여부조회 selectUserSeq
+			필터링할 값: userSeq
 			파라메터의 데이터타입: int
 			리턴되는 값의 데이터타입: UserVO
 	============================================================================-->
 	<select id="selectUserSeq" parameterType="int" resultMap="userMap">
 		select *
 		  from tb_around_user
-		 where user_seq = #{userSeq}
+		 where user_seq = #{userSeq} 	
 	</select>
-
-
+	
+	
+	
 	<!--============================================================================ 
 	
 		U S E R		INSERT	/	UPDATE	/	DELETE
@@ -70,7 +63,7 @@
 
 
 	<!--============================================================================
-			사용자 정보 입력 insertUser
+			회원가입 insertUser
 			필터링할 값: 없음
 			파라메터의 데이터타입: string
 			리턴되는 값의 데이터타입: 없음 
@@ -79,32 +72,29 @@
 		<selectKey keyProperty="userSeq" order="BEFORE" resultType="int">
 			select s_around_user.nextVal from dual
 		</selectKey>
-		insert into tb_around_user (
-			user_seq, 
-			user_id,
-			user_key
-		)
-		values (
-			#{userSeq},
-			#{userId},
-			#{userKey}
-		)
+		<if test="userKey != null">
+			insert into tb_around_user (
+				user_seq, 
+				user_id,
+				user_key
+			)
+			values (
+				#{userSeq},
+				#{userId},
+				#{userKey}
+			)
+		</if>
+		<if test="userKey == null">
+			insert into tb_around_user (
+				user_seq, 
+				user_id
+			)
+			values (
+				#{userSeq},
+				#{userId}
+			)
+		</if>
 	</insert>
-
-
-	<!--============================================================================
-			사용자 정보 수정 updateUser
-			필터링할 값: User_Seq
-			파라메터의 데이터타입: UserVO
-			리턴되는 값의 데이터타입: 없음
-	============================================================================-->
-	<update id="updateUser" parameterType="userVO" >
-		update	tb_Around_User
-		set		User_Id			= #{User_Id},
-				User_Pass		= #{User_Pass}
-		where	User_Seq		= #{UserSeq}
-	</update>
-	
 	
 	
 </mapper>

@@ -7,7 +7,14 @@ public class UserVO {
 	private String userPass;		// 유저 비밀번호 (널값 가능)
 	private String userRegDate;		// 유저 가입일
 	private String userKey;			// 유저 키 (카카오 로그인시 필요)
+	private String type;			// 간편로그인 type
 	
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
 	public String getUserKey() {
 		return userKey;
 	}

@@ -1,5 +1,7 @@
 package kr.co.around.user.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,35 +20,15 @@ public class UserController {
 	private UserService ls;
 	
 	@ResponseBody
-	@RequestMapping("/signUp.do")
-	public String signUp(UserVO userVO, HttpSession session) throws Exception {
-		String msg;
-		UserVO user = ls.selectUser(userVO);
-		if(user == null) {
-			int seq = ls.insertUser(userVO);
-			user = ls.selectUserSeq(seq);
-			msg = "OK";
-		} else {
-			msg = "LOGIN";
-		}
+	@RequestMapping("/easySign.do")
+	public Map<String, Object> easySign(UserVO userVO, HttpSession session) throws Exception {
 		
-		session.setAttribute("user", user);
-		return msg;
+		Map<String, Object> map = ls.easySign(userVO);
+		session.setAttribute("user", map.get("user"));
+		
+		return map;
 	}
 	
-	@ResponseBody
-	@RequestMapping("/signIn.do")
-	public String signIn(UserVO userVO, HttpSession session) throws Exception {
-		String msg;
-		UserVO user = ls.selectUser(userVO);
-
-		msg = "OK";
-		if(user == null) {
-			msg = "SIGNUP";
-		} 
-		session.setAttribute("user", user);
-		return msg;
-	}
 	
 
 }

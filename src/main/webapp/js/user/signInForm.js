@@ -13,7 +13,7 @@ function attachSignin(element) {
 	console.log(element.id);
     auth2.attachClickHandler(element, {},
     function(googleUser) {
-    	signIn("google", googleUser.getBasicProfile().getEmail());
+    	easySign("google", googleUser.getBasicProfile().getEmail());
     }, function(error) {
     	alert(JSON.stringify(error, undefined, 2));
     });
@@ -51,7 +51,7 @@ function loginWithKakao() {
 				      		return false
 				    	}
 				    	
-				    	signUp(inputValue, res.id);
+						easySign("kakao", inputValue, res.id);
 				    	
 				    	
 					});
@@ -69,62 +69,67 @@ function loginWithKakao() {
 	});
 };
 
-function signIn(type, key) {
+function easySign(type, id, key) {
 	
 	var dataObj;
-	if(type=="kakao") {
-		dataObj = {"userKey":key}
+	
+	if(type == "google") {
+		dataObj = {
+				type : type,
+				userId : id
+			}
 	}
-	if(type=="google") {
-		dataObj = {"userId":key}
+	if(type == "kakao") {
+		dataObj = {
+				type : type,
+				userId : id,
+				userKey: key
+		}
 	}
+	
 
 	$.ajax({
-		url : "../../user/signIn.do",
+		url : "../../user/easySign.do",
 		data : dataObj,
 		dataType : "json",
 		type: "post"
-	}).done(function(msg) {
-
-		if (msg == "SIGNUP") {
-			// 아직 회원이 아니라면 회원가입 
-			signUp(key, "");
-		}
-  
-		swal("Success!", "로그인에 성공하였습니다.", "success");
+	}).done(function(result) {
 		
-		timer = setInterval(function () {
-			if(timer != null) location.href="../../view/main/main.html";		    	
-		    		timer = null;
-	    }, 2500);
+		var msg;
+		var opt;
+		var title;
+
+		if(result.msg == "signUp") {
+			msg = "회원가입에 성공하였습니다.";
+			opt = "success";
+			title = "Success!";
+		} else if (result.msg == "info") {
+			msg = "사용중인 계정은 "+ result.user.userId +" 입니다. 다시 입력해주세요."
+			opt = "fail";
+			title = "Info";
+			
+		} else {
+			msg = "로그인에 성공하였습니다.";
+			opt = "success";
+			title = "Success!";
+		}
+		
+		// 로그인 또는 회원가입
+		if(result.msg != "info") {
+			swal(title, msg, opt);
+			
+			timer = setInterval(function () {
+				if(timer != null) location.href="../../view/main/main.html";		    	
+			    		timer = null;
+		    }, 2500);
+			
+		// 카카오 로그인의 경우 회원가입된 계정과 동일해야 로그인 성공!
+		} else {
+			swal.showInputError(msg);
+		}
 		
 	});
 }
 
-function signUp(email, key) {
-
-	$.ajax({
-		url : "../../user/signUp.do",
-		data : {
-			"userId": email,
-			"userKey": key
-		},
-		dataType : "json",
-		type: "post"
-	}).done(function(msg) {
-
-		if (msg == "LOGIN") {
-			swal("Info!", email + " 계정으로 이미 가입되었습니다.");
-		return false;
-		}
-	
-		swal("Success!", email + " 계정으로 회원가입 되었습니다.");
-		
-		timer = setInterval(function () {
-			if(timer != null) location.href="../../view/main/main.html";		    	
-		    		timer = null;
-	    }, 2500);
-	});
-}
 
 startApp();

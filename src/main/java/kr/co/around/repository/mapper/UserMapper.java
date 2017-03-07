@@ -12,21 +12,24 @@ public class UserMapper {
 	@Autowired
 	private SqlSessionTemplate sqlMapper;
 	
-	public int insertUser(UserVO user) {
-		sqlMapper.insert(
-				"kr.co.mlec.repository.mapper.UserMapper.insertUser", user);
-		return user.getUserSeq();
-		
-	}
-	
 	public UserVO selectUser(UserVO user) {
+		System.out.println("매퍼 SELECT : " + user);
 		return sqlMapper.selectOne(
-				"kr.co.mlec.repository.mapper.UserMapper.selectUser", user);
+				"kr.co.around.repository.mapper.UserMapper.selectUser", user);
 	}
 	
 	public UserVO selectUserSeq(int userSeq) {
 		return sqlMapper.selectOne(
-				"kr.co.mlec.repository.mapper.UserMapper.selectUserSeq", userSeq);
+				"kr.co.around.repository.mapper.UserMapper.selectUserSeq", userSeq);
+	}
+	
+	public int insertUser(UserVO user) {
+		System.out.println("매퍼 시작");
+		sqlMapper.insert(
+				"kr.co.around.repository.mapper.UserMapper.insertUser", user);
+		System.out.println("매퍼 끝");
+		return user.getUserSeq();
+		
 	}
 	
 }
