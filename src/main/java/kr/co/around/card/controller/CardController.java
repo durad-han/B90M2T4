@@ -24,7 +24,7 @@ public class CardController {
 //----- 카드 조회 관련 -----------------------------------------------------------------------	
 	@RequestMapping("/retrieve.json")
 	@ResponseBody
-	public CardVO retrieveCard(@RequestParam("no")int cardSeq) throws Exception {
+	public CardVO retrieveCard(int cardSeq) throws Exception {
 		return cs.retrieveCard(cardSeq);
 	}
 	
@@ -36,8 +36,10 @@ public class CardController {
 	
 	@RequestMapping("/retrieveCommentList.json")
 	@ResponseBody
-	public Map<String, Object> retrieveCommentList(@RequestParam("no")int cardSeq, SearchVO search) throws Exception {
-		return cs.retrieveCommentList(cardSeq, search);
+	public Map<String, Object> retrieveCommentList(int cardSeq, int pageNo, SearchVO search) throws Exception {
+		search.setCardSeq(cardSeq);
+		search.setPageNo(pageNo);
+		return cs.retrieveCommentList(search);
 	}
 	
 	

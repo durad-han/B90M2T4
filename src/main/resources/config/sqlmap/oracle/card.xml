@@ -24,14 +24,21 @@
 	 
 	<!--============================================================================
 			전체 카드 조회 selectCardList 
-			필터링할 값: 없음
-			파라메터의 데이터타입: 없음
+			필터링할 값: SearchVO의 begin between end, rownum 먹인 tb_Around_Card 대상
+			파라메터의 데이터타입: SearchVO
 			리턴되는 값의 데이터타입: List<CardVO>
 	============================================================================-->
-	<select id="selectCardList" resultMap="cardMap">
+	<select id="selectCardList" parameterType="searchVO" resultMap="cardMap">
 		select	*
-		from	tb_Around_Card
-		order	by Card_Seq desc
+		from	(
+				select	rownum rNum, c.*
+				from	(select	*
+						 from	tb_Around_Card
+						 order	by Card_Seq desc
+						) c
+				)
+		where	rNum between #{begin} and #{end}
+		
 	</select>
 	 
 	 

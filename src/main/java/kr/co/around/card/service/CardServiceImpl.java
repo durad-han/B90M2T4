@@ -26,17 +26,17 @@ public class CardServiceImpl implements CardService {
 	@Override
 	public Map<String, Object> retrieveCardList(SearchVO search) throws Exception {
 		Map<String, Object> cardMap = new HashMap<String, Object>();
-			cardMap.put("cardList", cMapper.selectCardList());
-			cardMap.put("pageResult", cMapper.selectCardCount(search));
+			cardMap.put("cardList", cMapper.selectCardList(search));
+			cardMap.put("pageResult", new PageResultVO(search.getPageNo(), cMapper.selectCardCount(search)));
 		return cardMap;
 		
 	}
 
 	@Override
-	public Map<String, Object> retrieveCommentList(int cardSeq, SearchVO search) throws Exception {
+	public Map<String, Object> retrieveCommentList(SearchVO search) throws Exception {
 		Map<String, Object> commentMap = new HashMap<String, Object>();
-			commentMap.put("commentList", cMapper.selectCommentList(cardSeq));
-			commentMap.put("pageResult", cMapper.selectCommentCount(search));
+			commentMap.put("commentList", cMapper.selectCommentList(search));
+			commentMap.put("pageResult", new PageResultVO(search.getPageNo(), cMapper.selectCommentCount(search)));
 		return commentMap;
 	}
 	

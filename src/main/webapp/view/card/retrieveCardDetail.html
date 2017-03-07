@@ -68,6 +68,7 @@
 				</div>
 				
 				<div id="commentArea"></div>
+				<div id="pagingArea"></div>
 		
 			</div>
 			
@@ -88,7 +89,7 @@
 		$.ajax({
 			url: "/b90m2t4/card/retrieve.json",
 			type: "POST",
-			data: {no: 1},
+			data: {cardSeq: 1},
 			dataType: "json"
 		})
 		.done(makeCard);
@@ -96,7 +97,9 @@
 		$.ajax({
 			url: "/b90m2t4/card/retrieveCommentList.json",
 			type: "POST",
-			data: {no: 1},
+			data: {	cardSeq: 1,
+					pageNo: 1
+					},
 			dataType: "json"
 		})
 		.done(makeComment);
@@ -116,8 +119,14 @@
 		$("#cardHere").html(html);
 	}
 	
-	function makeComment(comments){
+	function makeComment(commentMap){
 		var html = "";
+		var comments = commentMap['commentList'];
+		var page = commentMap['pageResult'];
+		// 디버그용 console.dir
+		console.dir(comments);
+		console.dir(page);
+		
 		for (var i = 0 ; i < comments.length ; i++ ){
 				html += '<div class="comment">';
 				var comment = comments[i];
@@ -134,6 +143,23 @@
 			
 		}
 			$("#commentArea").html(html);
+			$("#pagingArea").paging({
+					max: page.endPage,
+					current: page.pageNo,
+					length: page.tabSize,
+					});
+	}
+	
+	function goPage(pageNo) {
+		$.ajax({
+			url: "/b90m2t4/card/retrieveCommentList.json",
+			type: "POST",
+			data: {	cardSeq: 1,
+					pageNo: page.pageNo
+					},
+			dataType: "json"
+		})
+		.done(makeComment);
 	}
 	
 	summonCard();

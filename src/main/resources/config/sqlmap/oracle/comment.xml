@@ -20,28 +20,35 @@
 	 
 	 
 	<!--============================================================================
-			전체 댓글 조회 selectCommentList 
-			필터링할 값:(tb_Around_Card) Card_Seq
-			파라메터의 데이터타입: int
+			전체 댓글 조회 selectCommentList
+			필터링할 값: SearchVO의 begin between end, rownum 먹인 selectCommentList 대상
+			파라메터의 데이터타입: SearchVO
 			리턴되는 값의 데이터타입: List<CommentVO>
 	============================================================================-->
-	<select id="selectCommentList" parameterType="int" resultMap="commentMap">
+	<select id="selectCommentList" parameterType="searchVO" resultMap="commentMap">
 		select	*
-		from	tb_Around_Comment
-		where	Card_Seq = #{cardSeq}
-		order	by Comment_Seq desc
+		from	(
+				select	rownum rnum, c.*
+				from	(select	*
+						 from	tb_Around_Comment
+						 where	Card_Seq = #{cardSeq}
+						 order	by Comment_Seq desc
+						) c
+				)
+		where	rnum between #{begin} and #{end}
 	</select>
-	 
+
 	 
 	<!--============================================================================
 			페이징용 코멘트 카운트 selectCommentCount 
-			필터링할 값: 없음
+			필터링할 값: Card_Seq
 			파라메터의 데이터타입: SearchVO
 			리턴되는 값의 데이터타입: int
 	============================================================================-->
 	<select id="selectCommentCount" parameterType="searchVO" resultType="int">
-    	select count(*)
-    	  from tb_Around_Comment
+    	select	count(*)
+ 		from	tb_Around_Comment
+    	where	Card_Seq = #{cardSeq}
     </select> 
 	
 	

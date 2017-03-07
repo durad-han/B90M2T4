@@ -12,12 +12,12 @@ public interface CardMapper {
 //----- 카드 조회 관련 -----------------------------------------------------------------------	
 	public CardVO selectCardSeq(int cardSeq) throws Exception;
 	
-	public List<CardVO> selectCardList() throws Exception;
+	public List<CardVO> selectCardList(SearchVO search) throws Exception;
 	
 	public int selectCardCount(SearchVO search) throws Exception;
 	
 	
-	public List<CommentVO> selectCommentList(int cardSeq) throws Exception;
+	public List<CommentVO> selectCommentList(SearchVO search) throws Exception;
 	
 	public int selectCommentCount(SearchVO search) throws Exception;
 	
