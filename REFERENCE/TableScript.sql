@@ -45,7 +45,8 @@ create table tb_Around_User (
 	User_Seq		number(6) 		primary key,			-- 유저 고유번호 (시퀀스)
 	User_Id			varchar2(24) 	not null,				-- 유저 아이디
 	User_Pass		varchar2(24),							-- 유저 비밀번호 (널값 가능)
-	User_Reg_Date	varchar2(20) 	default to_char(sysdate)
+	User_Reg_Date	varchar2(20) 	default to_char(sysdate),
+	User_Key		varchar2(24)							-- 유저 키
 );
 
 -----------------------------------------------------------------------------------------------------------------
