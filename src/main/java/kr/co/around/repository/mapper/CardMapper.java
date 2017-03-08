@@ -29,9 +29,12 @@ public interface CardMapper {
 	
 	
 //----- 카드 입력 관련 -----------------------------------------------------------------------
+	public void insertComment(CommentVO commentVO) throws Exception;
+	
 	public void insertCard(CardVO CardVO) throws Exception;
 
 	public List<HashtagVO> selectHashtag(String hashtagInput) throws Exception;
+
 	
 	
 }

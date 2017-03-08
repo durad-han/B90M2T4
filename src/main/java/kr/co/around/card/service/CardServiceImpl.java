@@ -64,6 +64,12 @@ public class CardServiceImpl implements CardService {
 
 //----- 카드 입력 관련 -----------------------------------------------------------------------
 	@Override
+	public void insertComment(CommentVO commentVO) throws Exception {
+		cMapper.insertComment(commentVO);
+		System.out.println("Service : insertComment");
+	}
+	
+	@Override
 	public void insertCard(CardVO cardVO) throws Exception {
 		cMapper.insertCard(cardVO);
 		System.out.println("Service : insertCard");

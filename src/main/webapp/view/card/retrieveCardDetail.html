@@ -71,7 +71,7 @@ img {
 					
 				</div>
 				<form id="commentInsert">
-					<div id="commentCount">전체 <span></span>개<button>추가</button></div>
+					<div>전체 <span id="commentCount"></span>개<button>추가</button></div>
 				</form>
 				<div id="commentArea"></div>
 				<div id="pagingArea"></div>
@@ -137,30 +137,9 @@ img {
 		$("#cardHere").html(html);
 	}
 	
-	// 임시 작성중 ------------------------------------------------------------------------------------------
-	$("#commentInsert").submit(function commentInsertForm(commentNo) {
-		console.log("댓글등록하기");
-// 		$("#commentList tr[id^=row]").show();
-// 		$("#commentList tr[id^=modRow]").remove();
-		
-// 		var modId = $("#row" + commentNo + " > td:eq(0)").text();
-// 		var modContent = $("#row" + commentNo + " > td:eq(1)").text();
-		
-// 		var html = '';
-// 		html += '<tr id="modRow' + commentNo + '">';
-// 		html += '	<td>' + modId + '</td>';
-// 		html += '	<td>';
-// 		html += '		<div class="form-group">';
-// 		html += '			<input type="text" name="content" value="' + modContent + '" class="form-control input-wp2" placeholder="내용을 입력하세요">';
-// 		html += '		</div>';
-// 		html += '	</td>';
-// 		html += '	<td colspan="2">'; 
-// 		html += '		<a href="javascript:commentUpdate(' + commentNo + ');" class="btn btn-success btn-sm" role="button">수정</a>';
-// 		html += '		<a href="javascript:commentCancel(' + commentNo + ');" class="btn btn-warning btn-sm" role="button">취소</a>';
-// 		html += '	</td>';
-// 		html += '</tr>';
-// 		$("#row" + commentNo).after(html);	
-// 		$("#row" + commentNo).hide();
+	// 코멘트 등록 임시 작성중 ------------------------------------------------------------------------------------------
+	$("#commentInsert").submit(function commentInsertForm() {
+		window.open("insertCommentForm.html", "", "width=500, height=250, resizable=yes, scrollbars=yes, status=no");
 	});
 	// ------------------------------------------------------------------------------------------
 	
@@ -188,6 +167,7 @@ img {
 			
 		}
 			$("#commentArea").html(html);
+			$("#commentCount").html(page.count);
 // 			$("#pagingArea").paging({
 // 					max: page.endPage,
 // 					current: page.pageNo,

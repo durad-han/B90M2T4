@@ -10,10 +10,12 @@ import java.util.UUID;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -75,6 +77,20 @@ public class CardController {
 	
 //----- 카드 입력 관련 -----------------------------------------------------------------------
 	
+	@RequestMapping("/insertComment.do")
+	public void insertComment(@RequestParam(value="cardSeq", required=false)int cardSeq, CommentVO commentVO, HttpSession session) throws Exception {
+		System.out.println("insertComment");
+		commentVO.setCardSeq(cardSeq);
+		UserVO user = (UserVO)session.getAttribute("user");
+		commentVO.setUserSeq(user.getUserSeq());
+//		System.out.println("--------------------------------");
+//		System.out.println("cardseq "+commentVO.getCardSeq());
+//		System.out.println("content "+commentVO.getCommentContent());
+//		System.out.println("userseq "+commentVO.getUserSeq());
+//		System.out.println("--------------------------------");
+		cs.insertComment(commentVO);
+	}	
+		
 	@RequestMapping("/insertForm.do")
 	public void insertCardForm() throws Exception {
 		System.out.println("insertCardForm");

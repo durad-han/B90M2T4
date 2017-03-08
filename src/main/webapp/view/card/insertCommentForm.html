@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>댓글 등록창</title>
+<script src="../../js/comm/jquery.min.js"></script>
+<script src="../../js/card/insertCardForm.js"></script>
+</head>
+<body onload="commentContent.focus()">
+
+<div class="w3-container" id="commentForm">
+	<h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide w3-padding-left w3-padding-right">WRITE COMMENT</span></h5>
+	<div class="w3-content" style="max-width:700px">
+		<form id='insertCommentForm' name='insertCommentForm' method='post'>
+			<div id="textDiv">
+				<textarea id="commentContent" name="commentContent" rows="7" cols="70"></textarea>
+				<div id="count">0/140</div>
+			</div>
+			<br>
+			<button class="w3-button w3-black" type="button">취소</button>
+			<button class="w3-button w3-black" type="submit">등록</button>
+		</form>
+		</div>
+		</div>
+		
+<script>
+	$(document).ready(function() {
+		$('#commentContent').on('keyup', function() {
+			if ($(this).val().length > 140) {
+				alert('글자수는 140자 까지입니다.');
+				$(this).val($(this).val().substring(0, 140));
+			}
+			$('#count').html($(this).val().length + '/140');
+		});
+	});
+	
+	$("#insertCommentForm").submit(function() {
+		if ($("#commentContent").val() === null) {
+			alert("내용은 있어야죠 ^^");
+			$("#commentContent").focus();
+			return false;
+		}
+		$.ajax({
+			url: "/b90m2t4/card/insertComment.do",
+			type: "post",
+			data: {
+				cardSeq: 1,
+				commentContent: $("[name=commentContent]").val()
+				},
+			dataType: "json",
+		})
+		.done (function () {
+			self.close();
+		})
+		.fail (function (jqXhr, textStatus, errorText) {
+			alert("에러발생 : " + errorText);
+		});	
+		return false;
+	});
+</script>
+</body>
+</html>

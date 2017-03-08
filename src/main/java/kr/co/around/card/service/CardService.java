@@ -24,6 +24,8 @@ public interface CardService {
 
 	
 //----- 카드 입력 관련 -----------------------------------------------------------------------
+	public void insertComment(CommentVO commentVO) throws Exception;
+	
 	public void insertCard(CardVO CardVO) throws Exception;
 
 	public void insertCardForm() throws Exception;
