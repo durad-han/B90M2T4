@@ -7,9 +7,10 @@
 <div w3-include-html="../include/header.html"></div>
 
 <!-- 카드 목록조회 페이지  -->
-<header class="bgimg w3-display-container w3-grayscale-min" id="home">
-	<div w3-include-html="../card/retrieveCardList.html"></div>
-</header>
+<div class="bgimg w3-display-container w3-grayscale-min" id="home">
+<!-- 	<div w3-include-html="../card/retrieveCardList.html"></div> -->
+	<div id="card"></div>
+</div>
 
 
 <div class="w3-sand w3-grayscale w3-large">
@@ -133,7 +134,61 @@ function openMenu(evt, menuName) {
 	document.getElementById("myLink").click();
 	
 	
-// Modal Image Gallery
+
+// Card List Gallery
+// function cardListSet(){
+// 	console.log("카드만들기 시도");
+// 	$.ajax({
+// 		url: "/b90m2t4/card/retrieveList.json",
+// 		type: "POST",
+// 		dataType: "json"
+// 	})
+// 	.done(makeCardList);
+// }
+// //----- 카드 리스트 작성중 -------------------------------------------------------------------
+// function makeCardList(cardListMap){
+// 	console.log("카드 작성");
+// 	var html = "";
+// 	var cards = cardListMap['cardList'];
+// 	var page = cardListMap['pageResult'];
+// 	// 디버그용 console.dir
+// 	console.dir(cards);
+// 	console.dir(page);
+	
+// 	for (var i = 0 ; i < cards.length ; i++ ){
+// 		html += '<div class="card">';
+// 		var card = cards[i];
+// 		html += card.commentContent + '<br><br>';
+// 		html += card.cardHashtag + '<br><br>';
+		
+// 		var feeling = "";
+// 		console.log("cardFeeling : "+card.cardFeeling);
+// 		switch(card.cardFeeling){
+// 		case '1':	feeling = 'verygood.jpg';	break;
+// 		case '2':	feeling = 'good.png';	break;
+// 		case '3':	feeling = 'soso.png';	break;
+// 		case '4':	feeling = 'bad.png';	break;
+// 		case '5':	feeling = 'terrible.png';	break;
+// 		}; 
+// 			html += '<img src="../../img/card/' + feeling + '"/> <br><br>';
+			
+// 		html += card.commentRegDate + '<br><br>';
+// 		html += '</div>';
+// // 		$("#card"+i).html(html);
+// 		$("#card1").html(html);
+// 	}
+	
+// 	if (cards == null){
+// 		html += '<div class="card">';
+// 		html += '등록된 카드가 없습니다 <br><br>';
+// 		html += '<button>카드 등록하기?<button>';
+// 		html += '</div>';
+// 		$("#card1").html(html);
+		
+// 	}
+// }
+// //--------------------------------------------------------------------------------------
+
 function onClick(element) {
   document.getElementById("img01").src = element.src;
   document.getElementById("modal01").style.display = "block";
@@ -141,6 +196,10 @@ function onClick(element) {
   captionText.innerHTML = element.alt;
 }
 
+$(function (){
+	console.log("펑2");
+	$("#card").load("../card/retrieveCardList.html");
+})
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIVrQrVdIl_BSL20v4Zgg6TOFrSlV1a70&callback=myMap"></script>
 <!--
