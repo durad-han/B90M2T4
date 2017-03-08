@@ -11,42 +11,7 @@
 <script src="../../js/comm/w3data.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
 <title>detail</title>
-<style>
-#cardArea{ 
-	border: 1px solid silver; 
-	width: 850px; height: 350px;
-	text-align: center;
-	}
-#commentArea{ 
-	border: 1px solid silver; 
-	width: 850px; height: 200px; 
-	}
-.card{ 
-	margin : 20px; padding: 20px;
- 	background-color: white;  
-	width: 600px; height: 250px;
-	text-align: center;
-	}
-.comment{ 
-	border: 1px solid navy;
- 	background-color: white;
-	float: left;
-	margin: 5px; padding: 5px;
-	width: 250px; height: 180px;
-	text-align: center;
-	}
-.side{
-	float: left;
-/* 	width: 100px; height: 1000px; */
-}
-.body{
-	float: left;
-}
-img {
-	height: 70px;
-	width: 70px;
-}
-</style>
+
 </head>
 <body>
 	
@@ -168,11 +133,6 @@ img {
 		}
 			$("#commentArea").html(html);
 			$("#commentCount").html(page.count);
-// 			$("#pagingArea").paging({
-// 					max: page.endPage,
-// 					current: page.pageNo,
-// 					length: page.tabSize,
-// 					});
 	}
 	
 	function goPage(pageNo) {

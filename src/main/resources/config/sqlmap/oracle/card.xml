@@ -34,7 +34,7 @@
 				select	rownum rNum, c.*
 				from	(select	*
 						 from	tb_Around_Card
-						 order	by Card_Seq desc
+ 						 order	by Card_Seq <!--desc -->
 						) c
 				)
 		where	rNum between #{begin} and #{end}

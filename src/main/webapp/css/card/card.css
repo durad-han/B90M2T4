@@ -1,0 +1,42 @@
+.printCard{
+	width: 233px; height: 180px;
+	float: left;
+	background-position: center;
+    background-size: cover;
+}
+.cardSheet{
+	width: 233px; height: 180px;
+	float: left;
+	background-position: center;
+    background-size: cover;
+}
+#cardArea{ 
+	border: 1px solid silver; 
+	width: 850px; height: 350px;
+	text-align: center;
+	}
+#commentArea{ 
+	border: 1px solid silver; 
+	width: 850px; height: 200px; 
+	}
+.card{ 
+	margin : 20px; padding: 20px;
+ 	background-color: white;  
+	width: 600px; height: 250px;
+	text-align: center;
+	}
+.comment{ 
+	border: 1px solid navy;
+ 	background-color: white;
+	float: left;
+	margin: 5px; padding: 5px;
+	width: 250px; height: 180px;
+	text-align: center;
+	}
+.body{
+	float: left;
+}
+img {
+	height: 70px;
+	width: 70px;
+}

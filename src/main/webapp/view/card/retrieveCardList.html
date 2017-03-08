@@ -1,52 +1,32 @@
 <meta charset="UTF-8">
-<!-- CardList Page Container -->
+
+<!--	카드 리스트 컨테이너 -->
+<div class="bgimg w3-display-container w3-grayscale-min" id="cardList">
 <div class="w3-container" style="padding-bottom:32px;">
   <div class="w3-content" style="max-width:700px">
-    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide w3-padding-left w3-padding-right">야 리스트 페이지다~</span></h5>
-    <p>양원주님의 멋진 지도가 이 아래에 출력될 예정입니다</p>
-    <div id="googleMap2" class="w3-sepia" style="width:100%;height:400px;"></div>
-    <p><span class="w3-tag">C A R D S</span><br> 등록된 카드들을 페이지당 3개씩 보여줄 예정입니다</p>
-    	<div id="card1"></div>
-    	<div id="card2"></div>
-    	<div id="card3"></div>
-<!-- 		   <div class="w3-quarter" id="card1"> -->
-<!-- 		      <img src="../../img/sample/1.jpg" style="width:100%" onclick="onClick(this)" alt="안녕? "> -->
-<!-- 		      <img src="../../img/sample/2.jpg" style="width:100%" onclick="onClick(this)" alt="여긴 너무 추워"> -->
-<!-- 		      <img src="../../img/sample/3.jpg" style="width:100%" onclick="onClick(this)" alt="우리 친구할래?"> -->
-<!-- 		   </div> -->
-<!-- 		   <div class="w3-quarter" id="card2"> -->
-<!-- 		      <img src="../../img/sample/4.jpg" style="width:100%" onclick="onClick(this)" alt="ㅎ"> -->
-<!-- 		      <img src="../../img/sample/5.jpg" style="width:100%" onclick="onClick(this)" alt="ㅎㅎ"> -->
-<!-- 		      <img src="../../img/sample/6.jpg" style="width:100%" onclick="onClick(this)" alt="ㅎㅎㅎ"> -->
-<!-- 		    </div> -->
-<!-- 		    <div class="w3-quarter" id="card3"> -->
-<!-- 		      <img src="../../img/sample/7.jpg" style="width:100%" onclick="onClick(this)" alt="Waiting for the bus in the desert"> -->
-<!-- 		      <img src="../../img/sample/1.jpg" style="width:100%" onclick="onClick(this)" alt="What a beautiful scenery this sunset"> -->
-<!-- 		      <img src="../../img/sample/2.jpg" style="width:100%" onclick="onClick(this)" alt="The Beach. Me. Alone. Beautiful"> -->
-<!-- 		    </div> -->
-<!-- 		    <div class="w3-quarter"> -->
-<!-- 		      <img src="../../img/sample/3.jpg" style="width:100%" onclick="onClick(this)" alt="A boy surrounded by beautiful nature"> -->
-<!-- 		      <img src="../../img/sample/4.jpg" style="width:100%" onclick="onClick(this)" alt="A girl, and a train passing"> -->
-<!-- 		      <img src="../../img/sample/5.jpg" style="width:100%" onclick="onClick(this)" alt="Quiet day at the beach. Cold, but beautiful"> -->
-<!-- 		    </div> -->
+    <h5 class="w3-center w3-padding-40"><span class="w3-tag w3-wide w3-padding-left w3-padding-right">CARD LIST</span></h5>
+    
+<!--	카드 출력 영역  -->
+    <div id="cards" class="w3-sepia" style="width:100%;height:400px;">
+    	<div class="printCard" id="card1"></div>
+    	<div class="printCard" id="card2"></div>
+    	<div class="printCard" id="card3"></div>
+    </div>
+    
+<!-- <div class="w3-quarter"> -->
+<!-- 	<img src="../../img/sample/1.jpg" style="width:100%" onclick="onClick(this)" alt="안녕? "> -->
+<!-- </div> -->
 		    
     	<div class="w3-row w3-grayscale-min">
 		  </div>
 		  
-		  <!-- Pagination -->
-		  <div class="w3-center w3-padding-32">
-		    <div class="w3-bar">
-		      <a href="goPage(prev);" class="w3-bar-item w3-button w3-hover-black">«</a>
-		      <a href="goPage(1);" class="w3-bar-item w3-black w3-button">1</a>
-		      <a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>
-		      <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>
-		      <a href="#" class="w3-bar-item w3-button w3-hover-black">4</a>
-		      <a href="goPage(next);" class="w3-bar-item w3-button w3-hover-black">»</a>
-		    </div>
-		  </div>
+<!--	카드 리스트 페이징 처리 -->
+	  <div class="w3-center w3-padding-32">
+	    <div class="w3-bar" id="cardListPage"></div>
+	  </div>
 		  
 		  
-		  <!-- Modal for full size images on click-->
+		  <!-- 클릭시 풀사이즈? 쓸 일이 있나-->
 		  <div id="modal01" class="w3-modal w3-black w3-padding-0" onclick="this.style.display='none'" style="overflow: hidden;">
 		    <span class="w3-closebtn w3-text-white w3-opacity w3-hover-opacity-off w3-xxlarge w3-container w3-display-topright">×</span>
 		    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
@@ -54,17 +34,8 @@
 		      <p id="caption"></p>
 		    </div>
 		  </div>
-		  
   </div>
 </div>
+</div>
+
 <script src="../../js/card/retrieveCardList.js"></script>
-<script>
-$(function () {
-	console.log("펑션");
-
-	
-
-})
-//--------------------------------------------------------------------------------------
-
-</script>
