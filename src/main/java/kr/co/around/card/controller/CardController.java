@@ -99,18 +99,20 @@ public class CardController {
 	
 	@RequestMapping("/insert.do")
 	@ResponseBody
-	public void insertCard(MultipartHttpServletRequest mRequest, RedirectAttributes attr/*, HttpSession session*/) throws Exception {
-//		UserVO user = (UserVO)session.getAttribute("user");
+	public void insertCard(MultipartHttpServletRequest mRequest, RedirectAttributes attr, HttpSession session) throws Exception {
+		UserVO user = (UserVO)session.getAttribute("user");
 		Map<String, Object> param = new HashMap<>();
 		
-		ServletContext context = mRequest.getServletContext();
-		String path = context.getRealPath("/upload/");
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-		String datePath = sdf.format(new Date());
-		
-		String savePath = path + datePath;
-		File f = new File(savePath);
-		if (!f.exists()) f.mkdirs();
+		String savePath= "";
+		if (mRequest.getFile("cardImgPath") != null) {
+			ServletContext context = mRequest.getServletContext();
+			String path = context.getRealPath("/upload/");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+			String datePath = sdf.format(new Date());
+			savePath = path + datePath;
+			File f = new File(savePath);
+			if (!f.exists()) f.mkdirs();
+		}
 		
 		CardVO cardVO = new CardVO();
 		cardVO.setCardContent(mRequest.getParameter("cardContent"));
@@ -118,7 +120,9 @@ public class CardController {
 		cardVO.setCardHashtag(mRequest.getParameter("cardHashtag"));
 		cardVO.setCardLongitude(mRequest.getParameter("cardLongitude"));
 		cardVO.setCardLatitude(mRequest.getParameter("cardLatitude"));
-		cardVO.setUserSeq(23);
+		cardVO.setUserSeq(12);
+		
+		// user.getUserSeq()
 		
 		System.out.println(cardVO.getCardContent());
 		System.out.println(cardVO.getCardFeeling()); 
@@ -127,20 +131,23 @@ public class CardController {
 		System.out.println(cardVO.getCardLatitude()); 
 		System.out.println(cardVO.getUserSeq());
 		
-		MultipartFile file = mRequest.getFile("cardImgPath");
-		String oriName = file.getOriginalFilename();
-		if (oriName != null && !oriName.equals("")) {
-			// 확장자
-			String ext = "";
-			// 맨뒤 . 위치
-			int index = oriName.lastIndexOf(".");
-			if (index != -1) {
-				ext = oriName.substring(index);
-			}
-			// 파일명
-			String systemName = "around-" + UUID.randomUUID().toString() + ext;
-			file.transferTo(new File(savePath + "/" + systemName));
-			cardVO.setCardImgPath(savePath + "/" + systemName);
+//		System.out.println(mRequest.getFile("cardImgPath"));
+		if (mRequest.getFile("cardImgPath") != null) {
+			MultipartFile file = mRequest.getFile("cardImgPath");
+			String oriName = file.getOriginalFilename();
+			if (oriName != null && !oriName.equals("")) {
+				// 확장자
+				String ext = "";
+				// 맨뒤 . 위치
+				int index = oriName.lastIndexOf(".");
+				if (index != -1) {
+					ext = oriName.substring(index);
+				}
+				// 파일명
+				String systemName = "around-" + UUID.randomUUID().toString() + ext;
+				file.transferTo(new File(savePath + "/" + systemName));
+				cardVO.setCardImgPath(savePath + "/" + systemName);			
+		} 
 			param.put("card", cardVO);
 		}
 		cs.insertCard(cardVO);

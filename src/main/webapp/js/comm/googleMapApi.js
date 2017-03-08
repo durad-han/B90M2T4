@@ -1,22 +1,13 @@
-/**
- * 
- */
-
-/**
- * 
- */
-
 // 지도 관련 스크립트 
 
 var latitude;
 var longitude;
-
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition, showError);
     }
     else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
+    	mapDiv.innerHTML = "Geolocation is not supported by this browser.";
     }
 }
 
@@ -30,16 +21,16 @@ function showPosition(position) {
 function showError(error) {
     switch (error.code) {
         case error.PERMISSION_DENIED :
-            x.innerHTML = "User denied the request for Geolocation."
+        	mapDiv.innerHTML = "User denied the request for Geolocation."
             break;
         case error.POSITION_UNAVAILABLE :
-            x.innerHTML = "Location information is unavailable."
+        	mapDiv.innerHTML = "Location information is unavailable."
             break;
         case error.TIMEOUT :
-            x.innerHTML = "The request to get user location timed out."
+        	mapDiv.innerHTML = "The request to get user location timed out."
             break;
         case error.UNKNOWN_ERROR :
-            x.innerHTML = "An unknown error occurred."
+        	mapDiv.innerHTML = "An unknown error occurred."
             break;
     }
 }
@@ -92,6 +83,7 @@ function initMap() {
         map : map,
         title : 'Click to zoom'
     });
+
     
     // 원 그리기
     var populationOptions = {
@@ -108,11 +100,9 @@ function initMap() {
     
     // 마커 클릭시 좌표 반환
     marker.addListener('click', function() {
-        alert("포지션값 : " + marker.getPosition());
+    	alert("포지션값 : " + marker.getPosition());
+    	alert("포지션값 : " + marker.getPosition());
+        
         console.dir(marker.getPosition());
     });
-    
-    
-    
 }
-
