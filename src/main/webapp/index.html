@@ -1,12 +1,107 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="import" href="view/include/baseInclude.html">
 <meta charset="UTF-8">
 <title>t e m p</title>
 </head>
 <body>
 	<script>
-		location.href = "view/user/signInForm.html";
+	var arrStrg=[];
+	var objStrg={};
+	$(function() {
+		
+		for (var i = 0; i < localStorage.length; i++) {
+			var key = localStorage.key(i);
+			var value = localStorage.getItem(key);
+			console.log(key+ ":" + value);
+			
+			if(key == "id") {
+				objStrg.id = value; 
+			}
+			if(key == "key"){
+				objStrg.key = value;
+			}
+		}
+		
+		arrStrg.push(objStrg);
+		
+		console.dir(arrStrg)
+
+		if(localStorage.length != 0) {
+			
+			var id = arrStrg[0].id;
+			var key = arrStrg[0].key;
+			
+			if(key) {
+				easySign("kakao", id, key);
+			} else {
+				easySign("google", id);
+			}
+			
+		} else {
+			
+			location.href = "view/user/signInForm.html";
+			
+		}
+	});
+	
+	function easySign(type, id, key) {
+		
+		if(key == undefined) key = "NULL";
+		
+		$.ajax({
+			url : "user/easySign.do",
+			data : {
+				type : type,
+				userId : id,
+				userKey: key
+			},
+			dataType : "json",
+			type: "post"
+		}).done(function(result) {
+			
+			var msg;
+			var opt;
+			var title;
+
+			if(result.msg == "signUp") {
+				
+				msg = "회원가입에 성공하였습니다.";
+				opt = "success";
+				title = "Success!";
+				
+				localStorage.setItem("id", id);
+				localStorage.setItem("key", key);
+				
+			} else if (result.msg == "info") {
+				msg = "사용중인 계정은 "+ result.user.userId +" 입니다. 다시 입력해주세요."
+				opt = "fail";
+				title = "Info";
+				
+			} else {
+				
+				msg = "로그인에 성공하였습니다.";
+				opt = "success";
+				title = "Success!";
+				
+				localStorage.setItem("id", id);
+				localStorage.setItem("key", key);
+			}
+			
+			// 로그인 또는 회원가입
+			if(result.msg != "info") {
+				
+				location.href="view/main/main.html";		    	
+				
+			// 카카오 로그인의 경우 회원가입된 계정과 동일해야 로그인 성공!
+			} else {
+				swal.showInputError(msg);
+			}
+			
+		});
+	}
+	
 	</script>
 </body>
 </html>

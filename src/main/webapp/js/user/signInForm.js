@@ -1,39 +1,3 @@
-var arrStrg=[];
-var objStrg={};
-$(function() {
-	
-	for (var i = 0; i < localStorage.length; i++) {
-		var key = localStorage.key(i);
-		var value = localStorage.getItem(key);
-		console.log(key+ ":" + value);
-		
-		if(key == "id") {
-			objStrg.id = value; 
-		}
-		if(key == "key"){
-			objStrg.key = value;
-		}
-	}
-	
-	arrStrg.push(objStrg);
-	
-	console.dir(arrStrg)
-
-	if(arrStrg != "") {
-		
-		var id = arrStrg[0].id;
-		var key = arrStrg[0].key;
-		
-		if(key) {
-			easySign("auto", "kakao", id, key);
-		} else {
-			easySign("auto", "google", id);
-		}
-		
-	}
-		
-
-
 var googleUser = {};
 var startApp = function() {
 	gapi.load('auth2', function(){
@@ -49,7 +13,7 @@ function attachSignin(element) {
 	console.log(element.id);
     auth2.attachClickHandler(element, {},
     function(googleUser) {
-    	easySign("direct", "google", googleUser.getBasicProfile().getEmail());
+    	easySign("google", googleUser.getBasicProfile().getEmail());
     }, function(error) {
     	alert(JSON.stringify(error, undefined, 2));
     });
@@ -59,8 +23,6 @@ w3IncludeHTML();
 
 
 startApp();
-
-});
 
 
 Kakao.init('a2df2dc9167541f9eb937ed24a7e8133');
@@ -93,7 +55,7 @@ function loginWithKakao() {
 				      		return false
 				    	}
 				    	
-						easySign("direct", "kakao", inputValue, res.id);
+						easySign("kakao", inputValue, res.id);
 				    	
 				    	
 					});
@@ -116,11 +78,10 @@ function loginWithKakao() {
  * type : 간편 로그인 종류(kakao, google)
  * id : email계정
  * key: 카카오에서 주는 key값
- * opt: 로컬 저장소 정보로 자동로그인 또는 다이렉트로그인 (auto, direct)
  * */
-function easySign(opt, type, id, key) {
+function easySign(type, id, key) {
 	
-	if(key == undefined) key = "NULL";
+//	if(key == undefined) key = "NULL";
 	
 	$.ajax({
 		url : "../../user/easySign.do",
@@ -163,7 +124,8 @@ function easySign(opt, type, id, key) {
 		
 		// 로그인 또는 회원가입
 		if(result.msg != "info") {
-			if(opt != "auto")	swal(title, msg, opt);
+			
+			swal(title, msg, opt);
 			
 			timer = setInterval(function () {
 				if(timer != null) location.href="../../view/main/main.html";		    	
@@ -172,7 +134,7 @@ function easySign(opt, type, id, key) {
 			
 		// 카카오 로그인의 경우 회원가입된 계정과 동일해야 로그인 성공!
 		} else {
-			if(opt != "auto")	swal.showInputError(msg);
+			swal.showInputError(msg);
 		}
 		
 	});
