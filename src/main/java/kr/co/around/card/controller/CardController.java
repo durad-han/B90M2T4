@@ -45,9 +45,10 @@ public class CardController {
 	
 	@RequestMapping("/retrieveCommentList.json")
 	@ResponseBody
-	public Map<String, Object> retrieveCommentList(int cardSeq, int pageNo, SearchVO search) throws Exception {
+	public Map<String, Object> retrieveCommentList(int cardSeq, int pageNo, SearchVO search/*, HttpSession session*/) throws Exception {
 		search.setCardSeq(cardSeq);
 		search.setPageNo(pageNo);
+//		UserVO user = (UserVO)session.getAttribute("user");
 		return cs.retrieveCommentList(search);
 	}
 	
@@ -82,7 +83,8 @@ public class CardController {
 	
 	@RequestMapping("/insert.do")
 	@ResponseBody
-	public void insertCard(MultipartHttpServletRequest mRequest, RedirectAttributes attr) throws Exception {
+	public void insertCard(MultipartHttpServletRequest mRequest, RedirectAttributes attr/*, HttpSession session*/) throws Exception {
+//		UserVO user = (UserVO)session.getAttribute("user");
 		Map<String, Object> param = new HashMap<>();
 		
 		ServletContext context = mRequest.getServletContext();

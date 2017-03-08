@@ -3,9 +3,6 @@ package kr.co.around.card.service;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import kr.co.around.repository.vo.*;
 
 public interface CardService {

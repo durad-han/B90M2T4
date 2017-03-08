@@ -42,6 +42,10 @@
 .body{
 	float: left;
 }
+img {
+	height: 70px;
+	width: 70px;
+}
 </style>
 </head>
 <body>
@@ -66,7 +70,9 @@
 					</div>
 					
 				</div>
-				
+				<form id="commentInsert">
+					<div id="commentCount">전체 <span></span>개<button>추가</button></div>
+				</form>
 				<div id="commentArea"></div>
 				<div id="pagingArea"></div>
 		
@@ -84,6 +90,7 @@
 
 <script>
 	w3IncludeHTML();
+	
 
 	function summonCard(){
 		$.ajax({
@@ -110,7 +117,18 @@
 			html += '<div class="card">';
 			html += card.cardContent + '<br><br>';
 			html += card.cardHashtag + '<br><br>';
-			html += card.cardFeeling + '<br><br>';
+			
+		var feeling = "";
+		console.log("cardFeeling : "+card.cardFeeling);
+		switch(card.cardFeeling){
+		case '1':	feeling = 'verygood.jpg';	break;
+		case '2':	feeling = 'good.png';	break;
+		case '3':	feeling = 'soso.png';	break;
+		case '4':	feeling = 'bad.png';	break;
+		case '5':	feeling = 'terrible.png';	break;
+		}; 
+			html += '<img src="../../img/card/' + feeling + '"/> <br><br>';
+			
 			html += card.cardRegDate + '<br><br>';
 		
 		if (card == null){
@@ -118,6 +136,33 @@
 		}
 		$("#cardHere").html(html);
 	}
+	
+	// 임시 작성중 ------------------------------------------------------------------------------------------
+	$("#commentInsert").submit(function commentInsertForm(commentNo) {
+		console.log("댓글등록하기");
+// 		$("#commentList tr[id^=row]").show();
+// 		$("#commentList tr[id^=modRow]").remove();
+		
+// 		var modId = $("#row" + commentNo + " > td:eq(0)").text();
+// 		var modContent = $("#row" + commentNo + " > td:eq(1)").text();
+		
+// 		var html = '';
+// 		html += '<tr id="modRow' + commentNo + '">';
+// 		html += '	<td>' + modId + '</td>';
+// 		html += '	<td>';
+// 		html += '		<div class="form-group">';
+// 		html += '			<input type="text" name="content" value="' + modContent + '" class="form-control input-wp2" placeholder="내용을 입력하세요">';
+// 		html += '		</div>';
+// 		html += '	</td>';
+// 		html += '	<td colspan="2">'; 
+// 		html += '		<a href="javascript:commentUpdate(' + commentNo + ');" class="btn btn-success btn-sm" role="button">수정</a>';
+// 		html += '		<a href="javascript:commentCancel(' + commentNo + ');" class="btn btn-warning btn-sm" role="button">취소</a>';
+// 		html += '	</td>';
+// 		html += '</tr>';
+// 		$("#row" + commentNo).after(html);	
+// 		$("#row" + commentNo).hide();
+	});
+	// ------------------------------------------------------------------------------------------
 	
 	function makeComment(commentMap){
 		var html = "";
@@ -143,11 +188,11 @@
 			
 		}
 			$("#commentArea").html(html);
-			$("#pagingArea").paging({
-					max: page.endPage,
-					current: page.pageNo,
-					length: page.tabSize,
-					});
+// 			$("#pagingArea").paging({
+// 					max: page.endPage,
+// 					current: page.pageNo,
+// 					length: page.tabSize,
+// 					});
 	}
 	
 	function goPage(pageNo) {

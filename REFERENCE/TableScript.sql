@@ -79,7 +79,7 @@ create table tb_Around_My_Favorite (
 	User_Seq		number(6)		not null,				-- 관심글 작성자 시퀀스 (FK)
 	My_Content		varchar2(420)	not null,				-- 관심글 내용 (140글자)
 	My_Hashtag		varchar2(420)	not null,				-- 관심글에 작성된 해시태그 ( #.. ; #.. ) ; 을 사용하여 구분
-	My_Feeling		char(1)			not null,				-- 관심글 기분 (1:, 2:, 3:, 4:, 5: )
+	My_Feeling		char(1)			not null,				-- 관심글 기분 (1:veryGood, 2:good, 3:soso, 4:bad, 5:terrible )
 	My_Reg_Date		varchar2(20) 	default to_char(sysdate)
 ); 
 
