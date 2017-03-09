@@ -2,6 +2,11 @@
 
 var latitude;
 var longitude;
+
+$(function() {
+	getLocation();
+})
+
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition, showError);
@@ -10,6 +15,7 @@ function getLocation() {
     	mapDiv.innerHTML = "Geolocation is not supported by this browser.";
     }
 }
+
 
 function showPosition(position) {
     latitude = position.coords.latitude;
