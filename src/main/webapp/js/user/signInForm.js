@@ -21,9 +21,7 @@ function attachSignin(element) {
 
 w3IncludeHTML();
 
-
 startApp();
-
 
 Kakao.init('a2df2dc9167541f9eb937ed24a7e8133');
 
@@ -139,3 +137,22 @@ function easySign(type, id, key) {
 		
 	});
 }
+
+
+/* 비밀번호 설정하러 가기 */
+$("#link").click(function() {
+	$("#link").css("display", "none");
+	$("#inputPass").css("display","block");
+	
+	
+	
+})
+
+$("#setPass").click(function() {
+	
+	$.ajax(function () {
+		
+	}).done();
+	
+	
+});

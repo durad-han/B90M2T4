@@ -15,13 +15,26 @@
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script src="https://apis.google.com/js/api:client.js"></script>
+<style>
+.border {
+	over-flow:hidden;
+	height:770px;
+	border-top-width: 0px !important;
+	border-bottom-width: 0px !important;
+	border-right-width: 0px !important;
+	border-left-width: 0px !important;
+}
+.link {
+	font-color: blue;
+}
 
+</style>
 </head>
 <body>
 
 	<!-- Contact section -->
-	<div class="w3-container w3-light-grey w3-padding-32 w3-padding-large" id="contact" style="over-flow:hidden;">
-	  <div class="w3-content" style="max-width:620px">
+	<div id="border" class="w3-container w3-light-grey w3-padding-32 w3-padding-large border" id="contact">
+	  <div class="w3-content" style="max-width:620px;padding-top: 100px;">
 	    <h4 class="w3-center"><b>A R O U N D</b></h4>
 	    <br>
 	    <h6 class="w3-center"><p> A R O U N D 로그인을 하시면 우리 주변에서 일어나는 진짜 이야기와</p></h6>
@@ -38,20 +51,37 @@
 		<br>
 	    <h6 class="w3-center"><p> SNS 간편 로그인을 통해 기존에 사용하시는 계정 로그인으로  </p></h6>
 	    <h6 class="w3-center"><p> 회원가입까지 한번에 가능합니다.</p></h6>
-	      <div class="w3-group">
-	        <label>Email</label>
-	        <input class="w3-input w3-border" type="text" name="Email" placeholder="이메일 입력" required>
+	    <br>
+	    <br>
+	      <p id="aLink"><h6 class="w3-center"><a href="#" id="link" class="link">비밀번호 설정하러 가기</a></h6></p>
+	      <div id="inputPass" style="display:none;">
+		      <div class="w3-group">
+		        <label>Password</label>
+		        <input class="w3-input w3-border" type="Password" id="inputPass" placeholder="비밀번호 입력" required>
+		      </div>
+		      <div class="w3-group">
+		        <label>Password Confirm</label>
+		        <input class="w3-input w3-border" type="Password" id="PassConfirm" placeholder="비밀번호 확인" required>
+		      </div>
+		      <button id="setPass" class="w3-button w3-block w3-black w3-margin-bottom">비밀번호 설정</button>
 	      </div>
-	      <div class="w3-group">
-	        <label>Password</label>
-	        <input class="w3-input w3-border" type="Password" name="Password" placeholder="비밀번호 입력" required>
+	      
+	      <div id="inputLogin" style="display:block;">
+		      <div class="w3-group">
+		        <label>email</label>
+		        <input class="w3-input w3-border" type="text" id="email" placeholder="이메일 입력" required>
+		      </div>
+		      <div class="w3-group">
+		        <label>Password Confirm</label>
+		        <input class="w3-input w3-border" type="Password" id="password" placeholder="비밀번호 입력" required>
+		      </div>
+		      <button type="submit" class="w3-button w3-block w3-black w3-margin-bottom">로그인</button>
 	      </div>
-	      <button type="submit" class="w3-button w3-block w3-black w3-margin-bottom">Sign In</button>
 	  </div>
 	</div>
 
 
-	<div w3-include-html="../include/footer.html"></div>
+	<div class="border" w3-include-html="../include/footer.html" style="height: 37px !important;"></div>
 	
 	<script src="../../js/user/signInForm.js"></script>
 </body>

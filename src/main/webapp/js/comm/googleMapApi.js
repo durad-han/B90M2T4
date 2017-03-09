@@ -1,12 +1,12 @@
 // 지도 관련 스크립트 
 
-var latitude;
-var longitude;
+var latitude = 37.4944104;
+var longitude = 127.0279339;
 
 $(function() {
-	getLocation();
+	initMap();
 })
-
+/*
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition, showError);
@@ -41,7 +41,7 @@ function showError(error) {
     }
 }
 
-
+*/
 /**
  *  출발지와 목적지의 거리를 km로 반환
  *  구면 코사인 법칙 : 구면 삼각법
