@@ -53,17 +53,12 @@
 
 <script>
 w3IncludeHTML();
-
 $(function (){
 // 	$("#mapDiv").load("../card/cardMap.html");
 	$("#cardList").load("../card/retrieveCardList.html");
 	$("#myFavorite").load("../myFavorite/myFavorite.html");
 	$("#insertCard").load("../card/insertCardForm.html");
 })
-var cardNo = 1;
-function onClick(cardNo) {
-	$("#cardList").load("../card/retrieveCardDetail.html?cardSeq="+cardNo);
-}
 
 function openMenu(evt, menuName) {
 	  var i, x, tablinks;

@@ -6,7 +6,7 @@ function cardListSet(){
 			dataType: "json"
 		})
 		.done(makeCardList);
-	}
+}
 
 //----- 카드 리스트 출력 -------------------------------------------------------------------
 function makeCardList(cardListMap){
@@ -15,9 +15,9 @@ function makeCardList(cardListMap){
 	var page = cardListMap['pageResult'];
 	
 	for (var i = 0 ; i < cards.length ; i++ ){
-		html = "";
-		html += '<div class="cardSheet">';
 		var card = cards[i];
+		html = "";
+		html += '<div class="cardSheet" id="cardSeq'+card.cardSeq+'">';
 		html += card.cardContent + '<br><br>';
 		html += card.cardHashtag + '<br><br>';
 		
@@ -35,9 +35,24 @@ function makeCardList(cardListMap){
 		html += '</div>';
 		
 		switch(i){
-			case 0: $("#card1").html(html); break;
-			case 1: $("#card2").html(html); break;
-			case 2: $("#card3").html(html); break;
+			case 0: $("#card1").html(html);
+						var card1 = card.cardSeq;
+					$("#card1").on("click", function(){
+						cardNo = card1;
+						$("#cardList").load("../card/retrieveCardDetail.html?cardSeq="+card1);
+					}); break;
+			case 1: $("#card2").html(html);
+						var card2 = card.cardSeq;
+					$("#card2").on("click", function(){
+						cardNo = card2;
+						$("#cardList").load("../card/retrieveCardDetail.html?cardSeq="+card2);
+					}); break;
+			case 2: $("#card3").html(html);
+						var card3 = card.cardSeq;
+					$("#card3").on("click", function(){
+						cardNo = card3;
+						$("#cardList").load("../card/retrieveCardDetail.html?cardSeq="+card3);
+					}); break;
 		}
 	}
 	
@@ -74,5 +89,5 @@ function goPage(page){
 	})
 	.done(makeCardList);
 }
-	
+
  cardListSet();

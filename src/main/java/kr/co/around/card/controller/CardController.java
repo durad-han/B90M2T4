@@ -28,7 +28,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kr.co.around.card.service.CardService;
 import kr.co.around.repository.vo.*;
 
-
 @Controller
 @RequestMapping("/card")
 public class CardController {
@@ -51,9 +50,8 @@ public class CardController {
 	
 	@RequestMapping("/retrieveCommentList.json")
 	@ResponseBody
-	public Map<String, Object> retrieveCommentList(int cardSeq, int pageNo, SearchVO search/*, HttpSession session*/) throws Exception {
+	public Map<String, Object> retrieveCommentList(int cardSeq, SearchVO search/*, HttpSession session*/) throws Exception {
 		search.setCardSeq(cardSeq);
-		search.setPageNo(pageNo);
 //		UserVO user = (UserVO)session.getAttribute("user");
 		return cs.retrieveCommentList(search);
 	}
