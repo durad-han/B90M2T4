@@ -87,8 +87,8 @@ $("#cardInsert").submit(function() {
   fd.append("cardContent", $("[name=cardContent]").val());
   fd.append("cardFeeling", $("input[name=cardFeeling]:checked").val());
   fd.append("cardHashtag", $("input[name=cardHashtag]").val());
-  fd.append("cardLongitude", $("input[name=cardLongitude]").val());
-  fd.append("cardLatitude", $("input[name=cardLatitude]").val());
+  fd.append("cardLongitude", longitude);
+  fd.append("cardLatitude", latitude);
   
   $.ajax({
       url: "/b90m2t4/card/insert.do",
