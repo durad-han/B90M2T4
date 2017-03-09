@@ -12,6 +12,37 @@ $(document).ready(function() {
 	});
 });
 
+
+
+
+
+
+
+//내 위치 가져오기
+
+var latitude = "";
+var longitude = "";
+window.onload = getMyLocation;
+function getMyLocation() {
+	if (navigator.geolocation) navigator.geolocation.getCurrentPosition(displayLocation, displayError);
+}
+function displayLocation(position) {
+	latitude = position.coords.latitude;
+	longitude = position.coords.longitude;
+	var location = document.getElementById("a");
+	location.innerHTML = "당신의 위치 : 위도(" + latitude + "), 경도(" + longitude + ")";
+}
+function displayError(error) {}
+
+
+
+
+
+
+
+
+
+
 // 해시태그 팝업 오픈
 function popupOpen() {
 	var popUrl = "../card/insertCardFormPopup.html";
@@ -66,6 +97,9 @@ $("#cardInsert").submit(function() {
       dataType: "html",
       processData: false,
       contentType: false
+  })
+  .done (function () {
+	  location.href="/b90m2t4/view/main/main.do";
   })
   .fail (function (jqXhr, textStatus, errorText) {
       alert("에러발생 : " + errorText);
