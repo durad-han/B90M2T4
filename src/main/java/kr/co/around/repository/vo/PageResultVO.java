@@ -2,7 +2,7 @@ package kr.co.around.repository.vo;
 
 public class PageResultVO {
 	private int listSize = 3;
-	private int tabSize  = 3;
+	private int tabSize  = 10;
 	private int pageNo;
 	private int count;
 	private int lastPage;
