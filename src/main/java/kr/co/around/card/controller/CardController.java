@@ -120,8 +120,8 @@ public class CardController {
 		cardVO.setCardContent(mRequest.getParameter("cardContent"));
 		cardVO.setCardFeeling(mRequest.getParameter("cardFeeling"));
 		cardVO.setCardHashtag(mRequest.getParameter("cardHashtag"));
-		cardVO.setCardLongitude(mRequest.getParameter("cardLongitude"));
-		cardVO.setCardLatitude(mRequest.getParameter("cardLatitude"));
+		cardVO.setCardLongitude(Double.parseDouble(mRequest.getParameter("cardLongitude")));
+		cardVO.setCardLatitude(Double.parseDouble(mRequest.getParameter("cardLatitude")));
 		cardVO.setUserSeq(12);
 		// user.getUserSeq()
 		

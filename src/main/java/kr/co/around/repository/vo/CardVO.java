@@ -7,8 +7,8 @@ public class CardVO {
 	private String cardContent;			// 카드 내용 (140글자)
 	private String cardFeeling;			// 카드 기분 (1:, 2:, 3:, 4:, 5: )
 	private String cardHashtag;			// 카드에 작성된 해시태그 ( #.. #.. ) " " 사용하여 구분
-	private String cardLongitude;		// 카드 마커 경도값
-	private String cardLatitude;		// 카드 마커 위도값
+	private double cardLongitude;		// 카드 마커 경도값
+	private double cardLatitude;		// 카드 마커 위도값
 	private String cardImgPath;			// 카드 배경 이미지 주소값
 	private String cardRegDate;			// 카드 등록 시각
 	
@@ -54,16 +54,16 @@ public class CardVO {
 	public void setCardRegDate(String cardRegDate) {
 		this.cardRegDate = cardRegDate;
 	}
-	public String getCardLongitude() {
+	public double getCardLongitude() {
 		return cardLongitude;
 	}
-	public void setCardLongitude(String cardLongitude) {
+	public void setCardLongitude(double cardLongitude) {
 		this.cardLongitude = cardLongitude;
 	}
-	public String getCardLatitude() {
+	public double getCardLatitude() {
 		return cardLatitude;
 	}
-	public void setCardLatitude(String cardLatitude) {
+	public void setCardLatitude(double cardLatitude) {
 		this.cardLatitude = cardLatitude;
 	}
 

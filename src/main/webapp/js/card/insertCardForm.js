@@ -20,8 +20,8 @@ $(document).ready(function() {
 
 //내 위치 가져오기
 
-var latitude = "";
-var longitude = "";
+var latitude = "37.490556";
+var longitude = "127.030254";
 window.onload = getMyLocation;
 function getMyLocation() {
 	if (navigator.geolocation) navigator.geolocation.getCurrentPosition(displayLocation, displayError);
@@ -63,9 +63,9 @@ $("#cardInsert").submit(function() {
 //      $("#cardLongitude").focus();
 //      return false;
 //  }
-  if ($("#cardContent").val() == null) {
+  if ($("#writeCardContent").val() == null) {
       alert("당신의 이야기를 입력해주세요 ^^");
-      $("#cardContent").focus();
+      $("#writeCardContent").focus();
       return false;
   }
   if ($("#cardHashtag").val() == null) {
@@ -99,7 +99,7 @@ $("#cardInsert").submit(function() {
       contentType: false
   })
   .done (function () {
-	  location.href="/b90m2t4/view/main/main.do";
+	  location.href="/b90m2t4/card/retrieveList.json";
   })
   .fail (function (jqXhr, textStatus, errorText) {
       alert("에러발생 : " + errorText);

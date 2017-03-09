@@ -1,5 +1,6 @@
 package kr.co.around.card.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,8 +27,34 @@ public class CardServiceImpl implements CardService {
 	@Override
 	public Map<String, Object> retrieveCardList(SearchVO search) throws Exception {
 		Map<String, Object> cardMap = new HashMap<String, Object>();
-			cardMap.put("cardList", cMapper.selectCardList(search));
-			cardMap.put("pageResult", new PageResultVO(search.getPageNo(), cMapper.selectCardCount(search)));
+		List<CardVO> cardList = cMapper.selectCardList(search);
+		
+		List<CardVO> removedCardList = new ArrayList<>();
+		
+		double startLatRads = (37.4944104 * Math.PI) / 180d;
+		double startLongRads = (127.0279339 * Math.PI) / 180d;
+		
+		for(int i = 0; i < cardList.size(); i++) {
+			
+			CardVO cardItem = cardList.get(i);
+			double latitude =  cardItem.getCardLatitude();
+			double longitude =  cardItem.getCardLongitude();
+			
+			double Radius = 6371; // radius of the Earth in km
+			double distance = Math.acos(
+					       		Math.sin(startLatRads) * Math.sin(latitude) + 
+					       		Math.cos(startLatRads) * Math.cos(latitude) *
+					       		Math.cos(startLongRads - longitude)
+					       ) * Radius;
+			
+			if((distance / 1000d) <= search.getDistance()) {
+				System.out.println("distance : " + i + " 번째 " + (distance / 1000));
+				removedCardList.add(cardItem);
+			}
+		}
+		
+		cardMap.put("cardList", removedCardList);
+		cardMap.put("pageResult", new PageResultVO(search.getPageNo(), cMapper.selectCardCount(search)));
 		return cardMap;
 		
 	}
