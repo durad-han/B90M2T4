@@ -83,13 +83,13 @@ public class CardController {
 	public void insertComment(@RequestParam(value="cardSeq", required=false)int cardSeq, CommentVO commentVO, HttpSession session) throws Exception {
 		System.out.println("insertComment");
 		commentVO.setCardSeq(cardSeq);
-		UserVO user = (UserVO)session.getAttribute("user");
-		commentVO.setUserSeq(user.getUserSeq());
-//		System.out.println("--------------------------------");
-//		System.out.println("cardseq "+commentVO.getCardSeq());
-//		System.out.println("content "+commentVO.getCommentContent());
-//		System.out.println("userseq "+commentVO.getUserSeq());
-//		System.out.println("--------------------------------");
+//		UserVO user = (UserVO)session.getAttribute("user");
+//		commentVO.setUserSeq(user.getUserSeq());
+		System.out.println("--------------------------------");
+		System.out.println("cardseq "+commentVO.getCardSeq());
+		System.out.println("content "+commentVO.getCommentContent());
+		System.out.println("userseq "+commentVO.getUserSeq());
+		System.out.println("--------------------------------");
 		cs.insertComment(commentVO);
 	}	
 		

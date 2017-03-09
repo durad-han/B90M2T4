@@ -44,7 +44,7 @@
 			url: "/b90m2t4/card/insertComment.do",
 			type: "post",
 			data: {
-				cardSeq: 1,
+				cardSeq: targetNo,
 				commentContent: $("[name=commentContent]").val()
 				},
 			dataType: "json",
@@ -54,6 +54,7 @@
 		})
 		.fail (function (jqXhr, textStatus, errorText) {
 			alert("에러발생 : " + errorText);
+			self.close();
 		});	
 		return false;
 	});

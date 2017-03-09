@@ -22,9 +22,10 @@
 .card{ 
 	margin : 20px; padding: 20px;
  	background-color: white;  
-	width: 600px; height: 250px;
+	width: 700px; height: 300px;
 	text-align: center;
 	}
+#cardContent{ background-color: orange; }
 .comment{ 
 	border: 1px solid navy;
  	background-color: white;

@@ -18,7 +18,7 @@ function makeCardList(cardListMap){
 		var card = cards[i];
 		html = "";
 		html += '<div class="cardSheet" id="cardSeq'+card.cardSeq+'">';
-		html += card.cardContent + '<br><br>';
+		html += '<span id="cardContent">'+ card.cardContent + '</span><br><br>';
 		html += card.cardHashtag + '<br><br>';
 		
 		var feeling = "";

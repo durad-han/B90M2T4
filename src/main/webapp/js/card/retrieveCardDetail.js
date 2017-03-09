@@ -1,12 +1,15 @@
 //----- 카드 정보 받아오기 -------------------------------------------------------------------
+var targetNo = 0;
+
 function cardSet(){
 	console.log("카드 셋팅");
-	console.log("현재 카드 시퀀스 : "+cardNo);
+	targetNo = cardNo;
+	console.log("현재 카드 시퀀스 : "+targetNo);
 	
 	$.ajax({
 		url: "/b90m2t4/card/retrieve.json",
 		type: "POST",
-		data: {cardSeq: cardNo },
+		data: {cardSeq: targetNo },
 		dataType: "json"
 	})
 	.done(makeCard);
@@ -15,13 +18,13 @@ function cardSet(){
 //----- 카드 페이지 이동 -------------------------------------------------------------------
 var toward = "";
 function pageMove(toward){
-	var targetNo = card.cardSeq;
-	switch(toward){
-	case 'prev'	: targetNo-1; cardSet(); break;
-	case 'next'	: targetNo+1; cardSet(); break;
-	}
-	console.log("카드 셋팅");
+	targetNo = $("#cardSeq").val();
 	console.log("현재 카드 시퀀스 : "+targetNo);
+	switch(toward){
+	case 'prev'	: targetNo--; break;
+	case 'next'	: targetNo++; break;
+	}
+	console.log("바꿀 카드 시퀀스 : "+targetNo);
 	
 	$.ajax({
 		url: "/b90m2t4/card/retrieve.json",
@@ -36,7 +39,8 @@ function pageMove(toward){
 function makeCard(card){
 	var html = "";
 	html += '<div class="card">';
-	html += card.cardContent + '<br><br>';
+	html += '<input id="cardSeq" type="hidden" value="'+ card.cardSeq +'"/>';
+	html += '<span id="cardContent">'+card.cardContent + '</span><br><br>';
 	html += card.cardHashtag + '<br><br>';
 	
 	var feeling = "";
@@ -64,7 +68,7 @@ function commentSet(){
 	$.ajax({
 		url: "/b90m2t4/card/retrieveCommentList.json",
 		type: "POST",
-		data: {	cardSeq: cardNo },
+		data: {	cardSeq: targetNo },
 		dataType: "json"
 	})
 	.done(makeComment);
@@ -91,7 +95,7 @@ function makeComment(commentMap){
 	if (comments.length == 0){
 		html = '<div class="comment">';
 		html += '아무도 이 카드에 반응하지 않았습니다 <br><br>';
-		html += '<button>첫 댓글 남기기<button>';
+		html += '<a href="javascript:commentInsertForm();">첫 댓글 남기기</a>';
 		html += '</div>';
 		
 	}
@@ -116,7 +120,7 @@ function goCommentPage(cPage) {
 	$.ajax({
 		url: "/b90m2t4/card/retrieveCommentList.json",
 		type: "POST",
-		data: {	cardSeq: cardNo,
+		data: {	cardSeq: targetNo,
 				pageNo: cPage
 				},
 		dataType: "json"
@@ -124,8 +128,11 @@ function goCommentPage(cPage) {
 	.done(makeComment);
 }
 //----- 코멘트 등록 ------------------------------------------------------------------------------------------
-$("#commentInsert").submit(function commentInsertForm() {
+$("#commentInsert").submit(function () {
 	window.open("../card/insertCommentForm.html", "", "width=500, height=250, resizable=yes, scrollbars=yes, status=no");
 });
 
+function commentInsertForm() {
+	window.open("../card/insertCommentForm.html", "", "width=500, height=250, resizable=yes, scrollbars=yes, status=no");
+}
 cardSet();
