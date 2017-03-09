@@ -48,14 +48,9 @@
 				commentContent: $("[name=commentContent]").val()
 				},
 			dataType: "json",
-		})
-		.done (function () {
-			self.close();
-		})
-		.fail (function (jqXhr, textStatus, errorText) {
-			alert("에러발생 : " + errorText);
-			self.close();
-		});	
+		});
+		commentSet();
+		self.close();
 		return false;
 	});
 </script>

@@ -56,5 +56,5 @@ img {
 body > div {
 	border: 1px solid black;
 }
-.side{ float: left; }
+.side{ float: left; font-size: 20px; }
 .cardHere{ float: left; }

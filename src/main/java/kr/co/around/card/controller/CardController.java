@@ -50,9 +50,8 @@ public class CardController {
 	
 	@RequestMapping("/retrieveCommentList.json")
 	@ResponseBody
-	public Map<String, Object> retrieveCommentList(int cardSeq, SearchVO search/*, HttpSession session*/) throws Exception {
+	public Map<String, Object> retrieveCommentList(int cardSeq, SearchVO search) throws Exception {
 		search.setCardSeq(cardSeq);
-//		UserVO user = (UserVO)session.getAttribute("user");
 		return cs.retrieveCommentList(search);
 	}
 	
@@ -82,6 +81,7 @@ public class CardController {
 	@RequestMapping("/insertComment.do")
 	public void insertComment(@RequestParam(value="cardSeq", required=false)int cardSeq, CommentVO commentVO, HttpSession session) throws Exception {
 		System.out.println("insertComment");
+		System.out.println("preCardseq "+commentVO.getCardSeq());
 		commentVO.setCardSeq(cardSeq);
 //		UserVO user = (UserVO)session.getAttribute("user");
 //		commentVO.setUserSeq(user.getUserSeq());

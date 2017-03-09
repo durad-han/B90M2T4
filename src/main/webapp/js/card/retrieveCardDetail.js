@@ -129,10 +129,10 @@ function goCommentPage(cPage) {
 }
 //----- 코멘트 등록 ------------------------------------------------------------------------------------------
 $("#commentInsert").submit(function () {
-	window.open("../card/insertCommentForm.html", "", "width=500, height=250, resizable=yes, scrollbars=yes, status=no");
+	window.open("../card/insertCommentForm.html", "", "width=500, height=250, resizable=no, scrollbars=yes, status=no");
 });
 
 function commentInsertForm() {
-	window.open("../card/insertCommentForm.html", "", "width=500, height=250, resizable=yes, scrollbars=yes, status=no");
+	window.open("../card/insertCommentForm.html", "", "width=500, height=250, resizable=no, scrollbars=yes, status=no");
 }
 cardSet();
