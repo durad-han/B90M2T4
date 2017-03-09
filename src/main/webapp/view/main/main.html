@@ -5,9 +5,11 @@
 <body>
 
 <div w3-include-html="../include/header.html"></div>
-
+<br>
+<br>
+<br>
 <!-- 카드 지도 페이지  -->
-	<div id="mapDiv" style="height:600px;width:100%;"></div>
+	<div id="divMarkerMap" style="height:750px;width:100%;"></div>
 	
 <!-- 카드 목록조회 페이지  -->
 	<div id="cardList"></div>
@@ -54,7 +56,7 @@
 <script>
 w3IncludeHTML();
 $(function (){
-// 	$("#mapDiv").load("../card/cardMap.html");
+	$("#divMarkerMap").load("../card/markerMap.html");
 	$("#cardList").load("../card/retrieveCardList.html");
 	$("#myFavorite").load("../myFavorite/myFavorite.html");
 	$("#insertCard").load("../card/insertCardForm.html");
@@ -63,14 +65,13 @@ $(function (){
 	})
 });
 
-function resetList(){
+/* function resetList(){
 	console.log("리셋 리스트 펑션");
 	$("#cardList").load("../card/retrieveCardList.html");
-}
+} */
 
 function openMenu(evt, menuName) {
-	  console.log("menuname : "+menuName);
-	  console.dir("menuname : "+menuName);
+
 	  var i, x, tablinks;
 	  x = document.getElementsByClassName("menu");
 	  for (i = 0; i < x.length; i++) {
@@ -82,12 +83,11 @@ function openMenu(evt, menuName) {
 	  }
 	  document.getElementById(menuName).style.display = "block";
 	  evt.currentTarget.firstElementChild.className += " w3-dark-grey";
-	}
-	document.getElementById("myLink").click();
+	  
+}
+document.getElementById("myLink").click();
 	
 </script>
-<script src="../../js/comm/googleMapApi.js"></script>
-<script async defer	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWJxPZFiG_3QbcXlfIG71_VGDDUuZS5Oc&callback=initMap"></script>
 <iframe src="http://around.com:10001" style="display:none;"></iframe>
 </body>
 </html>

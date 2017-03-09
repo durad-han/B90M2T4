@@ -3,7 +3,7 @@
  */
 // 글자수 제한 및 글자수 표시
 $(document).ready(function() {
-	$('#cardContent').on('keyup', function() {
+	$('#writeCardContent').on('keyup', function() {
 		if ($(this).val().length > 140) {
 			alert('글자수는 140자 까지입니다.');
 			$(this).val($(this).val().substring(0, 140));

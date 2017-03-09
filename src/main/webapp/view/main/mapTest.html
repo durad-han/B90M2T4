@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Simple markers</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #markerMap {
+        height: 100%;
+      }
+    </style>
+    <link rel="import" href="../../view/include/baseInclude.html">
+  </head>
+  
+  	거리 : <p id="distanceResult"></p> 
+  	<br>
+  	<input id="markerRange" type="range" name="range"
+           min="200" max="1000" step="200" value="200" style="width:600px;" />
+	           <p style="float:left;">200m</p>
+	           <p style="padding-left: 570px;">1km</p>
+    <div id="markerMap" style="width:600px; height:600px;"></div>
+    <script>
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWJxPZFiG_3QbcXlfIG71_VGDDUuZS5Oc"></script>
+<!--     <script src="../../js/comm/googleMapApi.js"></script> -->
+    <script src="../../js/comm/markerMap.js"></script>
+</html>
