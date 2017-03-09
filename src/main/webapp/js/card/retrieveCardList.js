@@ -1,6 +1,5 @@
 //----- 카드 정보 받아오기 -------------------------------------------------------------------
 function cardListSet(){
-	arrCard = new Array();
 		$.ajax({
 			url: "/b90m2t4/card/retrieveList.json",
 			type: "POST",
@@ -20,7 +19,8 @@ function makeCardList(cardListMap){
 		arrCard.push({
 			lat: card.cardLatitude,
 			log: card.cardLongitude,
-			tag: card.cardHashtag
+			tag: card.cardHashtag,
+			distanceMeter: card.distance
 		});
 		
 		html = "";

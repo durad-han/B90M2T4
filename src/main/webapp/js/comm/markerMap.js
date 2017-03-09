@@ -18,7 +18,8 @@ p.addEventListener("input", function() {
     res.innerHTML = val + unit;
     
     markerInitMap();
-    cardListSet()
+    cardListSet();
+    
 }, false); 
 
 function markerInitMap() {
@@ -54,21 +55,26 @@ function markerInitMap() {
           };
   cityCircle = new google.maps.Circle(markerpopulationOptions);
 
+ 
+  
   if(arrCard.length > 0) {
-	  console.dir(arrCard)
+	  
 	  for (var i = 0; i < arrCard.length; ++i) {
-		  var marker = new google.maps.Marker({
-	      position: {
-	        lat: arrCard[i].lat,
-	        lng: arrCard[i].log
-	      },
-	      map: markerMap
-	    });
-	    attachSecretMessage(marker, arrCard[i].tag);
+		  
+		  if(arrCard[i].distanceMeter <= distance) {
+			  var marker = new google.maps.Marker({
+			      position: {
+			        lat: arrCard[i].lat,
+			        lng: arrCard[i].log
+			      },
+			      map: markerMap
+		      });
+			  attachSecretMessage(marker, arrCard[i].tag);
+		  }
 	  }
+
   }
 }
-
 
 function attachSecretMessage(marker, secretMessage) {
   var infowindow = new google.maps.InfoWindow({

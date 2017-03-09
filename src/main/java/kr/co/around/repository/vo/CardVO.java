@@ -11,7 +11,14 @@ public class CardVO {
 	private double cardLatitude;		// 카드 마커 위도값
 	private String cardImgPath;			// 카드 배경 이미지 주소값
 	private String cardRegDate;			// 카드 등록 시각
+	private double distance;
 	
+	public double getDistance() {
+		return distance;
+	}
+	public void setDistance(double distance) {
+		this.distance = distance;
+	}
 	public int getCardSeq() {
 		return cardSeq;
 	}

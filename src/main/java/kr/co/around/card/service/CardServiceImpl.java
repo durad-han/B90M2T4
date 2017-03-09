@@ -35,11 +35,11 @@ public class CardServiceImpl implements CardService {
 		for(int i = 0; i < cardList.size(); i++) {
 			// 미터(Meter) 단위
 			CardVO cardItem = cardList.get(i);
-			double distanceMeter = 
+			double distance = 
 					DistanceUtil.distance(37.4944104, 127.0279339, cardItem.getCardLatitude(), cardItem.getCardLongitude(), "meter");
-
-	        if(distanceMeter <= search.getDistance()) {
-				System.out.println("distance : " + i + " 번째 " + distanceMeter);
+			cardItem.setDistance(distance);
+	        if(distance <= search.getDistance()) {
+				System.out.println("distance : " + i + " 번째 " + distance);
 				removedCardList.add(cardItem);
 			}
 		}
