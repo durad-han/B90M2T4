@@ -123,15 +123,14 @@ public class CardController {
 		cardVO.setCardLongitude(mRequest.getParameter("cardLongitude"));
 		cardVO.setCardLatitude(mRequest.getParameter("cardLatitude"));
 		cardVO.setUserSeq(12);
-		
 		// user.getUserSeq()
 		
-		System.out.println(cardVO.getCardContent());
-		System.out.println(cardVO.getCardFeeling()); 
-		System.out.println(cardVO.getCardHashtag()); 
-		System.out.println(cardVO.getCardLongitude());
-		System.out.println(cardVO.getCardLatitude()); 
-		System.out.println(cardVO.getUserSeq());
+		System.out.println("Content : " + cardVO.getCardContent());
+		System.out.println("Feeling : " + cardVO.getCardFeeling()); 
+		System.out.println("Hashtag : " + cardVO.getCardHashtag()); 
+		System.out.println("Longitude : " + cardVO.getCardLongitude());
+		System.out.println("Latitude : " + cardVO.getCardLatitude()); 
+		System.out.println("UserSeq : " + cardVO.getUserSeq());
 		
 //		System.out.println(mRequest.getFile("cardImgPath"));
 		if (mRequest.getFile("cardImgPath") != null) {
@@ -153,7 +152,24 @@ public class CardController {
 			param.put("card", cardVO);
 		}
 		cs.insertCard(cardVO);
-		attr.addFlashAttribute("msg", "글 등록이 완료되었습니다.");
+		
+		// db에서 해시태그목록 받아오기
+		List<HashtagVO> allHashTagVO = cs.selectAllHashtag();
+		System.out.println(allHashTagVO.size());
+		
+		// 입력한 해시태그 #으로 각각 나누기
+		String[] hashtagContent = mRequest.getParameter("cardHashtag").trim().split("#");
+		System.out.println(hashtagContent.length);
+		
+		// 태그를 db로 보내기 (쿼리에서 merge into를 사용해서 있으면 frequency ++ 하고, 없으면 새로 등록)
+		for (int i = 1 ; i < hashtagContent.length ; i++) {
+			String trimHashtagContent = hashtagContent[i].trim();
+			cs.insertHashtag(trimHashtagContent);
+		}
+		
+		
+		
+//		attr.addFlashAttribute("msg", "글 등록이 완료되었습니다.");
 		
 		
 		/* 

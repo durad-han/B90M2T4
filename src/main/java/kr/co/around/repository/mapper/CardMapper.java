@@ -35,6 +35,7 @@ public interface CardMapper {
 
 	public List<HashtagVO> selectHashtag(String hashtagInput) throws Exception;
 
+	public List<HashtagVO> selectAllHashtag() throws Exception;
 	
-	
+	public void insertHashtag(String hashtagContent) throws Exception;
 }

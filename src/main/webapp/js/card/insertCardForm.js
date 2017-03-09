@@ -19,6 +19,11 @@ function popupOpen() {
 	window.open(popUrl, "", popOption);
 }
 
+$("#cancle").click(function () {
+	  location.href="../../view/main/main.html";
+});
+
+
 // 카드 작성
 $("#cardInsert").submit(function() {
     
@@ -61,10 +66,6 @@ $("#cardInsert").submit(function() {
       dataType: "html",
       processData: false,
       contentType: false
-  })
-  .done (function (result) {
-      alert("msg");
-      location.href="../../view/main/main.html";
   })
   .fail (function (jqXhr, textStatus, errorText) {
       alert("에러발생 : " + errorText);

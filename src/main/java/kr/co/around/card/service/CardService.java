@@ -32,5 +32,7 @@ public interface CardService {
 	
 	public List<HashtagVO> retrieveHashtag(String hashtagInput) throws Exception;
 
-
+	public List<HashtagVO> selectAllHashtag() throws Exception;
+	
+	public void insertHashtag(String hashtagContent) throws Exception;
 }

@@ -26,4 +26,26 @@
 <!-- 			 where hashtag_content like #{hashTagInput} || '%' -->
 <!-- 			 order by Hashtag_Frequency -->
 	</select>
+	
+	<select id="selectAllHashtag" resultMap="hashtagMap">
+		select *
+		  from tb_Around_Hashtag
+	</select>
+	
+	<insert id="insertHashtag" parameterType="string">
+		merge into tb_Around_Hashtag h
+		using dual
+		   on (h.hashtag_content = #{hashtagContent})
+		 when matched then
+				update set hashtag_frequency = hashtag_frequency + 1
+		 when not matched then
+		 	insert (hashtag_seq,
+		 			hashtag_content,
+		 			hashtag_frequency
+		 	) values (
+		 			s_Around_Hashtag.nextVal,
+		 			#{hashtagContent},
+		 			1
+		 	)
+	</insert>
 </mapper>

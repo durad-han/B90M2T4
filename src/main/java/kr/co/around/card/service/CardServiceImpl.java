@@ -88,6 +88,17 @@ public class CardServiceImpl implements CardService {
 		System.out.println(HashtagVO);
 		return HashtagVO;
 	}
-
 	
+	@Override
+	public List<HashtagVO> selectAllHashtag() throws Exception {
+		System.out.println("Service : selectAllHashtag");
+		List<HashtagVO> allHashTagVO = cMapper.selectAllHashtag();
+		return allHashTagVO;
+	}
+	
+	@Override
+	public void insertHashtag(String hashtagContent) throws Exception {
+		System.out.println("Service : insertHashTag");
+		cMapper.insertHashtag(hashtagContent);
+	}
 }
