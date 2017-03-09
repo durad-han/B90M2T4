@@ -14,7 +14,7 @@ $(document).ready(function() {
 
 // 해시태그 팝업 오픈
 function popupOpen() {
-	var popUrl = "insertCardFormPopup.html";
+	var popUrl = "../card/insertCardFormPopup.html";
     var popOption = "width=400, height=270, resizable=yes, scrollbars=yes, status=no";
 	window.open(popUrl, "", popOption);
 }

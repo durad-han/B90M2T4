@@ -58,9 +58,19 @@ $(function (){
 	$("#cardList").load("../card/retrieveCardList.html");
 	$("#myFavorite").load("../myFavorite/myFavorite.html");
 	$("#insertCard").load("../card/insertCardForm.html");
-})
+	$("#resetList").on("click", function(){
+		$("#cardList").load("../card/retrieveCardList.html");
+	})
+});
+
+function resetList(){
+	console.log("리셋 리스트 펑션");
+	$("#cardList").load("../card/retrieveCardList.html");
+}
 
 function openMenu(evt, menuName) {
+	  console.log("menuname : "+menuName);
+	  console.dir("menuname : "+menuName);
 	  var i, x, tablinks;
 	  x = document.getElementsByClassName("menu");
 	  for (i = 0; i < x.length; i++) {

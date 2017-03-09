@@ -1,9 +1,32 @@
 //----- 카드 정보 받아오기 -------------------------------------------------------------------
 function cardSet(){
+	console.log("카드 셋팅");
+	console.log("현재 카드 시퀀스 : "+cardNo);
+	
 	$.ajax({
 		url: "/b90m2t4/card/retrieve.json",
 		type: "POST",
 		data: {cardSeq: cardNo },
+		dataType: "json"
+	})
+	.done(makeCard);
+}
+
+//----- 카드 페이지 이동 -------------------------------------------------------------------
+var toward = "";
+function pageMove(toward){
+	var targetNo = card.cardSeq;
+	switch(toward){
+	case 'prev'	: targetNo-1; cardSet(); break;
+	case 'next'	: targetNo+1; cardSet(); break;
+	}
+	console.log("카드 셋팅");
+	console.log("현재 카드 시퀀스 : "+targetNo);
+	
+	$.ajax({
+		url: "/b90m2t4/card/retrieve.json",
+		type: "POST",
+		data: {cardSeq: targetNo },
 		dataType: "json"
 	})
 	.done(makeCard);
@@ -38,7 +61,6 @@ function makeCard(card){
 	
 //----- 카드 정보 받아오기 -------------------------------------------------------------------
 function commentSet(){
-	console.log(cardNo+"번 코멘트 가져와 ");
 	$.ajax({
 		url: "/b90m2t4/card/retrieveCommentList.json",
 		type: "POST",
@@ -52,7 +74,6 @@ function commentSet(){
 // ------------------------------------------------------------------------------------------
 
 function makeComment(commentMap){
-	console.log("코멘트 go!")
 	var html = "";
 	var comments = commentMap['commentList'];
 	var page = commentMap['pageResult'];
@@ -67,29 +88,22 @@ function makeComment(commentMap){
 			html += comment.commentRegDate + '<br><br>';
 			html += '</div>';
 	}
-	console.log("코멘트 길이 : "+comments.length);
 	if (comments.length == 0){
-		console.log("길이가 0 일 경우");
 		html = '<div class="comment">';
 		html += '아무도 이 카드에 반응하지 않았습니다 <br><br>';
 		html += '<button>첫 댓글 남기기<button>';
 		html += '</div>';
 		
 	}
-	console.log("코멘트 입력");
 		$("#commentArea").html(html);
 		$("#commentCount").html(page.count);
 		
-		console.log("코멘트 페이징 시작");
 		var paging = "";
 		if(page.endPage == 1){
-			console.log("페이지가 한개야");
 			$("#commentPagingArea").html('<a href="#여기엔_페이지가_하나밖에_없다" class="w3-bar-item w3-button w3-hover-black">1</a>');
 		}else{
-			console.log("페이징 작업 시작");
 			paging += '<a href="javascript:goCommentPage(prev);" class="w3-bar-item w3-button w3-hover-black">«</a>';
 			for(var i = 1 ; i <= page.endPage ; i++){
-				console.log("페이징 반복 작업중");
 				paging += '<a href="javascript:goCommentPage('+i+');" class="w3-bar-item w3-black w3-button">'+i+'</a>';
 			}
 			paging += '<a href="javascript:goCommentPage(next);" class="w3-bar-item w3-button w3-hover-black">»</a>';
@@ -111,7 +125,7 @@ function goCommentPage(cPage) {
 }
 //----- 코멘트 등록 ------------------------------------------------------------------------------------------
 $("#commentInsert").submit(function commentInsertForm() {
-	window.open("insertCommentForm.html", "", "width=500, height=250, resizable=yes, scrollbars=yes, status=no");
+	window.open("../card/insertCommentForm.html", "", "width=500, height=250, resizable=yes, scrollbars=yes, status=no");
 });
 
 cardSet();
