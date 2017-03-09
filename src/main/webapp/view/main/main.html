@@ -7,7 +7,7 @@
 <div w3-include-html="../include/header.html"></div>
 
 <!-- 카드 지도 페이지  -->
-	<div id="cardMap"></div>
+	<div id="mapDiv" style="height:600px;width:100%;"></div>
 	
 <!-- 카드 목록조회 페이지  -->
 	<div id="cardList"></div>
@@ -79,7 +79,7 @@
 w3IncludeHTML();
 
 $(function (){
-	$("#cardMap").load("../card/cardMap.html");
+// 	$("#mapDiv").load("../card/cardMap.html");
 	$("#cardList").load("../card/retrieveCardList.html");
 	$("#myFavorite").load("../myFavorite/myFavorite.html");
 	$("#insertCard").load("../card/insertCardForm.html");
@@ -105,6 +105,7 @@ function openMenu(evt, menuName) {
 	document.getElementById("myLink").click();
 	
 </script>
-
+<script src="../../js/comm/googleMapApi.js"></script>
+<script async defer	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWJxPZFiG_3QbcXlfIG71_VGDDUuZS5Oc&callback=initMap"></script>
 </body>
 </html>
