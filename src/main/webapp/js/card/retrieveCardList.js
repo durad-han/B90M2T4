@@ -1,6 +1,6 @@
 //----- 카드 정보 받아오기 -------------------------------------------------------------------
 function cardListSet(){
-	console.log("? " + distance)
+	arrCard = new Array();
 		$.ajax({
 			url: "/b90m2t4/card/retrieveList.json",
 			type: "POST",
@@ -22,6 +22,7 @@ function makeCardList(cardListMap){
 			log: card.cardLongitude,
 			tag: card.cardHashtag
 		});
+		
 		html = "";
 		html += '<div class="cardSheet" id="cardSeq'+card.cardSeq+'">';
 		html += '<span id="cardContent">'+ card.cardContent + '</span><br><br>';
@@ -94,26 +95,5 @@ function goPage(page){
 		dataType: "json"
 	})
 	.done(makeCardList);
-}
-//----- 거리 계산 -------------------------------------------------------------------
-function computeDistance(startCoords, destCoords) {
-	var startLatRads  = degreesToRadians(startCoords.latitude );
-	var startLongRads = degreesToRadians(startCoords.longitude);
-	var destLatRads   = degreesToRadians(37.4944104 );
-	var destLongRads  = degreesToRadians(127.0279339);
-
-	var Radius = 6371; // radius of the Earth in km
-	var distance = Math.acos(
-			       		Math.sin(startLatRads) * Math.sin(destLatRads) + 
-			       		Math.cos(startLatRads) * Math.cos(destLatRads) *
-			       		Math.cos(startLongRads - destLongRads)
-			       ) * Radius;
-
-	return distance;
-}
-function degreesToRadians(degrees) {
-	radians = (degrees * Math.PI) / 180;
-	console.log(degrees  + " - " + (degrees * Math.PI) + " - " + radians);
-	return radians;
 }
  cardListSet();

@@ -53,29 +53,30 @@ function markerInitMap() {
           radius: rad
           };
   cityCircle = new google.maps.Circle(markerpopulationOptions);
-  if(arrCard) {
+
+  if(arrCard.length > 0) {
+	  console.dir(arrCard)
 	  for (var i = 0; i < arrCard.length; ++i) {
-		  console.dir(arrCard[i])
-		  var marker2 = new google.maps.Marker({
+		  var marker = new google.maps.Marker({
 	      position: {
 	        lat: arrCard[i].lat,
 	        lng: arrCard[i].log
 	      },
 	      map: markerMap
 	    });
-	    attachSecretMessage(marker2, arrCard[i].tag);
+	    attachSecretMessage(marker, arrCard[i].tag);
 	  }
   }
 }
 
 
-function attachSecretMessage(marker2, secretMessage) {
+function attachSecretMessage(marker, secretMessage) {
   var infowindow = new google.maps.InfoWindow({
     content: secretMessage
   });
 
-  marker2.addListener('click', function() {
-    infowindow.open(marker2.get('markerMap'), marker2);
+  marker.addListener('click', function() {
+    infowindow.open(marker.get('markerMap'), marker);
   });
 }
 

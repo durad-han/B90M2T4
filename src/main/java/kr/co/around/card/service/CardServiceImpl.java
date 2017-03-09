@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.around.comm.util.DistanceUtil;
 import kr.co.around.repository.mapper.CardMapper;
 import kr.co.around.repository.vo.*;
 
@@ -31,24 +32,14 @@ public class CardServiceImpl implements CardService {
 		
 		List<CardVO> removedCardList = new ArrayList<>();
 		
-		double startLatRads = (37.4944104 * Math.PI) / 180d;
-		double startLongRads = (127.0279339 * Math.PI) / 180d;
-		
 		for(int i = 0; i < cardList.size(); i++) {
-			
+			// 미터(Meter) 단위
 			CardVO cardItem = cardList.get(i);
-			double latitude =  cardItem.getCardLatitude();
-			double longitude =  cardItem.getCardLongitude();
-			
-			double Radius = 6371; // radius of the Earth in km
-			double distance = Math.acos(
-					       		Math.sin(startLatRads) * Math.sin(latitude) + 
-					       		Math.cos(startLatRads) * Math.cos(latitude) *
-					       		Math.cos(startLongRads - longitude)
-					       ) * Radius;
-			
-			if((distance / 1000d) <= search.getDistance()) {
-				System.out.println("distance : " + i + " 번째 " + (distance / 1000));
+			double distanceMeter = 
+					DistanceUtil.distance(37.4944104, 127.0279339, cardItem.getCardLatitude(), cardItem.getCardLongitude(), "meter");
+
+	        if(distanceMeter <= search.getDistance()) {
+				System.out.println("distance : " + i + " 번째 " + distanceMeter);
 				removedCardList.add(cardItem);
 			}
 		}

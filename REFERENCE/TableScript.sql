@@ -253,3 +253,28 @@ insert	into tb_Around_My_Favorite (My_Seq, User_Seq, My_Content, My_Hashtag, My_
 --		values (s_Around_Test.nextval, 2, '샘플02');
 --insert	into tb_Around_Test (Test_Seq, Test_Int, Test_String)
 --		values (s_Around_Test.nextval, 3333, '샘플03');
+		
+-------------------------------------------------------------------------------------------------------------------
+----  거리계산으로 인한 수정사항 및 샘플 데이터
+-------------------------------------------------------------------------------------------------------------------		
+delete from tb_around_card;
+
+alter table tb_around_card modify(card_longitude number(9,6));
+alter table tb_around_card modify(card_latitude number(9,6));
+
+insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
+		values (s_Around_Card.nextval, 1, '첫번째 카드는 어드민이 작성했답니다', 1, '#첫글 #첫카드 #샘플임', 127.028179, 37.497755);
+insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
+		values (s_Around_Card.nextval, 2, '두번째 카드는 테스터가 작성했답니다', 1, '#야호 #샘플임', 127.027857, 37.495950);
+insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
+		values (s_Around_Card.nextval, 2, '세번째 카드도 테스터가 작성했답니다', 1, '#야호 #샘플임', 127.027621, 37.495397);
+insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
+		values (s_Around_Card.nextval, 3, '네번째라고 별다를 거 없다', 3, '#샘플', 127.028511, 37.494895);
+insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
+		values (s_Around_Card.nextval, 4, '야 인마!', 5, '#샘플 #버럭', 127.027492 , 37.493227);
+insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
+		values (s_Around_Card.nextval, 4, '여기서부터는', 5, '#샘플 #설명충', 127.028254, 37.492733);		
+insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
+		values (s_Around_Card.nextval, 4, '더미 데이터다', 5, '#샘플 #더미', 127.030325, 37.492699);
+    
+		
