@@ -148,9 +148,9 @@ public class CardController {
 				String systemName = "around-" + UUID.randomUUID().toString() + ext;
 				file.transferTo(new File(savePath + "/" + systemName));
 				cardVO.setCardImgPath(savePath + "/" + systemName);			
-		} 
-			param.put("card", cardVO);
+			} 
 		}
+		param.put("card", cardVO);
 		cs.insertCard(cardVO);
 		
 		// db에서 해시태그목록 받아오기
