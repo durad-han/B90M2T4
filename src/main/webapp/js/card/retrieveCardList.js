@@ -14,15 +14,30 @@ function makeCardList(cardListMap){
 	var html = "";
 	var cards = cardListMap['cardList'];
 	var page = cardListMap['pageResult'];
+	var markers = cardListMap['markerList'];
+	
+	for(var i = 0 ; i < markers.length ; i++ ) {
+		var marker = markers[i];
+		
+		arrCard.push({
+			lat: marker.cardLatitude,
+			log: marker.cardLongitude,
+			tag: marker.cardHashtag,
+			distanceMeter: marker.distance
+		});
+	}
+	markerInitMap();
+	
+	
 	
 	for (var i = 0 ; i < cards.length ; i++ ){
 		var card = cards[i];
-		arrCard.push({
-			lat: card.cardLatitude,
-			log: card.cardLongitude,
-			tag: card.cardHashtag,
-			distanceMeter: card.distance
-		});
+//		arrCard.push({
+//			lat: card.cardLatitude,
+//			log: card.cardLongitude,
+//			tag: card.cardHashtag,
+//			distanceMeter: card.distance
+//		});
 		
 		html = "";
 		html += '<div class="cardSheet" id="cardSeq'+card.cardSeq+'">';
@@ -84,7 +99,6 @@ function makeCardList(cardListMap){
 			$("#cardListPage").html(paging);
 		}
 		
-	markerInitMap();
 }
 
 //----- 카드 페이지 이동 -------------------------------------------------------------------

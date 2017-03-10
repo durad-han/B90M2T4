@@ -13,7 +13,6 @@ public interface CardService {
 	public Map<String, Object> retrieveCardList(SearchVO search) throws Exception;
 
 	public Map<String, Object> retrieveCommentList(SearchVO search) throws Exception;
-
 	
 //----- 카드 수정, 삭제 관련 ------------------------------------------------------------------
 	public void updateCard(int cardSeq) throws Exception;

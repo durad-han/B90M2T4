@@ -23,6 +23,7 @@ public interface CardMapper {
 	
 	public int selectCommentCount(SearchVO search) throws Exception;
 	
+	public List<CardVO> selectMarkerList() throws Exception;
 	
 //----- 카드 수정, 삭제 관련 ------------------------------------------------------------------
 	

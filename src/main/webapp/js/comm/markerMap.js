@@ -64,12 +64,16 @@ var markerInitMap = function markerInitMap() {
   if(arrCard.length > 0) {
 	  
 	  for (var i = 0; i < arrCard.length; ++i) {
-		  
+		  console.dir(arrCard);
+		  var lat = arrCard[i].lat += 0.000001;
+		  var log = arrCard[i].log += 0.000001;
 		  if(arrCard[i].distanceMeter <= distance) {
 			  var marker = new google.maps.Marker({
 			      position: {
-			        lat: arrCard[i].lat,
-			        lng: arrCard[i].log
+			     /*   lat: arrCard[i].lat,
+			        lng: arrCard[i].log*/
+			        lat: lat,
+			        lng: log
 			      },
 			      map: markerMap
 		      });

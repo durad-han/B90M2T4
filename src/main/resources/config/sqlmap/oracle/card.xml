@@ -41,7 +41,10 @@
 		
 	</select>
 	 
-	 
+	<select id="selectMarkerList" resultMap="cardMap">
+		select *
+		  from tb_Around_Card
+	</select> 
 	<!--============================================================================
 			페이징용 카드 카운트 selectCardCount 
 			필터링할 값: 없음

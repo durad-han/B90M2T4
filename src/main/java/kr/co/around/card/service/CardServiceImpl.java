@@ -29,12 +29,14 @@ public class CardServiceImpl implements CardService {
 	public Map<String, Object> retrieveCardList(SearchVO search) throws Exception {
 		Map<String, Object> cardMap = new HashMap<String, Object>();
 		List<CardVO> cardList = cMapper.selectCardList(search);
+		List<CardVO> markerList = cMapper.selectMarkerList();
 		
 		List<CardVO> removedCardList = new ArrayList<>();
 		
-		for(int i = 0; i < cardList.size(); i++) {
+		/*for(int i = 0; i < cardList.size(); i++) {
 			// 미터(Meter) 단위
 			CardVO cardItem = cardList.get(i);
+			System.out.println(i + "번째  카드 값  : " + cardItem.getCardLatitude() + ", " + cardItem.getCardHashtag() );
 			double distance = 
 					DistanceUtil.distance(37.4944104, 127.0279339, cardItem.getCardLatitude(), cardItem.getCardLongitude(), "meter");
 			cardItem.setDistance(distance);
@@ -42,10 +44,22 @@ public class CardServiceImpl implements CardService {
 				System.out.println("distance : " + i + " 번째 " + distance);
 				removedCardList.add(cardItem);
 			}
-		}
+		}*/
 		
-		cardMap.put("cardList", removedCardList);
+		for(int i = 0; i < markerList.size(); i++) {
+			
+			CardVO marker = markerList.get(i);
+			double distance = DistanceUtil.distance(37.4944104, 127.0279339, marker.getCardLatitude(), marker.getCardLongitude(), "meter");
+			marker.setDistance(distance);
+			if(distance <= search.getDistance()) {
+				System.out.println("distance : " + i + " 번째 " + distance);
+				removedCardList.add(marker);
+			}
+		}
+			
+		cardMap.put("cardList", cardList);
 		cardMap.put("pageResult", new PageResultVO(search.getPageNo(), cMapper.selectCardCount(search)));
+		cardMap.put("markerList", removedCardList);
 		return cardMap;
 		
 	}
@@ -57,6 +71,7 @@ public class CardServiceImpl implements CardService {
 			commentMap.put("pageResult", new PageResultVO(search.getPageNo(), cMapper.selectCommentCount(search)));
 		return commentMap;
 	}
+	
 	
 	
 //----- 카드 수정, 삭제 관련 ------------------------------------------------------------------
@@ -119,4 +134,5 @@ public class CardServiceImpl implements CardService {
 		System.out.println("Service : insertHashTag");
 		cMapper.insertHashtag(hashtagContent);
 	}
+
 }

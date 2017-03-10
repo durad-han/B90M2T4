@@ -55,7 +55,6 @@ public class CardController {
 		return cs.retrieveCommentList(search);
 	}
 	
-	
 //----- 카드 수정, 삭제 관련 ------------------------------------------------------------------
 	@RequestMapping("/update.do")
 	public void updateCard() throws Exception {
