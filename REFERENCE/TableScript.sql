@@ -306,6 +306,9 @@ insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card
 		values (s_Around_Card.nextval, 35, '밤새 코딩함 ㅜㅜ', 4, ' #선민찡 #ㅜㅜ', 127.027245 , 37.493690);
 insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
 		values (s_Around_Card.nextval, 13, '오늘 클럽 물 좋나요? 밤사냐 매스냐 엔비냐 고민중..', 2, ' #클럽 #밤사 #매스 #엔비', 127.025579 , 37.500510);
+insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
+		values (s_Around_Card.nextval, 16, '고시원 방에서 가만히 생각해보니 내가 방인가 방이 나인가 구분이 안감', 5, ' #고시원 #탈출하고싶다 #미래고시원', 127.030359, 37.496790);
+
 
 
 insert	into TB_AROUND_HASHTAG (hashtag_seq, Hashtag_Content, Hashtag_Frequency)
@@ -322,4 +325,48 @@ insert	into TB_AROUND_HASHTAG (hashtag_seq, Hashtag_Content, Hashtag_Frequency)
 		values (s_AROUND_HASHTAG.nextval, '구글', 14);
 insert	into TB_AROUND_HASHTAG (hashtag_seq, Hashtag_Content, Hashtag_Frequency)
 		values (s_AROUND_HASHTAG.nextval, '요가', 35);
+
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+------------ 또 추가 -------------------	
+insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
+		values (s_Around_Card.nextval, 16, '고시원 방에서 가만히 생각해보니 내가 방인가 방이 나인가 구분이 안감', 5, ' #고시원 #탈출하고싶다 #미래고시원', 127.030359, 37.496790);
+insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
+		values (s_Around_Card.nextval, 56, '빗소리가 너무 좋네요.', 3, ' #비 #빗소리 #주륵주륵', 127.025224, 37.492765);
+insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
+		values (s_Around_Card.nextval, 31, '골프 한판 치고나니 이제 사는 것 같습니다. 역시 사람은 운동을 하고 살아야.....', 1, ' #골프 #운동 #80타', 127.023695, 37.497047);
+insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
+		values (s_Around_Card.nextval, 18, '우리 애가 벌써 초딩이 됩니다. 축하해 주세요^^', 1, ' #서초초등학교 #초딩 #입학식 #ㅋㅋㅋ', 127.023938, 37.499233);
+insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
+		values (s_Around_Card.nextval, 14, '우리 애가 벌써 초딩이 됩니다. 축하해 주세요^^', 1, ' #서초초등학교 #초딩 #입학식 #ㅋㅋㅋ', 127.023938, 37.499233);
+
+
+		
+insert	into TB_AROUND_HASHTAG (hashtag_seq, Hashtag_Content, Hashtag_Frequency)
+		values (s_AROUND_HASHTAG.nextval, '초딩', 24);
+insert	into TB_AROUND_HASHTAG (hashtag_seq, Hashtag_Content, Hashtag_Frequency)
+		values (s_AROUND_HASHTAG.nextval, '편의점', 11);
+insert	into TB_AROUND_HASHTAG (hashtag_seq, Hashtag_Content, Hashtag_Frequency)
+		values (s_AROUND_HASHTAG.nextval, '버거킹', 52);
+insert	into TB_AROUND_HASHTAG (hashtag_seq, Hashtag_Content, Hashtag_Frequency)
+		values (s_AROUND_HASHTAG.nextval, 'KFC', 28);
+insert	into TB_AROUND_HASHTAG (hashtag_seq, Hashtag_Content, Hashtag_Frequency)
+		values (s_AROUND_HASHTAG.nextval, '토익', 73);
+insert	into TB_AROUND_HASHTAG (hashtag_seq, Hashtag_Content, Hashtag_Frequency)
+		values (s_AROUND_HASHTAG.nextval, 'BMW', 21);
+insert	into TB_AROUND_HASHTAG (hashtag_seq, Hashtag_Content, Hashtag_Frequency)
+		values (s_AROUND_HASHTAG.nextval, '벤츠', 11);
+insert	into TB_AROUND_HASHTAG (hashtag_seq, Hashtag_Content, Hashtag_Frequency)
+		values (s_AROUND_HASHTAG.nextval, '치과', 31);
+insert	into TB_AROUND_HASHTAG (hashtag_seq, Hashtag_Content, Hashtag_Frequency)
+		values (s_AROUND_HASHTAG.nextval, '독서실', 33);
