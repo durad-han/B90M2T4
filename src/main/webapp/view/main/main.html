@@ -49,12 +49,13 @@
 
 
 <!-- End page content -->
-</div>
 
 <div w3-include-html="../include/footer.html"></div>
 
 <script>
 w3IncludeHTML();
+var cardNo = 1;
+
 $(function (){
 	$("#divMarkerMap").load("../card/markerMap.html");
 	$("#cardList").load("../card/retrieveCardList.html");
@@ -65,10 +66,10 @@ $(function (){
 	})
 });
 
-/* function resetList(){
+function resetList(){
 	console.log("리셋 리스트 펑션");
 	$("#cardList").load("../card/retrieveCardList.html");
-} */
+}
 
 function openMenu(evt, menuName) {
 
