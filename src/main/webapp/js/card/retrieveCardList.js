@@ -10,6 +10,7 @@ function cardListSet(){
 }
 //----- 카드 리스트 출력 -------------------------------------------------------------------
 function makeCardList(cardListMap){
+	arrCard = new Array();
 	var html = "";
 	var cards = cardListMap['cardList'];
 	var page = cardListMap['pageResult'];
@@ -82,6 +83,8 @@ function makeCardList(cardListMap){
 			paging += '<a href="javascript:goPage(next);" class="w3-bar-item w3-button w3-hover-black">»</a>';
 			$("#cardListPage").html(paging);
 		}
+		
+	markerInitMap();
 }
 
 //----- 카드 페이지 이동 -------------------------------------------------------------------

@@ -2,7 +2,7 @@ var z = 19;
 var rad = 200;
 var distance = 200;
 var arrCard = [];
-
+var bool = false;
 var p = document.getElementById("markerRange");
 res = document.getElementById("distanceResult");
 
@@ -17,12 +17,16 @@ p.addEventListener("input", function() {
 	}
     res.innerHTML = val + unit;
     
-    markerInitMap();
-    cardListSet();
+    if(!bool) {
+    	markerInitMap();
+    	bool = true;
+    } else {
+    	cardListSet();
+    }
     
 }, false); 
 
-function markerInitMap() {
+var markerInitMap = function markerInitMap() {
 	
   switch(distance) {
     case "200": 
