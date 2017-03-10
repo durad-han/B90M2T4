@@ -276,5 +276,50 @@ insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card
 		values (s_Around_Card.nextval, 4, '여기서부터는', 5, '#샘플 #설명충', 127.028254, 37.492733);		
 insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
 		values (s_Around_Card.nextval, 4, '더미 데이터다', 5, '#샘플 #더미', 127.030325, 37.492699);
-    
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
+		values (s_Around_Card.nextval, 1, '오늘 너무 즐겁게 먹고, 재밌게 놀았네요', 1, ' #맛집 #강남역 #클럽 #매스', 127.026222, 37.499394);
+insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
+		values (s_Around_Card.nextval, 12, '강남 털드림의원에서 머리 심었어요', 3, ' #탈모 #모발이식 #ㅋㅋㅋ', 127.026174, 37.500045);
+insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
+		values (s_Around_Card.nextval, 32, '강남역 맛집 어디가 맛있나요?', 2, ' #맛집 #강남역 #도씨에빛', 127.028457, 37.495194);
+insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
+		values (s_Around_Card.nextval, 23, '토익 점수가 너무 안오르네요 ㅜㅜ', 4, ' #토익 #영단기 #해커스', 127.025466, 37.500251);
+insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
+		values (s_Around_Card.nextval, 14, '세븐 스프링 너무 맛있어요', 2, ' #세븐스프링 #강남역 #맛집', 127.030245 , 37.490690);
+insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
+		values (s_Around_Card.nextval, 15, '우울한 하루', 5, ' #우울 #ㅜㅜ #슬픔', 127.039245 , 37.5018990);
+insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
+		values (s_Around_Card.nextval, 35, '밤새 코딩함 ㅜㅜ', 4, ' #선민찡 #ㅜㅜ', 127.027245 , 37.493690);
+insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
+		values (s_Around_Card.nextval, 13, '오늘 클럽 물 좋나요? 밤사냐 매스냐 엔비냐 고민중..', 2, ' #클럽 #밤사 #매스 #엔비', 127.025579 , 37.500510);
+
+
+insert	into TB_AROUND_HASHTAG (hashtag_seq, Hashtag_Content, Hashtag_Frequency)
+		values (s_AROUND_HASHTAG.nextval, '맛집', 23);
+insert	into TB_AROUND_HASHTAG (hashtag_seq, Hashtag_Content, Hashtag_Frequency)
+		values (s_AROUND_HASHTAG.nextval, '강남역', 32);
+insert	into TB_AROUND_HASHTAG (hashtag_seq, Hashtag_Content, Hashtag_Frequency)
+		values (s_AROUND_HASHTAG.nextval, '비트캠프', 47);
+insert	into TB_AROUND_HASHTAG (hashtag_seq, Hashtag_Content, Hashtag_Frequency)
+		values (s_AROUND_HASHTAG.nextval, '목포', 39);
+insert	into TB_AROUND_HASHTAG (hashtag_seq, Hashtag_Content, Hashtag_Frequency)
+		values (s_AROUND_HASHTAG.nextval, 'CGV', 27);
+insert	into TB_AROUND_HASHTAG (hashtag_seq, Hashtag_Content, Hashtag_Frequency)
+		values (s_AROUND_HASHTAG.nextval, '구글', 14);
+insert	into TB_AROUND_HASHTAG (hashtag_seq, Hashtag_Content, Hashtag_Frequency)
+		values (s_AROUND_HASHTAG.nextval, '요가', 35);
 		
