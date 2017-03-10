@@ -4,6 +4,15 @@ public class SearchVO extends PageVO {
 	
 	private int cardSeq;
 	private double distance;
+	private int userSeq;
+
+	public int getUserSeq() {
+		return userSeq;
+	}
+
+	public void setUserSeq(int userSeq) {
+		this.userSeq = userSeq;
+	}
 
 	public double getDistance() {
 		return distance;

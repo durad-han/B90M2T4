@@ -32,12 +32,6 @@ function makeCardList(cardListMap){
 	
 	for (var i = 0 ; i < cards.length ; i++ ){
 		var card = cards[i];
-//		arrCard.push({
-//			lat: card.cardLatitude,
-//			log: card.cardLongitude,
-//			tag: card.cardHashtag,
-//			distanceMeter: card.distance
-//		});
 		
 		html = "";
 		html += '<div class="cardSheet" id="cardSeq'+card.cardSeq+'">';
@@ -107,7 +101,8 @@ function goPage(page){
 		url: "/b90m2t4/card/retrieveList.json",
 		type: "POST",
 		data: {
-			pageNo: page
+			pageNo: page,
+			distance: distance
 		},
 		dataType: "json"
 	})

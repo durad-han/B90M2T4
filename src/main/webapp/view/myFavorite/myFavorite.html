@@ -6,29 +6,28 @@
 		text-align: center;
 	}
 	td {
+		width: 200px;
 		text-align: center;
+	}
+	
+	tr {
+		height: 50px;
 	}
 </style>
 
 <div class="w3-container" id="favorite">
-  <div class="w3-content" style="max-width:700px">
+  <div class="w3-content" style="max-width:700px;min-height:600px;">
     <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide w3-padding-left w3-padding-right">FAVORITE</span></h5>
-<<<<<<< Updated upstream
-    <p>null</p>
-    <p>null</p>
-    <div class="w3-panel w3-leftbar w3-light-grey">
-      <p><i>null</i></p>
-      <p>null</p>
-    </div>
-    <p><strong>null</strong>null</p>
-    <p><strong>null</strong>null</p>
-=======
-    	<div id="favoriteList" style="padding-left: 23%;"></div>
+    
+    	<div id="favoriteList">
+    	</div>
+    	<div id="favoritePage" class="w3-center w3-padding-32">
+	    	<div class="w3-bar" id="myFavoritePage"></div>
+	  	</div>
 		<!--	카드 리스트 페이징 처리 -->
 			
-</div>				
-		<div id="favoriteDetail" style="display:none;padding-left: 32%;">
-			<table border="1">
+		<div id="favoriteDetail" style="display:none;width:100%;">
+			<table border=1 style="width: 100%;">
 				<tr>
 					<th>글번호</th>
 					<td id="favoriteNo"></td>
@@ -39,9 +38,7 @@
 				</tr>
 				<tr>
 					<th>내용</th>
-					<td>
-						<textarea id="favoriteContent"></textarea>
-					</td>
+					<td id="favoriteContent"></td>
 				</tr>
 				<tr>
 					<th>기분</th>
@@ -57,18 +54,11 @@
 			</table>
 			
 		</div>
-	  <div class="w3-center w3-padding-32">
-	    <div class="w3-bar" id="myFavoritePage"></div>
-	  </div>
->>>>>>> Stashed changes
+	  
   </div>
 </div>
 
 
-
-
-<button id="btnMod">수정</button>
-<button id="btnDel">삭제</button>
 
 
 <script src="../../js/myFavorite/myFavorite.js"></script>

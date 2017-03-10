@@ -32,13 +32,12 @@ public class CardServiceImpl implements CardService {
 		List<CardVO> markerList = cMapper.selectMarkerList();
 		
 		List<CardVO> removedCardList = new ArrayList<>();
+		List<CardVO> removedMarkerList = new ArrayList<>();
 		
-		/*for(int i = 0; i < cardList.size(); i++) {
+/*		for(int i = 0; i < cardList.size(); i++) {
 			// 미터(Meter) 단위
 			CardVO cardItem = cardList.get(i);
-			System.out.println(i + "번째  카드 값  : " + cardItem.getCardLatitude() + ", " + cardItem.getCardHashtag() );
-			double distance = 
-					DistanceUtil.distance(37.4944104, 127.0279339, cardItem.getCardLatitude(), cardItem.getCardLongitude(), "meter");
+			double distance = DistanceUtil.distance(37.4944104, 127.0279339, cardItem.getCardLatitude(), cardItem.getCardLongitude(), "meter");
 			cardItem.setDistance(distance);
 	        if(distance <= search.getDistance()) {
 				System.out.println("distance : " + i + " 번째 " + distance);
@@ -53,13 +52,13 @@ public class CardServiceImpl implements CardService {
 			marker.setDistance(distance);
 			if(distance <= search.getDistance()) {
 				System.out.println("distance : " + i + " 번째 " + distance);
-				removedCardList.add(marker);
+				removedMarkerList.add(marker);
 			}
 		}
 			
 		cardMap.put("cardList", cardList);
 		cardMap.put("pageResult", new PageResultVO(search.getPageNo(), cMapper.selectCardCount(search)));
-		cardMap.put("markerList", removedCardList);
+		cardMap.put("markerList", removedMarkerList);
 		return cardMap;
 		
 	}

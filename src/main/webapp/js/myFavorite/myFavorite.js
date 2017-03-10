@@ -14,6 +14,7 @@ $(function (result) {
 
 function boardList(result) {
 	$("#favoriteList").css("display", "block");	
+	$("#favoritePage").css("display", "block");	
 	$("#favoriteDetail").css("display", "none");	
 	
     html = "";
@@ -78,6 +79,7 @@ function boardList(result) {
 function detail(seq) {
 	
 	$("#favoriteList").css("display", "none");	
+	$("#favoritePage").css("display", "none");	
 	$("#favoriteDetail").css("display", "block");	
 	
 	$.ajax({

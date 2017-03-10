@@ -1,5 +1,4 @@
 <meta charset="UTF-8">
-<script src="../../js/card/insertCardForm.js"></script>
 
 <!--	카드 컨테이너 -->
 <div class="w3-container" id="write">
@@ -13,7 +12,7 @@
 
 			<div id="textDiv">
 				당신의 이야기를 들려주세요... <br>
-				<textarea id="writeCardContent" name="cardContent" rows="7" cols="70"></textarea>
+				<textarea id="writeCardContent" name="cardContent" rows="7" cols="85"></textarea>
 				<div id="count">0/140</div>
 			</div>
 			<br>
@@ -26,36 +25,36 @@
 
 			<div id="hashtagDiv">
 				해시태그 등록
-				<button type="button" id="hashtagPopup"	onclick="javascript:popupOpen();">#추가</button>
+				<button type="button" class="w3-button w3-black" id="hashtagPopup"	onclick="javascript:popupOpen();">#추가</button>
 				<input class="w3-input w3-padding-16 w3-border" readonly type="text" id="cardHashtag" name="cardHashtag"><br>
 			</div>
 			<br>
 
 			<div id="selectFeeling">
-				<div>
+				<div style="margin-left: 60px;	margin-right: 30px;">
 					<img src="../../img/card/verygood.jpg"
-						onclick="document.getElementsByName('cardFeeling')[0].checked=true; setImageRadio();" /><br>
+						onclick="document.getElementsByName('cardFeeling')[0].checked=true; setImageRadio();" alt="정말 기분 좋음 :-)"/><br>
 					<input type="radio" id="cardFeeling" name="cardFeeling" value="1" />
 				</div>
-				<div>
+				<div style="margin-left: 30px;	margin-right: 30px;">
 					<img src="../../img/card/good.png"
-						onclick="document.getElementsByName('cardFeeling')[1].checked=true; setImageRadio();" /><br>
+						onclick="document.getElementsByName('cardFeeling')[1].checked=true; setImageRadio();" alt="기분 좋음 ^^" /><br>
 					<input type="radio" id="cardFeeling" name="cardFeeling" value="2" />
 				</div>
-				<div>
+				<div style="margin-left: 30px;	margin-right: 30px;">
 					<img src="../../img/card/soso.png"
-						onclick="document.getElementsByName('cardFeeling')[2].checked=true; setImageRadio();" /><br>
+						onclick="document.getElementsByName('cardFeeling')[2].checked=true; setImageRadio();" alt="쏘 쏘~!" /><br>
 					<input type="radio" id="cardFeeling" name="cardFeeling" value="3"
 						checked />
 				</div>
-				<div>
+				<div style="margin-left: 30px;	margin-right: 30px;">
 					<img src="../../img/card/bad.png"
-						onclick="document.getElementsByName('cardFeeling')[3].checked=true; setImageRadio();" /><br>
+						onclick="document.getElementsByName('cardFeeling')[3].checked=true; setImageRadio();" alt="화남!!버럭!" /><br>
 					<input type="radio" id="cardFeeling" name="cardFeeling" value="4" />
 				</div>
-				<div>
+				<div style="margin-left: 30px;	margin-right: 50px;">
 					<img src="../../img/card/terrible.png"
-						onclick="document.getElementsByName('cardFeeling')[4].checked=true; setImageRadio();" /><br>
+						onclick="document.getElementsByName('cardFeeling')[4].checked=true; setImageRadio();" alt="슬픔 ㅠㅡㅠ" /><br>
 					<input type="radio" id="cardFeeling" name="cardFeeling" value="5" />
 				</div>
 			</div>
@@ -64,11 +63,16 @@
 			<input type="hidden" id="cardLongitude"	name="cardLongitude" value="longitude">
 			<input type="hidden" id="cardLatitude" name="cardLatitude" value="latitude">
 
-			<button class="w3-button w3-black" type="button" id="cancle">취소</button>
+			<br>
+			<br>
+			
+			<button class="w3-button w3-black" type="button" id="cancle" style="margin-left: 40%;">취소</button>
 			<button class="w3-button w3-black" type="submit">등록</button>
-
 		</form>
+		<br>
+		<br>
 	</div>
 </div>
 
 <script src="../../js/comm/googleMapApi.js"></script>
+<script src="../../js/card/insertCardForm.js"></script>

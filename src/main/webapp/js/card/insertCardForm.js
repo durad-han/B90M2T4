@@ -99,7 +99,20 @@ $("#cardInsert").submit(function() {
       contentType: false
   })
   .done (function () {
-	  location.href="/b90m2t4/card/retrieveList.json";
+	  alert("1");
+	  $(window).scrollTop = 0;
+	  
+	  alert("2");
+	  $("[name=cardContent]").val("");
+	  $("input[name=cardFeeling]:checked").val("");
+	  $("input[name=cardHashtag]").val("");
+	  longitude = "";
+	  latitude = "";
+	  $("input[name=cardImg]").val("");
+	  alert("3");
+	  swal("카드가 등록되었습니다.");
+	  
+	  
   })
   .fail (function (jqXhr, textStatus, errorText) {
       alert("에러발생 : " + errorText);
