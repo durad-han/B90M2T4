@@ -1,6 +1,19 @@
+<meta charset="utf-8">
+<link rel="import" href="../include/baseInclude.html">
+<style>
+	th {
+		width: 100px;
+		text-align: center;
+	}
+	td {
+		text-align: center;
+	}
+</style>
+
 <div class="w3-container" id="favorite">
   <div class="w3-content" style="max-width:700px">
     <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide w3-padding-left w3-padding-right">FAVORITE</span></h5>
+<<<<<<< Updated upstream
     <p>null</p>
     <p>null</p>
     <div class="w3-panel w3-leftbar w3-light-grey">
@@ -9,5 +22,53 @@
     </div>
     <p><strong>null</strong>null</p>
     <p><strong>null</strong>null</p>
+=======
+    	<div id="favoriteList" style="padding-left: 23%;"></div>
+		<!--	카드 리스트 페이징 처리 -->
+			
+</div>				
+		<div id="favoriteDetail" style="display:none;padding-left: 32%;">
+			<table border="1">
+				<tr>
+					<th>글번호</th>
+					<td id="favoriteNo"></td>
+				</tr>
+				<tr>
+					<th>해시태그</th>
+					<td id="favoriteTag"></td>
+				</tr>
+				<tr>
+					<th>내용</th>
+					<td>
+						<textarea id="favoriteContent"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<th>기분</th>
+					<td id="favoriteFeeling"></td>
+				</tr>
+				<tr>
+					<th>등록시각</th>
+					<td id="favoriteDate"></td>
+				</tr>
+				<tr>
+					<td colspan="2"><a href="">목록</a></td>
+				</tr>
+			</table>
+			
+		</div>
+	  <div class="w3-center w3-padding-32">
+	    <div class="w3-bar" id="myFavoritePage"></div>
+	  </div>
+>>>>>>> Stashed changes
   </div>
 </div>
+
+
+
+
+<button id="btnMod">수정</button>
+<button id="btnDel">삭제</button>
+
+
+<script src="../../js/myFavorite/myFavorite.js"></script>

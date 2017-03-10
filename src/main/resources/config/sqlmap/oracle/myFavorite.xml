@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.co.around.repository.mapper">
+<mapper namespace="kr.co.around.repository.mapper.MyFavoriteMapper">
 
 	<resultMap type="myFavoriteVO" id="myMap">
 		<result column="My_Seq"			property="mySeq" 		/>
@@ -12,66 +12,58 @@
 		<result column="My_Reg_Date"	property="myRegDate" 	/>
 	</resultMap>
 		
-	<!--============================================================================
+	<!--===========================================================================
 	
 		M Y F A V O R I T E		S E L E C T
 		
 	============================================================================-->	
 	 
 	 
-	<!--============================================================================
+	<!--===========================================================================
 			사용자 시퀀스로 관심카드 조회 selectMyUserSeq 
 			필터링할 값: (tb_Around_User) User_Seq
 			파라메터의 데이터타입: int
 			리턴되는 값의 데이터타입: MyFavoriteVO
 	============================================================================-->
-	<select id="selectMyUserSeq" parameterType="int" resultMap="myMap">
+	<select id="myFavoriteDetail" parameterType="int" resultMap="myMap">
 		select	*
 		from	tb_Around_My_Favorite
-		where	User_Seq = #{userSeq}
-		order	by My_Seq desc
+		where	My_Seq = #{mySeq}
 	</select>
 
+	<select id="myFavoriteCount" parameterType="int" resultType="int">
+        select  count(*)
+          from  tb_Around_My_Favorite
+    </select>
+    
+    <select id="myFavoriteList" resultMap="myMap" parameterType="searchVO">
+        select * 
+        from (
+        	select rownum rnum, a.*
+        	from (
+	            select    *
+	              from    tb_Around_My_Favorite
+	             where 	  user_seq = #{userSeq}	
+	             order    by My_Seq desc
+       	    ) a
+        ) 
+		where rnum between #{begin} and #{end}   
 
+    </select>
+	
 	<!--============================================================================ 
 	
 		M Y F A V O R I T E		INSERT	/	UPDATE	/	DELETE
 	
 	 ============================================================================-->
 
-
-	<!--============================================================================
-			관심카드 정보 입력 insertMy
-			필터링할 값: 없음
-			파라메터의 데이터타입: MyFavoriteVO
-			리턴되는 값의 데이터타입: 없음 
-	============================================================================-->
-	<insert id="insertMy" parameterType="myFavoriteVO" >
-		insert	into tb_Around_My_Favorite 
-				(
-				My_Seq,
-				User_Seq,
-				My_Content,
-				My_Hashtag,
-				My_Feeling,
-				)
-		values	(
-				s_Around_My_Favorite.nextVal,
-				#{userSeq},
-				#{myContent},
-				#{myHashtag},
-				#{myFeeling}
-				)
-	</insert>
-
-
-	<!--============================================================================
+	<!--===========================================================================
 			관심카드 정보 수정 updateMy
 			필터링할 값: My_Seq
 			파라메터의 데이터타입: MyFavoriteVO
 			리턴되는 값의 데이터타입: 없음
 	============================================================================-->
-	<update id="updateMy" parameterType="myFavoriteVO" >
+	<update id="myFavoriteUpdate" parameterType="myFavoriteVO" >
 		update	tb_Around_My_Favorite
 		set		My_Content			= #{myContent},
 				My_Hashtag			= #{myHashtag},
@@ -86,7 +78,7 @@
 			파라메터의 데이터타입: int
 			리턴되는 값의 데이터타입: 없음
 	============================================================================-->
-	<delete id="deleteMy" parameterType="int" >
+	<delete id="myFavoriteDelete" parameterType="int" >
 		delete	tb_Around_My_Favorite
 		where	My_Seq		= #{mySeq}
 	</delete>
