@@ -2,9 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>댓글 등록창</title>
+<title>댓글 등록</title>
 <script src="../../js/comm/jquery.min.js"></script>
-<script src="../../js/card/insertCardForm.js"></script>
 </head>
 <body onload="commentContent.focus()">
 
@@ -24,35 +23,36 @@
 		</div>
 		
 <script>
-	$(document).ready(function() {
-		$('#commentContent').on('keyup', function() {
-			if ($(this).val().length > 140) {
-				alert('글자수는 140자 까지입니다.');
-				$(this).val($(this).val().substring(0, 140));
-			}
-			$('#count').html($(this).val().length + '/140');
-		});
-	});
-	
-	$("#insertCommentForm").submit(function() {
-		if ($("#commentContent").val() === null) {
-			alert("내용은 있어야죠 ^^");
-			$("#commentContent").focus();
-			return false;
+$(document).ready(function() {
+	$('#commentContent').on('keyup', function() {
+		if ($(this).val().length > 140) {
+			alert('글자수는 140자 까지입니다.');
+			$(this).val($(this).val().substring(0, 140));
 		}
-		$.ajax({
-			url: "/b90m2t4/card/insertComment.do",
-			type: "post",
-			data: {
-				cardSeq: targetNo,
-				commentContent: $("[name=commentContent]").val()
-				},
-			dataType: "json",
-		});
-		commentSet();
-		self.close();
-		return false;
+		$('#count').html($(this).val().length + '/140');
 	});
+});
+	
+$("#insertCommentForm").submit(function() {
+	if ($("#commentContent").val() === null) {
+		alert("내용은 있어야죠 ^^");
+		$("#commentContent").focus();
+		return false;
+	}
+// targetNo = $("#cardSeq").val();
+	$.ajax({
+		url: "/b90m2t4/card/insertComment.do",
+		type: "post",
+		data: {
+			cardSeq: targetNo,
+			commentContent: $("[name=commentContent]").val()
+			},
+		dataType: "json",
+	});
+	opener.commentSet();
+	self.close();
+	return false;
+});
 </script>
 </body>
 </html>
