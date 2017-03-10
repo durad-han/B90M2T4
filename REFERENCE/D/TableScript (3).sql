@@ -350,7 +350,9 @@ insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card
 insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
 		values (s_Around_Card.nextval, 14, '우리 애가 벌써 초딩이 됩니다. 축하해 주세요^^', 1, ' #서초초등학교 #초딩 #입학식 #ㅋㅋㅋ', 127.023938, 37.499233);
 insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
-		values (s_Around_Card.nextval, 14, '비트컴퓨터 다닐까 하는데 괜찮나요?', 3, ' #비트컴퓨터 #컴퓨터학원', 127.027507, 37.494599);
+		values (s_Around_Card.nextval, 12, '비트컴퓨터 다닐까 하는데 괜찮나요?', 3, ' #비트컴퓨터 #컴퓨터학원', 127.027507, 37.494599);
+insert	into tb_Around_Card (card_seq, user_seq, card_content, card_feeling, card_hashtag, CARD_LONGITUDE, 	CARD_LATITUDE )
+		values (s_Around_Card.nextval, 23, '커피집 천원인데 맛도 괜찮나요?', 2, ' #카페 ', 127.028745, 37.494672);
 
 
 		
